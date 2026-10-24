@@ -1,0 +1,78 @@
+{
+  "media/web/cat-testing-door-security.webp": {
+    "width": 1043,
+    "height": 1200
+  },
+  "media/web/cupexs-car.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/cupexs-drag-car-icon.webp": {
+    "width": 1429,
+    "height": 1200
+  },
+  "media/web/cupexs-dyno-results.webp": {
+    "width": 1500,
+    "height": 1125
+  },
+  "media/web/cupexs-dyno-setup.webp": {
+    "width": 846,
+    "height": 1061
+  },
+  "media/web/door-security-icon.webp": {
+    "width": 1189,
+    "height": 1200
+  },
+  "media/web/gyroid-infill.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/kinect-microphone.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/lab-project-managment.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/lara-icon.webp": {
+    "width": 1449,
+    "height": 1200
+  },
+  "media/web/lara-idle.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/lara-printing.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/lara-standing.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/spoiler-complete-circuit.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/spoiler-control-circuit.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "media/web/spoiler-icon.webp": {
+    "width": 1472,
+    "height": 1200
+  },
+  "media/web/sumo2026-robot-2.webp": {
+    "width": 1500,
+    "height": 1125
+  },
+  "media/web/sumo2026-robot-icon.webp": {
+    "width": 1500,
+    "height": 1168
+  },
+  "media/web/sumo2026-robot.webp": {
+    "width": 1500,
+    "height": 1125
+  }
+}

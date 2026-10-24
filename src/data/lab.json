@@ -1,0 +1,503 @@
+{
+  "name": "Sherekilebi Lab",
+  "location": "Varketili, Tbilisi, Georgia",
+  "introduction": "Built in Tbilisi, Georgia · April–June 2026.",
+  "origins": {
+    "title": "A space built from curiosity.",
+    "period": "April–June 2026",
+    "description": "Our lab started as an old storage room that was renovated into an experimental robotics maker space",
+    "photos": []
+  },
+  "equipment": [
+    {
+      "id": "printer",
+      "title": "Additive manufacturing",
+      "name": "Bambu Lab P2S",
+      "description": "Shorten the distance between a CAD model and a part on the bench. Iterate on chassis, mechanisms, and sensor mounts.",
+      "tags": [
+        "FDM printing",
+        "Rapid iteration",
+        "Custom parts"
+      ]
+    },
+    {
+      "id": "soldering",
+      "title": "Electronics & assembly",
+      "name": "Precision soldering station",
+      "description": "Bring circuits into the physical world, from through-hole assemblies and PCB rework to motor wiring and power harnesses.",
+      "tags": [
+        "PCB assembly",
+        "Soldering",
+        "Wiring"
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Mechanical work",
+      "name": "Precision hand tools",
+      "description": "Measure, assemble, take apart, and adjust. Calipers, drivers, pliers, and the small tools behind every iteration.",
+      "tags": [
+        "Measurement",
+        "Assembly",
+        "Fine tuning"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "dachi",
+      "name": "Dachi Tchotashvili",
+      "initials": "DT",
+      "role": "Founder · Builder",
+      "bio": "2nd year Undergraduate at MBZUAI; Passionate builder of robotic systems through hands-on prototyping and experimentation.",
+      "specialties": [
+        "Robotics",
+        "AI",
+        "Physics"
+      ],
+      "links": []
+    },
+    {
+      "id": "Robi",
+      "name": "Tsintsadze",
+      "initials": "RT",
+      "role": "Associate",
+      "bio": "Automotive expert, Physics Teacher",
+      "specialties": [
+        "Physics",
+        "Mechanical Engineering"
+      ],
+      "links": []
+    },
+    {
+      "id": "Temiko",
+      "name": "Machavariani",
+      "initials": "TM",
+      "role": "Associate",
+      "bio": "2nd year Undergraduate at MBZUAI; Robotics Systems Engineer",
+      "specialties": [
+        "AI",
+        "Simulation",
+        "Robotics"
+      ],
+      "links": []
+    }
+  ],
+  "links": [
+    {
+      "label": "Sherekilebi Labs on GitHub",
+      "url": "https://github.com/Sherekilebi-labs",
+      "description": "Project repositories, firmware, and experiments from the lab."
+    }
+  ],
+  "projects": [
+    {
+      "id": "lara",
+      "number": "01",
+      "title": "LARA",
+      "subtitle": "Exploring the mechanics of motion.",
+      "folder": "LARA",
+      "category": "Prototypes",
+      "accent": "cyan",
+      "status": "In development",
+      "period": "Ongoing research",
+      "summary": "A robotic arm study connecting mechanical design, inverse kinematics, simulation, and visual joint tracking.",
+      "tags": [
+        "Python",
+        "CAD",
+        "MuJoCo",
+        "Computer vision"
+      ],
+      "media": {
+        "diagram": "arm",
+        "alt": "LARA robotic arm CAD illustration",
+        "caption": "Lab-supplied LARA illustration",
+        "src": "media/web/lara-icon.webp"
+      },
+      "contributorIds": [],
+      "notes": [
+        "The repository contains multiple mechanical revisions and a legacy MuJoCo model with an inverse-kinematics heart-trace demonstration.",
+        "A separate AprilTag generator produces twelve markers for six joints. Visual pose tracking requires measured marker-to-link transforms.",
+        "Tool changing and surface-finishing ideas appear in planning notes; they are proposed demonstrations rather than verified physical capabilities."
+      ],
+      "specs": [
+        {
+          "label": "Simulation",
+          "value": "MuJoCo + inverse kinematics"
+        },
+        {
+          "label": "Joint markers",
+          "value": "12 AprilTags / 6 joints"
+        },
+        {
+          "label": "Artifacts",
+          "value": "CAD, simulation, tracking tools"
+        }
+      ],
+      "bom": [],
+      "icon": "media/web/lara-icon.webp",
+      "sourcePending": "Repository link coming soon — the LARA repository will be added here.",
+      "gallery": [
+        {
+          "src": "media/web/lara-standing.webp",
+          "alt": "Orange and purple LARA arm standing on the workbench",
+          "caption": "LARA mechanical prototype on the bench."
+        },
+        {
+          "src": "media/web/lara-idle.webp",
+          "alt": "LARA arm folded beside its wiring",
+          "caption": "A folded configuration of the same mechanical build."
+        }
+      ]
+    },
+    {
+      "id": "active-spoiler",
+      "number": "02",
+      "title": "Active Spoiler",
+      "subtitle": "An ESP32 controller maps measured roll and pitch to two spoiler servos, with editable response curves and a local tuning dashboard.",
+      "folder": "Dynamic spoiler",
+      "sourceRoot": "platformio",
+      "category": "Prototypes",
+      "accent": "cyan",
+      "status": "In development",
+      "period": "2026",
+      "summary": "An ESP32 controller maps measured roll and pitch to two spoiler servos, with editable response curves and a local tuning dashboard.",
+      "tags": [
+        "ESP32",
+        "C++",
+        "MPU6050",
+        "Control"
+      ],
+      "media": {
+        "diagram": "spoiler",
+        "alt": "Active Spoiler project render",
+        "caption": "Lab-supplied project illustration",
+        "src": "media/web/spoiler-icon.webp"
+      },
+      "contributorIds": [],
+      "notes": [
+        "Current attitude estimates come from accelerometer-derived roll and pitch; the loop does not implement gyro fusion despite the presence of a Kalman header.",
+        "Three presets hold 21-point response maps. Pitch output is tied across both sides, roll is mirrored, and the two contributions are summed and constrained to 0–80 degrees.",
+        "Calibration and maps are saved in SPIFFS. A separate servo-drive prototype uses MT6701 feedback and a 1 kHz PID loop; it is an alternative actuator experiment, not an integrated guarantee of the main controller."
+      ],
+      "specs": [
+        {
+          "label": "Input",
+          "value": "MPU6050 roll / pitch"
+        },
+        {
+          "label": "Mapping",
+          "value": "3 presets · 21 points each"
+        },
+        {
+          "label": "Output",
+          "value": "2 servo channels"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Controller",
+          "detail": "ESP32 DevKit"
+        },
+        {
+          "component": "Inertial sensing",
+          "detail": "MPU6050"
+        },
+        {
+          "component": "Actuation",
+          "detail": "Two PWM servo channels"
+        }
+      ],
+      "sourceUrl": "https://github.com/Sherekilebi-labs/Active-Spoiler",
+      "icon": "media/web/spoiler-icon.webp",
+      "gallery": [
+        {
+          "src": "media/web/spoiler-control-circuit.webp",
+          "alt": "Spoiler control board and connected actuators on a cutting mat",
+          "caption": "The controller and actuator wiring."
+        },
+        {
+          "src": "media/web/spoiler-complete-circuit.webp",
+          "alt": "Assembled spoiler electronics on the bench",
+          "caption": "A wider view of the electronics prototype."
+        }
+      ]
+    },
+    {
+      "id": "sumo-2026",
+      "number": "03",
+      "title": "Sumo 2026",
+      "subtitle": "An autonomous sumo platform with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
+      "folder": "Sumo 2026",
+      "sourceRoot": "platformio",
+      "category": "Competition",
+      "accent": "orange",
+      "status": "In development",
+      "period": "2026",
+      "summary": "An autonomous sumo platform with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
+      "tags": [
+        "ESP32",
+        "C++",
+        "Sumo",
+        "Sensors"
+      ],
+      "media": {
+        "diagram": "sumo",
+        "alt": "Sumo 2026 project render",
+        "caption": "Lab-supplied project illustration",
+        "src": "media/web/sumo2026-robot-icon.webp"
+      },
+      "contributorIds": [],
+      "notes": [
+        "The current firmware adds two active-low edge inputs and remote ON/OFF control, alongside the three ultrasonic opponent sensors.",
+        "Edge readings are confirmed over multiple samples. A timed reverse-and-search response handles simultaneous front-edge detection; other branches combine target direction and edge state.",
+        "The debug page exposes sensor readings, speed, motor state, and a motor test. The linked 2024 repository below is an earlier implementation and does not contain all 2026 behavior."
+      ],
+      "specs": [
+        {
+          "label": "Opponent sensing",
+          "value": "3 ultrasonic channels"
+        },
+        {
+          "label": "Boundary sensing",
+          "value": "2 edge inputs"
+        },
+        {
+          "label": "Debugging",
+          "value": "Wi-Fi dashboard + motor test"
+        }
+      ],
+      "bom": [],
+      "sourcePending": "Repository link coming soon",
+      "icon": "media/web/sumo2026-robot-icon.webp",
+      "sourceLinks": [
+        {
+          "label": "Earlier RoboSumo 2024 firmware",
+          "url": "https://github.com/ChoteX/RoboSumo-2024"
+        }
+      ],
+      "gallery": [
+        {
+          "src": "media/web/sumo2026-robot.webp",
+          "alt": "Front and electronics of the 2026 sumo robot",
+          "caption": "The 2026 sumo build on the bench."
+        },
+        {
+          "src": "media/web/sumo2026-robot-2.webp",
+          "alt": "Front wedge and three ultrasonic modules on the sumo robot",
+          "caption": "Front sensing and wedge layout."
+        }
+      ]
+    },
+    {
+      "id": "cupexs",
+      "number": "04",
+      "title": "CupExS Drag Racer",
+      "subtitle": "A Wi-Fi-controlled drag car, a separate two-lane infrared finish timer, and a companion motor-dyno experiment.",
+      "folder": "Cupexs drag race",
+      "sourceRoot": "platformio",
+      "category": "Competition",
+      "accent": "orange",
+      "status": "In development",
+      "period": "2026",
+      "summary": "A Wi-Fi-controlled drag car, a separate two-lane infrared finish timer, and a companion motor-dyno experiment.",
+      "tags": [
+        "ESP32",
+        "C++",
+        "CAD",
+        "Data analysis"
+      ],
+      "media": {
+        "diagram": "racer",
+        "alt": "CupExS Drag Racer project render",
+        "caption": "Lab-supplied project illustration",
+        "src": "media/web/cupexs-drag-car-icon.webp"
+      },
+      "contributorIds": [],
+      "notes": [
+        "The current car controller provides browser Start / Stop commands, 20 kHz 10-bit forward PWM, and an automatic stop after a 60-second run window.",
+        "A separate ESP32 timer alternates 36 kHz bursts across two lanes, handles a countdown, and records independent finish times when beams are interrupted. The browser control does not synchronize the vehicle launch to the timer.",
+        "The companion dyno firmware samples an MT6701 encoder and ACS712 current sensor and estimates torque and power from a configured inertia. It is a separate test program; its current GPIO21 reverse-drive / encoder-SDA overlap must be reconciled with the wiring.",
+        "CAD and fitted motion models in the workspace support drivetrain experiments. No competition placing or certified power result is inferred from the photographs."
+      ],
+      "specs": [
+        {
+          "label": "Car PWM",
+          "value": "20 kHz / 10 bit"
+        },
+        {
+          "label": "Timer",
+          "value": "2 lanes / 36 kHz IR"
+        },
+        {
+          "label": "Companion experiment",
+          "value": "Encoder + current-sensing dyno"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Controller",
+          "detail": "ESP32"
+        },
+        {
+          "component": "Drive stage",
+          "detail": "DC motor + H-bridge"
+        },
+        {
+          "component": "Timing gates",
+          "detail": "2 IR transmitter / receiver channels"
+        }
+      ],
+      "sourceUrl": "https://github.com/Sherekilebi-labs/CupExS-drag-racer",
+      "icon": "media/web/cupexs-drag-car-icon.webp",
+      "gallery": [
+        {
+          "src": "media/web/cupexs-car.webp",
+          "alt": "Orange drag car chassis and wheels held over the workbench",
+          "caption": "The physical drag-car chassis."
+        },
+        {
+          "src": "media/web/cupexs-dyno-setup.webp",
+          "alt": "Purple motor dyno fixture with electronics attached",
+          "caption": "A separate motor test fixture."
+        },
+        {
+          "src": "media/web/cupexs-dyno-results.webp",
+          "alt": "A laptop showing a plotted motor test run",
+          "caption": "A recorded test-screen photograph; not a verified performance specification."
+        }
+      ]
+    },
+    {
+      "id": "door-security",
+      "number": "05",
+      "title": "Door Security System",
+      "subtitle": "An ESP32 door monitor combines an infrared beam, motion-based tamper detection, a buzzer, a local web panel, and optional email alerts.",
+      "folder": "Door security system",
+      "sourceRoot": "platformio",
+      "category": "Lab systems",
+      "accent": "green",
+      "status": "Firmware prototype",
+      "period": "2026",
+      "summary": "An ESP32 door monitor combines an infrared beam, motion-based tamper detection, a buzzer, a local web panel, and optional email alerts.",
+      "tags": [
+        "ESP32",
+        "C++",
+        "MPU6050",
+        "Infrared"
+      ],
+      "media": {
+        "diagram": "door",
+        "alt": "Door Security System project render",
+        "caption": "Lab-supplied project illustration",
+        "src": "media/web/door-security-icon.webp"
+      },
+      "contributorIds": [],
+      "notes": [
+        "The controller emits NEC-coded IR at 38 kHz and watches receiver CH1. A confirmed beam interruption while armed latches the alarm.",
+        "MPU6050 tilt, angular speed, and acceleration changes are checked against a calibrated baseline, with a confirmation interval to reject brief disturbances.",
+        "The web panel switches Open / Armed modes and shows a bounded breach log. Wi-Fi credentials and Gmail app credentials are supplied locally; no private configuration is included in the repository."
+      ],
+      "specs": [
+        {
+          "label": "Beam confirmation",
+          "value": "350 ms"
+        },
+        {
+          "label": "Tamper confirmation",
+          "value": "250 ms"
+        },
+        {
+          "label": "Control",
+          "value": "Local web panel + optional email"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Controller",
+          "detail": "ESP32"
+        },
+        {
+          "component": "Transmitter / receiver",
+          "detail": "IR LED + learned NEC receiver"
+        },
+        {
+          "component": "Tamper sensing",
+          "detail": "MPU6050"
+        },
+        {
+          "component": "Alarm output",
+          "detail": "Buzzer"
+        }
+      ],
+      "sourceUrl": "https://github.com/Sherekilebi-labs/Door-Security-System",
+      "icon": "media/web/door-security-icon.webp",
+      "gallery": [
+        {
+          "src": "media/web/cat-testing-door-security.webp",
+          "alt": "A cat standing outside the lab doorway",
+          "caption": "An unscheduled visitor at the door. Photograph only; no detection result is claimed."
+        }
+      ]
+    },
+    {
+      "id": "gym-scale",
+      "number": "06",
+      "title": "GYM Scale",
+      "subtitle": "A BLE-connected ESP32 load-cell scale with filtered weight telemetry and a Flutter companion app for local measurements and food logging.",
+      "folder": "GYM Scale",
+      "sourceRoot": "platformio",
+      "category": "Lab systems",
+      "accent": "green",
+      "status": "In development",
+      "period": "2026",
+      "summary": "A BLE-connected ESP32 load-cell scale with filtered weight telemetry and a Flutter companion app for local measurements and food logging.",
+      "tags": [
+        "ESP32",
+        "C++",
+        "BLE",
+        "Flutter"
+      ],
+      "media": {
+        "diagram": "scale",
+        "alt": "GYM Scale engineering illustration",
+        "caption": "Illustrative engineering study"
+      },
+      "contributorIds": [],
+      "notes": [
+        "HX711 readings pass through a median window and a Kalman-style denoiser after startup tare. The configured calibration factor and 10 kg capacity must match the actual load cell.",
+        "A versioned 16-byte BLE packet carries readiness flags, sequence, uptime, grams, and raw delta. Notifications are limited to a 200 ms interval.",
+        "The Flutter app scans and subscribes over BLE, checks packet validity and stale readings, and uses local SQLite storage for food and measurement workflows. This is a prototype platform, not a certified weighing instrument."
+      ],
+      "specs": [
+        {
+          "label": "Frontend",
+          "value": "Flutter / BLE"
+        },
+        {
+          "label": "Telemetry",
+          "value": "16-byte versioned packet"
+        },
+        {
+          "label": "Notify interval",
+          "value": "200 ms"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Controller",
+          "detail": "ESP32"
+        },
+        {
+          "component": "ADC",
+          "detail": "HX711"
+        },
+        {
+          "component": "Sensor",
+          "detail": "Strain-gauge load cell"
+        }
+      ],
+      "sourceUrl": "https://github.com/Sherekilebi-labs/GYM-scale"
+    }
+  ]
+}

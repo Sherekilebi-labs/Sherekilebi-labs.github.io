@@ -1,0 +1,292 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+<rect width="100%" height="100%" fill="#ffffff" />
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#1f2933}.grid{stroke:#e5e7eb;stroke-width:1}.cutoff{stroke:#111827;stroke-width:1.5;stroke-dasharray:5 5}</style>
+<text x="50" y="28" font-size="18" font-weight="700">Rear-wheel-drive numerical fits</text>
+<text x="50" y="70" font-size="14" font-weight="700">1-1 ratio breaking.csv</text>
+<text x="50" y="89" font-size="12">RMSE = 0.003608 m</text>
+<rect x="118" y="100" width="428" height="196" fill="#ffffff" stroke="#d1d5db" />
+<line class="grid" x1="118.00" y1="100" x2="118.00" y2="296" />
+<line class="grid" x1="118" y1="100.00" x2="546" y2="100.00" />
+<text x="118.00" y="315" font-size="10" text-anchor="middle">-0.09</text>
+<text x="110" y="103.00" font-size="10" text-anchor="end">1.72</text>
+<line class="grid" x1="225.00" y1="100" x2="225.00" y2="296" />
+<line class="grid" x1="118" y1="149.00" x2="546" y2="149.00" />
+<text x="225.00" y="315" font-size="10" text-anchor="middle">0.52</text>
+<text x="110" y="152.00" font-size="10" text-anchor="end">1.09</text>
+<line class="grid" x1="332.00" y1="100" x2="332.00" y2="296" />
+<line class="grid" x1="118" y1="198.00" x2="546" y2="198.00" />
+<text x="332.00" y="315" font-size="10" text-anchor="middle">1.14</text>
+<text x="110" y="201.00" font-size="10" text-anchor="end">0.46</text>
+<line class="grid" x1="439.00" y1="100" x2="439.00" y2="296" />
+<line class="grid" x1="118" y1="247.00" x2="546" y2="247.00" />
+<text x="439.00" y="315" font-size="10" text-anchor="middle">1.75</text>
+<text x="110" y="250.00" font-size="10" text-anchor="end">-0.16</text>
+<line class="grid" x1="546.00" y1="100" x2="546.00" y2="296" />
+<line class="grid" x1="118" y1="296.00" x2="546" y2="296.00" />
+<text x="546.00" y="315" font-size="10" text-anchor="middle">2.36</text>
+<text x="110" y="299.00" font-size="10" text-anchor="end">-0.79</text>
+<polyline points="313.67,212.42 320.65,207.57 325.89,204.01 331.13,200.51 338.11,195.95 343.35,192.61 348.59,189.34 355.57,185.07 360.81,181.94 366.04,178.88 373.03,174.89 378.26,171.98 383.50,169.13 390.48,165.42 395.72,162.71 400.96,160.07 407.94,156.64 413.18,154.14 418.42,151.70 425.40,148.54 430.64,146.24 435.88,144.00 442.86,141.10 448.10,139.00 453.33,136.95 460.32,134.32 465.55,132.41 470.79,130.56 477.77,128.18 483.01,126.46 488.25,124.80 495.23,122.68 500.47,121.15 505.71,119.67 512.69,117.79 517.93,116.45 523.16,115.15 530.15,113.52" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="133.85" cy="282.48" r="3" fill="#2563eb" />
+<circle cx="139.67" cy="282.48" r="3" fill="#2563eb" />
+<circle cx="145.50" cy="282.17" r="3" fill="#2563eb" />
+<circle cx="151.31" cy="281.70" r="3" fill="#2563eb" />
+<circle cx="157.07" cy="281.16" r="3" fill="#2563eb" />
+<circle cx="163.01" cy="280.53" r="3" fill="#2563eb" />
+<circle cx="168.77" cy="279.68" r="3" fill="#2563eb" />
+<circle cx="174.53" cy="278.66" r="3" fill="#2563eb" />
+<circle cx="180.46" cy="277.42" r="3" fill="#2563eb" />
+<circle cx="186.23" cy="276.17" r="3" fill="#2563eb" />
+<circle cx="191.99" cy="274.69" r="3" fill="#2563eb" />
+<circle cx="197.92" cy="273.05" r="3" fill="#2563eb" />
+<circle cx="203.68" cy="271.10" r="3" fill="#2563eb" />
+<circle cx="209.44" cy="269.23" r="3" fill="#2563eb" />
+<circle cx="215.38" cy="267.21" r="3" fill="#2563eb" />
+<circle cx="221.14" cy="264.95" r="3" fill="#2563eb" />
+<circle cx="227.08" cy="262.45" r="3" fill="#2563eb" />
+<circle cx="232.84" cy="259.88" r="3" fill="#2563eb" />
+<circle cx="238.60" cy="257.23" r="3" fill="#2563eb" />
+<circle cx="244.54" cy="254.50" r="3" fill="#2563eb" />
+<circle cx="250.30" cy="251.62" r="3" fill="#2563eb" />
+<circle cx="256.06" cy="248.66" r="3" fill="#2563eb" />
+<circle cx="261.99" cy="245.46" r="3" fill="#2563eb" />
+<circle cx="267.75" cy="242.19" r="3" fill="#2563eb" />
+<circle cx="273.52" cy="238.80" r="3" fill="#2563eb" />
+<circle cx="279.45" cy="235.28" r="3" fill="#2563eb" />
+<circle cx="285.21" cy="231.66" r="3" fill="#2563eb" />
+<circle cx="290.97" cy="227.84" r="3" fill="#2563eb" />
+<circle cx="296.91" cy="223.95" r="3" fill="#2563eb" />
+<circle cx="302.67" cy="220.13" r="3" fill="#2563eb" />
+<circle cx="308.43" cy="216.00" r="3" fill="#2563eb" />
+<circle cx="313.67" cy="211.94" r="3" fill="#2563eb" />
+<circle cx="320.65" cy="207.89" r="3" fill="#2563eb" />
+<circle cx="325.89" cy="203.84" r="3" fill="#2563eb" />
+<circle cx="331.13" cy="200.02" r="3" fill="#2563eb" />
+<circle cx="338.11" cy="196.28" r="3" fill="#2563eb" />
+<circle cx="343.35" cy="192.61" r="3" fill="#2563eb" />
+<circle cx="348.59" cy="189.11" r="3" fill="#2563eb" />
+<circle cx="355.57" cy="185.52" r="3" fill="#2563eb" />
+<circle cx="360.81" cy="182.09" r="3" fill="#2563eb" />
+<circle cx="366.04" cy="178.66" r="3" fill="#2563eb" />
+<circle cx="373.03" cy="175.39" r="3" fill="#2563eb" />
+<circle cx="378.26" cy="172.27" r="3" fill="#2563eb" />
+<circle cx="383.50" cy="169.07" r="3" fill="#2563eb" />
+<circle cx="390.48" cy="165.88" r="3" fill="#2563eb" />
+<circle cx="395.72" cy="162.84" r="3" fill="#2563eb" />
+<circle cx="400.96" cy="159.88" r="3" fill="#2563eb" />
+<circle cx="407.94" cy="156.92" r="3" fill="#2563eb" />
+<circle cx="413.18" cy="153.88" r="3" fill="#2563eb" />
+<circle cx="418.42" cy="151.54" r="3" fill="#2563eb" />
+<circle cx="425.40" cy="148.42" r="3" fill="#2563eb" />
+<circle cx="430.64" cy="146.08" r="3" fill="#2563eb" />
+<circle cx="435.88" cy="143.74" r="3" fill="#2563eb" />
+<circle cx="442.86" cy="141.41" r="3" fill="#2563eb" />
+<circle cx="448.10" cy="139.07" r="3" fill="#2563eb" />
+<circle cx="453.33" cy="136.73" r="3" fill="#2563eb" />
+<circle cx="460.32" cy="134.39" r="3" fill="#2563eb" />
+<circle cx="465.55" cy="132.05" r="3" fill="#2563eb" />
+<circle cx="470.79" cy="130.49" r="3" fill="#2563eb" />
+<circle cx="477.77" cy="128.15" r="3" fill="#2563eb" />
+<circle cx="483.01" cy="126.60" r="3" fill="#2563eb" />
+<circle cx="488.25" cy="124.26" r="3" fill="#2563eb" />
+<circle cx="495.23" cy="122.70" r="3" fill="#2563eb" />
+<circle cx="500.47" cy="121.14" r="3" fill="#2563eb" />
+<circle cx="505.71" cy="119.58" r="3" fill="#2563eb" />
+<circle cx="512.69" cy="118.02" r="3" fill="#2563eb" />
+<circle cx="517.93" cy="116.46" r="3" fill="#2563eb" />
+<circle cx="523.16" cy="114.90" r="3" fill="#2563eb" />
+<circle cx="530.15" cy="114.12" r="3" fill="#2563eb" />
+<line class="cutoff" x1="311.56" y1="100" x2="311.56" y2="296" />
+<text x="316.56" y="113" font-size="10">cutoff</text>
+<text x="332.00" y="338" font-size="11" text-anchor="middle">time [s]</text>
+<text x="65" y="198.00" font-size="11" text-anchor="middle" transform="rotate(-90 65 198.00)">position [m]</text>
+<text x="630" y="70" font-size="14" font-weight="700">1.57 ratio breaking.csv</text>
+<text x="630" y="89" font-size="12">RMSE = 0.0009412 m</text>
+<rect x="698" y="100" width="428" height="196" fill="#ffffff" stroke="#d1d5db" />
+<line class="grid" x1="698.00" y1="100" x2="698.00" y2="296" />
+<line class="grid" x1="698" y1="100.00" x2="1126" y2="100.00" />
+<text x="698.00" y="315" font-size="10" text-anchor="middle">0.07</text>
+<text x="690" y="103.00" font-size="10" text-anchor="end">0.97</text>
+<line class="grid" x1="805.00" y1="100" x2="805.00" y2="296" />
+<line class="grid" x1="698" y1="149.00" x2="1126" y2="149.00" />
+<text x="805.00" y="315" font-size="10" text-anchor="middle">0.30</text>
+<text x="690" y="152.00" font-size="10" text-anchor="end">0.67</text>
+<line class="grid" x1="912.00" y1="100" x2="912.00" y2="296" />
+<line class="grid" x1="698" y1="198.00" x2="1126" y2="198.00" />
+<text x="912.00" y="315" font-size="10" text-anchor="middle">0.53</text>
+<text x="690" y="201.00" font-size="10" text-anchor="end">0.37</text>
+<line class="grid" x1="1019.00" y1="100" x2="1019.00" y2="296" />
+<line class="grid" x1="698" y1="247.00" x2="1126" y2="247.00" />
+<text x="1019.00" y="315" font-size="10" text-anchor="middle">0.77</text>
+<text x="690" y="250.00" font-size="10" text-anchor="end">0.07</text>
+<line class="grid" x1="1126.00" y1="100" x2="1126.00" y2="296" />
+<line class="grid" x1="698" y1="296.00" x2="1126" y2="296.00" />
+<text x="1126.00" y="315" font-size="10" text-anchor="middle">1.00</text>
+<text x="690" y="299.00" font-size="10" text-anchor="end">-0.22</text>
+<polyline points="713.85,282.35 728.94,273.06 744.48,263.75 759.56,254.96 775.10,246.17 790.19,237.89 805.27,229.84 820.81,221.80 835.89,214.23 850.98,206.89 866.52,199.56 881.60,192.68 896.69,186.01 912.23,179.37 927.31,173.14 942.40,167.12 957.94,161.14 973.02,155.54 988.11,150.14 1003.65,144.78 1018.73,139.78 1033.81,134.98 1049.36,130.23 1064.44,125.80 1079.52,121.56 1095.06,117.39 1110.15,113.52" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="713.85" cy="282.48" r="3" fill="#2563eb" />
+<circle cx="728.94" cy="272.93" r="3" fill="#2563eb" />
+<circle cx="744.48" cy="263.76" r="3" fill="#2563eb" />
+<circle cx="759.56" cy="254.93" r="3" fill="#2563eb" />
+<circle cx="775.10" cy="246.25" r="3" fill="#2563eb" />
+<circle cx="790.19" cy="237.81" r="3" fill="#2563eb" />
+<circle cx="805.27" cy="229.63" r="3" fill="#2563eb" />
+<circle cx="820.81" cy="221.77" r="3" fill="#2563eb" />
+<circle cx="835.89" cy="214.25" r="3" fill="#2563eb" />
+<circle cx="850.98" cy="206.72" r="3" fill="#2563eb" />
+<circle cx="866.52" cy="199.68" r="3" fill="#2563eb" />
+<circle cx="881.60" cy="192.81" r="3" fill="#2563eb" />
+<circle cx="896.69" cy="186.10" r="3" fill="#2563eb" />
+<circle cx="912.23" cy="179.56" r="3" fill="#2563eb" />
+<circle cx="927.31" cy="173.34" r="3" fill="#2563eb" />
+<circle cx="942.40" cy="167.12" r="3" fill="#2563eb" />
+<circle cx="957.94" cy="161.23" r="3" fill="#2563eb" />
+<circle cx="973.02" cy="155.67" r="3" fill="#2563eb" />
+<circle cx="988.11" cy="150.10" r="3" fill="#2563eb" />
+<circle cx="1003.65" cy="144.70" r="3" fill="#2563eb" />
+<circle cx="1018.73" cy="139.47" r="3" fill="#2563eb" />
+<circle cx="1033.81" cy="134.72" r="3" fill="#2563eb" />
+<circle cx="1049.36" cy="130.14" r="3" fill="#2563eb" />
+<circle cx="1064.44" cy="125.72" r="3" fill="#2563eb" />
+<circle cx="1079.52" cy="121.47" r="3" fill="#2563eb" />
+<circle cx="1095.06" cy="117.38" r="3" fill="#2563eb" />
+<circle cx="1110.15" cy="113.94" r="3" fill="#2563eb" />
+<line class="cutoff" x1="713.85" y1="100" x2="713.85" y2="296" />
+<text x="718.85" y="113" font-size="10">cutoff</text>
+<text x="912.00" y="338" font-size="11" text-anchor="middle">time [s]</text>
+<text x="645" y="198.00" font-size="11" text-anchor="middle" transform="rotate(-90 645 198.00)">position [m]</text>
+<text x="50" y="475" font-size="14" font-weight="700">1-1 ratio acceleration.csv</text>
+<text x="50" y="494" font-size="12">RMSE = 0.002943 m</text>
+<rect x="118" y="505" width="428" height="196" fill="#ffffff" stroke="#d1d5db" />
+<line class="grid" x1="118.00" y1="505" x2="118.00" y2="701" />
+<line class="grid" x1="118" y1="505.00" x2="546" y2="505.00" />
+<text x="118.00" y="720" font-size="10" text-anchor="middle">-0.06</text>
+<text x="110" y="508.00" font-size="10" text-anchor="end">1.88</text>
+<line class="grid" x1="225.00" y1="505" x2="225.00" y2="701" />
+<line class="grid" x1="118" y1="554.00" x2="546" y2="554.00" />
+<text x="225.00" y="720" font-size="10" text-anchor="middle">0.34</text>
+<text x="110" y="557.00" font-size="10" text-anchor="end">1.38</text>
+<line class="grid" x1="332.00" y1="505" x2="332.00" y2="701" />
+<line class="grid" x1="118" y1="603.00" x2="546" y2="603.00" />
+<text x="332.00" y="720" font-size="10" text-anchor="middle">0.73</text>
+<text x="110" y="606.00" font-size="10" text-anchor="end">0.87</text>
+<line class="grid" x1="439.00" y1="505" x2="439.00" y2="701" />
+<line class="grid" x1="118" y1="652.00" x2="546" y2="652.00" />
+<text x="439.00" y="720" font-size="10" text-anchor="middle">1.13</text>
+<text x="110" y="655.00" font-size="10" text-anchor="end">0.36</text>
+<line class="grid" x1="546.00" y1="505" x2="546.00" y2="701" />
+<line class="grid" x1="118" y1="701.00" x2="546" y2="701.00" />
+<text x="546.00" y="720" font-size="10" text-anchor="middle">1.53</text>
+<text x="110" y="704.00" font-size="10" text-anchor="end">-0.14</text>
+<polyline points="133.85,687.42 142.86,687.48 151.83,687.33 160.81,686.97 169.71,686.40 178.87,685.60 187.77,684.62 196.67,683.45 205.83,682.03 214.73,680.46 223.63,678.70 232.79,676.69 241.69,674.54 250.85,672.15 259.75,669.64 268.65,666.95 277.81,664.00 286.71,660.96 295.61,657.75 304.77,654.26 313.67,650.71 322.56,647.00 331.73,643.00 340.63,638.95 349.52,634.75 358.69,630.26 367.59,625.75 376.48,621.08 385.65,616.12 394.54,611.15 403.44,606.04 411.53,601.27 422.31,594.72 430.40,589.68 438.49,584.52 449.27,577.47 457.36,572.05 465.45,566.53 476.23,558.99 484.32,553.21 492.41,547.33 503.19,539.32 511.28,533.20 519.36,526.97 530.15,518.52" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="133.85" cy="687.30" r="3" fill="#2563eb" />
+<circle cx="142.86" cy="687.26" r="3" fill="#2563eb" />
+<circle cx="151.83" cy="687.35" r="3" fill="#2563eb" />
+<circle cx="160.81" cy="686.89" r="3" fill="#2563eb" />
+<circle cx="169.71" cy="686.41" r="3" fill="#2563eb" />
+<circle cx="178.87" cy="685.83" r="3" fill="#2563eb" />
+<circle cx="187.77" cy="684.69" r="3" fill="#2563eb" />
+<circle cx="196.67" cy="683.45" r="3" fill="#2563eb" />
+<circle cx="205.83" cy="682.17" r="3" fill="#2563eb" />
+<circle cx="214.73" cy="680.60" r="3" fill="#2563eb" />
+<circle cx="223.63" cy="678.74" r="3" fill="#2563eb" />
+<circle cx="232.79" cy="676.75" r="3" fill="#2563eb" />
+<circle cx="241.69" cy="674.62" r="3" fill="#2563eb" />
+<circle cx="250.85" cy="672.29" r="3" fill="#2563eb" />
+<circle cx="259.75" cy="669.78" r="3" fill="#2563eb" />
+<circle cx="268.65" cy="667.06" r="3" fill="#2563eb" />
+<circle cx="277.81" cy="664.16" r="3" fill="#2563eb" />
+<circle cx="286.71" cy="660.96" r="3" fill="#2563eb" />
+<circle cx="295.61" cy="657.77" r="3" fill="#2563eb" />
+<circle cx="304.77" cy="654.28" r="3" fill="#2563eb" />
+<circle cx="313.67" cy="650.60" r="3" fill="#2563eb" />
+<circle cx="322.56" cy="646.92" r="3" fill="#2563eb" />
+<circle cx="331.73" cy="642.95" r="3" fill="#2563eb" />
+<circle cx="340.63" cy="638.79" r="3" fill="#2563eb" />
+<circle cx="349.52" cy="634.63" r="3" fill="#2563eb" />
+<circle cx="358.69" cy="630.17" r="3" fill="#2563eb" />
+<circle cx="367.59" cy="625.62" r="3" fill="#2563eb" />
+<circle cx="376.48" cy="620.88" r="3" fill="#2563eb" />
+<circle cx="385.65" cy="616.13" r="3" fill="#2563eb" />
+<circle cx="394.54" cy="611.00" r="3" fill="#2563eb" />
+<circle cx="403.44" cy="605.87" r="3" fill="#2563eb" />
+<circle cx="411.53" cy="600.54" r="3" fill="#2563eb" />
+<circle cx="422.31" cy="595.12" r="3" fill="#2563eb" />
+<circle cx="430.40" cy="589.51" r="3" fill="#2563eb" />
+<circle cx="438.49" cy="583.70" r="3" fill="#2563eb" />
+<circle cx="449.27" cy="577.89" r="3" fill="#2563eb" />
+<circle cx="457.36" cy="572.08" r="3" fill="#2563eb" />
+<circle cx="465.45" cy="566.27" r="3" fill="#2563eb" />
+<circle cx="476.23" cy="559.49" r="3" fill="#2563eb" />
+<circle cx="484.32" cy="553.68" r="3" fill="#2563eb" />
+<circle cx="492.41" cy="546.90" r="3" fill="#2563eb" />
+<circle cx="503.19" cy="540.13" r="3" fill="#2563eb" />
+<circle cx="511.28" cy="533.35" r="3" fill="#2563eb" />
+<circle cx="519.36" cy="526.57" r="3" fill="#2563eb" />
+<circle cx="530.15" cy="518.82" r="3" fill="#2563eb" />
+<text x="332.00" y="743" font-size="11" text-anchor="middle">time [s]</text>
+<text x="65" y="603.00" font-size="11" text-anchor="middle" transform="rotate(-90 65 603.00)">position [m]</text>
+<text x="630" y="475" font-size="14" font-weight="700">1.57 ratio acceleration.csv</text>
+<text x="630" y="494" font-size="12">RMSE = 0.005296 m</text>
+<rect x="698" y="505" width="428" height="196" fill="#ffffff" stroke="#d1d5db" />
+<line class="grid" x1="698.00" y1="505" x2="698.00" y2="701" />
+<line class="grid" x1="698" y1="505.00" x2="1126" y2="505.00" />
+<text x="698.00" y="720" font-size="10" text-anchor="middle">-0.05</text>
+<text x="690" y="508.00" font-size="10" text-anchor="end">1.89</text>
+<line class="grid" x1="805.00" y1="505" x2="805.00" y2="701" />
+<line class="grid" x1="698" y1="554.00" x2="1126" y2="554.00" />
+<text x="805.00" y="720" font-size="10" text-anchor="middle">0.27</text>
+<text x="690" y="557.00" font-size="10" text-anchor="end">1.38</text>
+<line class="grid" x1="912.00" y1="505" x2="912.00" y2="701" />
+<line class="grid" x1="698" y1="603.00" x2="1126" y2="603.00" />
+<text x="912.00" y="720" font-size="10" text-anchor="middle">0.58</text>
+<text x="690" y="606.00" font-size="10" text-anchor="end">0.88</text>
+<line class="grid" x1="1019.00" y1="505" x2="1019.00" y2="701" />
+<line class="grid" x1="698" y1="652.00" x2="1126" y2="652.00" />
+<text x="1019.00" y="720" font-size="10" text-anchor="middle">0.90</text>
+<text x="690" y="655.00" font-size="10" text-anchor="end">0.37</text>
+<line class="grid" x1="1126.00" y1="505" x2="1126.00" y2="701" />
+<line class="grid" x1="698" y1="701.00" x2="1126" y2="701.00" />
+<text x="1126.00" y="720" font-size="10" text-anchor="middle">1.22</text>
+<text x="690" y="704.00" font-size="10" text-anchor="end">-0.14</text>
+<polyline points="713.85,687.47 725.13,687.10 736.41,686.36 747.69,685.27 758.90,683.86 770.42,682.07 781.59,680.01 792.77,677.66 804.29,674.93 815.47,671.99 826.64,668.78 838.16,665.20 849.34,661.46 860.52,657.48 872.03,653.13 883.21,648.67 894.39,643.99 905.90,638.94 917.08,633.82 928.26,628.51 939.77,622.82 950.95,617.12 962.13,611.23 973.65,604.97 984.82,598.73 996.34,592.12 1007.52,585.55 1018.70,578.81 1030.21,571.72 1041.39,564.69 1052.57,557.52 1062.73,550.88 1076.28,541.86 1086.44,534.98 1096.60,527.99 1110.15,518.52" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="713.85" cy="687.48" r="3" fill="#2563eb" />
+<circle cx="725.13" cy="687.06" r="3" fill="#2563eb" />
+<circle cx="736.41" cy="686.24" r="3" fill="#2563eb" />
+<circle cx="747.69" cy="685.06" r="3" fill="#2563eb" />
+<circle cx="758.90" cy="683.66" r="3" fill="#2563eb" />
+<circle cx="770.42" cy="681.92" r="3" fill="#2563eb" />
+<circle cx="781.59" cy="679.87" r="3" fill="#2563eb" />
+<circle cx="792.77" cy="677.55" r="3" fill="#2563eb" />
+<circle cx="804.29" cy="674.95" r="3" fill="#2563eb" />
+<circle cx="815.47" cy="672.05" r="3" fill="#2563eb" />
+<circle cx="826.64" cy="668.87" r="3" fill="#2563eb" />
+<circle cx="838.16" cy="665.30" r="3" fill="#2563eb" />
+<circle cx="849.34" cy="661.64" r="3" fill="#2563eb" />
+<circle cx="860.52" cy="657.59" r="3" fill="#2563eb" />
+<circle cx="872.03" cy="653.35" r="3" fill="#2563eb" />
+<circle cx="883.21" cy="648.91" r="3" fill="#2563eb" />
+<circle cx="894.39" cy="644.19" r="3" fill="#2563eb" />
+<circle cx="905.90" cy="639.27" r="3" fill="#2563eb" />
+<circle cx="917.08" cy="634.06" r="3" fill="#2563eb" />
+<circle cx="928.26" cy="628.76" r="3" fill="#2563eb" />
+<circle cx="939.77" cy="623.16" r="3" fill="#2563eb" />
+<circle cx="950.95" cy="617.38" r="3" fill="#2563eb" />
+<circle cx="962.13" cy="611.30" r="3" fill="#2563eb" />
+<circle cx="973.65" cy="605.03" r="3" fill="#2563eb" />
+<circle cx="984.82" cy="598.77" r="3" fill="#2563eb" />
+<circle cx="996.34" cy="592.21" r="3" fill="#2563eb" />
+<circle cx="1007.52" cy="585.27" r="3" fill="#2563eb" />
+<circle cx="1018.70" cy="578.52" r="3" fill="#2563eb" />
+<circle cx="1030.21" cy="571.77" r="3" fill="#2563eb" />
+<circle cx="1041.39" cy="564.05" r="3" fill="#2563eb" />
+<circle cx="1052.57" cy="556.34" r="3" fill="#2563eb" />
+<circle cx="1062.73" cy="549.59" r="3" fill="#2563eb" />
+<circle cx="1076.28" cy="541.87" r="3" fill="#2563eb" />
+<circle cx="1086.44" cy="535.12" r="3" fill="#2563eb" />
+<circle cx="1096.60" cy="527.41" r="3" fill="#2563eb" />
+<circle cx="1110.15" cy="520.66" r="3" fill="#2563eb" />
+<text x="912.00" y="743" font-size="11" text-anchor="middle">time [s]</text>
+<text x="645" y="603.00" font-size="11" text-anchor="middle" transform="rotate(-90 645 603.00)">position [m]</text>
+<circle cx="970" cy="31" r="4" fill="#2563eb" /><text x="982" y="35" font-size="12">measured data</text>
+<line x1="1070" y1="31" x2="1100" y2="31" stroke="#dc2626" stroke-width="2.4" /><text x="1108" y="35" font-size="12">fit</text>
+</svg>

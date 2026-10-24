@@ -1,0 +1,17 @@
+{
+  "id": "2026-10-24-unscheduled-inspector",
+  "slug": "2026-10-24-unscheduled-inspector",
+  "title": "An unscheduled inspection. By a cat.",
+  "date": "2026-10-24",
+  "author": "dachi",
+  "category": "shenanigans",
+  "summary": "The door-security project has attracted its most independent reviewer yet. No credentials. Excellent whiskers.",
+  "tags": [
+    "Door security",
+    "Field notes",
+    "Cats"
+  ],
+  "media": "media/web/cat-testing-door-security.webp",
+  "mediaAlt": "A cat peers into the lab doorway.",
+  "relatedProject": "door-security"
+}

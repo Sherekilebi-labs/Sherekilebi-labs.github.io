@@ -1,0 +1,61 @@
+{
+  "roots": {
+    "workspace": "..",
+    "platformio": "~/Documents/PlatformIO/Projects"
+  },
+  "documents": [
+    {
+      "projectId": "lara",
+      "root": "workspace",
+      "path": "LARA/lara old/L.A.R.A./meshes 2.0/Lara/README.md",
+      "heading": "Actuation Model (Current)"
+    },
+    {
+      "projectId": "active-spoiler",
+      "root": "platformio",
+      "path": "Dynamic spoiler/src/dynamicSpoiler.ino",
+      "heading": "Preset response-map structure",
+      "start": "// === USER-DEFINED MAPPING POINTS ===",
+      "end": "ServoMap presets"
+    },
+    {
+      "projectId": "sumo-2026",
+      "root": "platformio",
+      "path": "Sumo 2026/src/sumoFinal_wifi_debug.ino",
+      "heading": "2026 sensing and motor configuration",
+      "start": "const int trigPins",
+      "end": "long durations"
+    },
+    {
+      "projectId": "cupexs",
+      "root": "platformio",
+      "path": "Cupexs drag race/src/car controller.cpp",
+      "heading": "Car controller run and PWM configuration",
+      "start": "const uint8_t MOTOR_FORWARD_PIN",
+      "end": "WebServer server"
+    },
+    {
+      "projectId": "door-security",
+      "root": "platformio",
+      "path": "Door security system/src/main.cpp",
+      "heading": "Detection timing and tamper thresholds",
+      "start": "// Detection timing.",
+      "end": "enum class DoorMode"
+    },
+    {
+      "projectId": "gym-scale",
+      "root": "platformio",
+      "path": "GYM Scale/src/main.cpp",
+      "heading": "Load-cell and BLE packet configuration",
+      "start": "constexpr uint8_t LOADCELL_DOUT_PIN",
+      "end": "class KalmanDenoiser"
+    }
+  ],
+  "assets": [
+    {
+      "root": "workspace",
+      "path": "CupExS 2026/data analysis/rear_wheel_model_fit.svg",
+      "destination": "media/cupexs-model-fit.svg"
+    }
+  ]
+}

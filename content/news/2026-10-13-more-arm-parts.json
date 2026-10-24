@@ -1,0 +1,17 @@
+{
+  "id": "2026-10-13-more-arm-parts",
+  "slug": "2026-10-13-more-arm-parts",
+  "title": "The next iteration starts in the printer.",
+  "date": "2026-10-13",
+  "author": "dachi",
+  "category": "project-update",
+  "summary": "Another set of LARA parts on the print bed. Mechanical iteration continues while the repository link waits for its turn in the queue.",
+  "tags": [
+    "LARA",
+    "3D printing",
+    "Iteration"
+  ],
+  "media": "media/web/lara-printing.webp",
+  "mediaAlt": "White printed robotic-arm parts on the printer bed.",
+  "relatedProject": "lara"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2026-08-19-mostly-air",
+  "slug": "2026-08-19-mostly-air",
+  "title": "Mostly air. Deliberately.",
+  "date": "2026-08-19",
+  "author": "dachi",
+  "category": "shenanigans",
+  "summary": "A close look at gyroid infill. Even the empty space has been given a complicated job.",
+  "tags": [
+    "3D printing",
+    "Gyroid",
+    "Workshop curiosities"
+  ],
+  "media": "media/web/gyroid-infill.webp",
+  "mediaAlt": "Orange gyroid infill visible inside a printed part."
+}

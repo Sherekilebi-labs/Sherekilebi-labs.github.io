@@ -1,0 +1,5 @@
+# Add a lab dispatch in under a minute
+
+- **Copy a post:** duplicate any file in `content/news/` and give it a unique filename, `id`, and `slug`. Set `title`, `date` (`YYYY-MM-DD`), `author` (a peer ID from `src/data/lab.json`), `category` (`project-update`, `lab-news`, or `shenanigans`), `summary`, and `tags`.
+- **Add the story:** set `media` to a local `media/web/...` path and describe it in `mediaAlt`; optionally set `mediaType` to `video`. Add `relatedProject` using a project ID for an automatic project link, `pinned: true` to keep an announcement first, and `content` for Markdown with lists, images, and fenced code. Omit `content` for a compact micro-transmission. For a new image, place a web-sized, metadata-free copy in `public/media/web/` and reference that path.
+- **Check and share:** run `npm run assets:sync` and `npm run build`, preview with `npm run dev`, then commit and push your JSON, new media, and updated `.gitignore` to `main`. GitHub Actions checks and publishes the site. The `/news` feed and homepage’s three newest dispatches update automatically; there is no database or separate index to edit.

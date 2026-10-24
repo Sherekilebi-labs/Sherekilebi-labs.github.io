@@ -1,0 +1,16 @@
+{
+  "id": "2026-06-29-kinect-listening",
+  "slug": "2026-06-29-kinect-listening",
+  "title": "Listening to the room.",
+  "date": "2026-06-29",
+  "author": "dachi",
+  "category": "lab-news",
+  "summary": "A Kinect microphone experiment on the bench, with audio traces visible on screen. Another old piece of hardware finds a new question.",
+  "tags": [
+    "Kinect",
+    "Audio",
+    "Experiments"
+  ],
+  "media": "media/web/kinect-microphone.webp",
+  "mediaAlt": "A Kinect sensor beneath a laptop displaying audio waveforms."
+}

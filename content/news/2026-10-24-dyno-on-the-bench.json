@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-24-dyno-on-the-bench",
+  "slug": "2026-10-24-dyno-on-the-bench",
+  "title": "A small rig. A lot of questions.",
+  "date": "2026-10-24",
+  "author": "dachi",
+  "category": "project-update",
+  "summary": "The motor-dyno setup gets its own place in the flight log. A fixture, an encoder, and another reason to question the wiring diagram.",
+  "tags": [
+    "CupExS",
+    "Dyno",
+    "Work in progress"
+  ],
+  "media": "media/web/cupexs-dyno-setup.webp",
+  "mediaAlt": "A purple printed motor-dyno fixture with its electronics.",
+  "relatedProject": "cupexs",
+  "content": "## What this rig is for\n\nThe CupExS work includes a separate ESP32 motor-dyno experiment alongside the car controller and finish timer. The firmware reads an MT6701 encoder and an ACS712 current sensor, then estimates torque and power from the configured inertia.\n\n- The car and timer are separate programs.\n- A plotted run is evidence to investigate, not a certified motor specification.\n- The current dyno pin map has a GPIO21 overlap to reconcile before running the hardware.\n\n```cpp\n// Companion dyno source: review the wiring before running.\nconstexpr int MOTOR_BACKWARD_PIN = 21;\nconstexpr int MT6701_SDA_PIN = 21;\n```\n\nSometimes the most useful measurement is the one that tells you what to fix next."
+}

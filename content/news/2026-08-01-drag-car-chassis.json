@@ -1,0 +1,17 @@
+{
+  "id": "2026-08-01-drag-car-chassis",
+  "slug": "2026-08-01-drag-car-chassis",
+  "title": "A car you can hold. A model you can question.",
+  "date": "2026-08-01",
+  "author": "dachi",
+  "category": "project-update",
+  "summary": "The printed drag-car chassis takes shape. Gearing, wheel geometry, and firmware all get a vote in what happens next.",
+  "tags": [
+    "CupExS",
+    "CAD",
+    "3D printing"
+  ],
+  "media": "media/web/cupexs-car.webp",
+  "mediaAlt": "A hand holding the orange CupExS chassis with wheels fitted.",
+  "relatedProject": "cupexs"
+}

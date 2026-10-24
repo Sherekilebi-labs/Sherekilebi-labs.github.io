@@ -1,0 +1,38 @@
+[
+  {
+    "projectId": "lara",
+    "source": "LARA/lara old/L.A.R.A./meshes 2.0/Lara/README.md",
+    "heading": "Actuation Model (Current)",
+    "text": "- **Base yaw** uses a torque actuator intended to represent the **R550 DC motor + reducer** (stall torque ≈ 80 kg·cm, no-load speed ≈ 160 rpm).\n- **Other joints** use position actuators intended to represent the **GX G25 coreless servos** (stall torque ≈ 25 kg·cm @ 7.4V; torque-limited in simulation).\n\nSee `docs/servo-info.md` for the numbers used."
+  },
+  {
+    "projectId": "active-spoiler",
+    "source": "Dynamic spoiler/src/dynamicSpoiler.ino",
+    "heading": "Preset response-map structure",
+    "text": "// === USER-DEFINED MAPPING POINTS ===\n#define MAX_PRESETS 3\n#define POINTS 21\n\nstruct ServoMap {\n  float rollInput[POINTS];\n  float pitchInput[POINTS];\n  float rollToRight[POINTS];\n  float pitchToRight[POINTS];\n  float rollToLeft[POINTS];\n  float pitchToLeft[POINTS];\n};"
+  },
+  {
+    "projectId": "sumo-2026",
+    "source": "Sumo 2026/src/sumoFinal_wifi_debug.ino",
+    "heading": "2026 sensing and motor configuration",
+    "text": "const int trigPins[3] = {27, 25, 32};   // left = D18, middle = TX2, right = D4\nconst int echoPins[3] = {14, 26, 33};   // left = D19, middle = D5, right = RX2\n\nconst int numSensors = sizeof(trigPins) / sizeof(trigPins[0]);\n\nconst int remoteOnPin = 23;\nconst int remoteOffPin = 22;\nconst int motorDriverEnablePin = 18;\nconst int motorDriverEnabledState = HIGH;\nconst int motorDriverDisabledState = LOW;\n\nconst int edgeSensorPins[2] = {13, 39};  // 0 = front-left, 1 = front-right\nconst int edgeSensorDetectedState = LOW;  // white edge detected, black field clear\nconst int edgeConfirmSamples = 2;\nconst unsigned long edgeReverseDuration = 500;\n\nconst int R_IN1 = 4;\nconst int R_IN2 = 16;\nconst int L_IN1 = 21;\nconst int L_IN2 = 19;\n\nconst int defaultRobotSpeed = 255;\n\n#define SOUND_SPEED 0.034\n#define DETECTION_THRESHOLD 40.0"
+  },
+  {
+    "projectId": "cupexs",
+    "source": "Cupexs drag race/src/car controller.cpp",
+    "heading": "Car controller run and PWM configuration",
+    "text": "const uint8_t MOTOR_FORWARD_PIN = 19;\nconst uint8_t MOTOR_REVERSE_PIN = 21;\n\nconst uint32_t MOTOR_RUN_MS = 60000;\nconst uint32_t PWM_FREQUENCY = 20000;\nconst uint8_t PWM_RESOLUTION_BITS = 10;\nconst uint16_t PWM_MAX_DUTY = (1 << PWM_RESOLUTION_BITS) - 1;\nconst uint8_t PWM_FORWARD_CHANNEL = 0;\nconst uint8_t PWM_REVERSE_CHANNEL = 1;"
+  },
+  {
+    "projectId": "door-security",
+    "source": "Door security system/src/main.cpp",
+    "heading": "Detection timing and tamper thresholds",
+    "text": "// Detection timing.\nstatic constexpr uint32_t SENSOR_SAMPLE_MS = 20;\nstatic constexpr uint32_t MPU_SAMPLE_MS = 100;\nstatic constexpr uint32_t STATUS_PRINT_MS = 2000;\nstatic constexpr uint32_t WIFI_CONNECT_TIMEOUT_MS = 20000;\nstatic constexpr uint32_t WIFI_RECONNECT_MS = 30000;\nstatic constexpr uint32_t IR_FRAME_PERIOD_MS = 110;\nstatic constexpr uint32_t BEAM_BREAK_CONFIRM_MS = 350;\nstatic constexpr uint32_t TAMPER_CONFIRM_MS = 250;\n\n// Tamper thresholds. Tune after observing normal mounting vibration.\nstatic constexpr float TAMPER_TILT_DEGREES = 30.0f;\nstatic constexpr float TAMPER_GYRO_DPS = 180.0f;\nstatic constexpr float TAMPER_ACCEL_DELTA_G = 0.65f;"
+  },
+  {
+    "projectId": "gym-scale",
+    "source": "GYM Scale/src/main.cpp",
+    "heading": "Load-cell and BLE packet configuration",
+    "text": "constexpr uint8_t LOADCELL_DOUT_PIN = 5;\nconstexpr uint8_t LOADCELL_SCK_PIN = 18;\nconstexpr uint8_t HX711_GAIN = 128;  // Channel A, gain 128.\n\nconstexpr char BLE_DEVICE_NAME[] = \"GYM-Scale\";\nconstexpr char SCALE_SERVICE_UUID[] = \"7e57c000-6f7a-4b64-9c98-7fdc2d2f7c01\";\nconstexpr char MEASUREMENT_CHARACTERISTIC_UUID[] = \"7e57c001-6f7a-4b64-9c98-7fdc2d2f7c01\";\n\n// Calibrate this with a known mass. If weight moves negative when loaded,\n// either make this value negative or swap A+ and A- on the HX711.\nconstexpr float CALIBRATION_COUNTS_PER_GRAM = 420.0f;\nconstexpr float LOAD_CELL_CAPACITY_GRAMS = 10000.0f;\n\nconstexpr uint8_t TARE_SAMPLE_COUNT = 20;\nconstexpr uint8_t MEDIAN_WINDOW = 5;\nconstexpr uint8_t STARTUP_DISCARD_READS = 4;\n\nconstexpr float ZERO_DEADBAND_GRAMS = 0.4f;\nconstexpr float LARGE_STEP_GRAMS = 60.0f;\nconstexpr uint32_t HX711_STALE_MS = 1500;\nconstexpr uint32_t BLE_NOTIFY_INTERVAL_MS = 200;\nconstexpr int32_t HX711_MIN_VALUE = -8388608;\nconstexpr int32_t HX711_MAX_VALUE = 8388607;\n\nconstexpr uint8_t MEASUREMENT_PACKET_VERSION = 1;\nconstexpr uint8_t MEASUREMENT_FLAG_READY = 1 << 0;\nconstexpr uint8_t MEASUREMENT_FLAG_SATURATED = 1 << 1;\nconstexpr uint8_t MEASUREMENT_FLAG_OVERLOAD = 1 << 2;\nconstexpr uint8_t MEASUREMENT_FLAG_WARMING_UP = 1 << 3;"
+  }
+]

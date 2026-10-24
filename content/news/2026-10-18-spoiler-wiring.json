@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-18-spoiler-wiring",
+  "slug": "2026-10-18-spoiler-wiring",
+  "title": "A spoiler with a mind of its own. Almost.",
+  "date": "2026-10-18",
+  "author": "dachi",
+  "category": "project-update",
+  "summary": "A look at the spoiler control electronics: orientation in, servo motion out, and response curves to tune in between.",
+  "tags": [
+    "ESP32",
+    "MPU6050",
+    "Control"
+  ],
+  "media": "media/web/spoiler-complete-circuit.webp",
+  "mediaAlt": "The active-spoiler electronics and actuator assembly on the bench.",
+  "relatedProject": "active-spoiler",
+  "content": "## Attitude becomes a response curve\n\nThe current ESP32 sketch calculates roll and pitch from the MPU6050 accelerometer. It interpolates editable curves from one of three presets, combines the contributions, and constrains each servo command.\n\nThe presets contain **21 input points**. Calibration and mapping data live in SPIFFS. The browser interface makes those choices visible while iterating.\n\nThe separate MT6701 DC-motor servo experiment belongs to the same investigation, but it is not an integrated closed-loop replacement in the two-servo sketch."
+}

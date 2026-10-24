@@ -1,0 +1,43 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.DS_Store
+.npm-cache/
+repository-uploads/
+repository-*-results.json
+REPOSITORY_UPLOADS.md
+scripts/prepare-repositories.py
+.env
+.env.*
+*.log
+
+# BEGIN REVIEWED PUBLIC ASSETS (npm run assets:sync)
+/public/**
+!/public/**/
+!/public/Sherekilebi logo.png
+!/public/licenses/georgia-flag-source.txt
+!/public/licenses/jetbrains-mono-OFL.txt
+!/public/media/cupexs-model-fit.svg
+!/public/media/georgia-flag.svg
+!/public/media/web/cat-testing-door-security.webp
+!/public/media/web/cupexs-car.webp
+!/public/media/web/cupexs-drag-car-icon.webp
+!/public/media/web/cupexs-dyno-results.webp
+!/public/media/web/cupexs-dyno-setup.webp
+!/public/media/web/door-security-icon.webp
+!/public/media/web/gyroid-infill.webp
+!/public/media/web/kinect-microphone.webp
+!/public/media/web/lab-project-managment.webp
+!/public/media/web/lara-icon.webp
+!/public/media/web/lara-idle.webp
+!/public/media/web/lara-printing.webp
+!/public/media/web/lara-standing.webp
+!/public/media/web/spoiler-complete-circuit.webp
+!/public/media/web/spoiler-control-circuit.webp
+!/public/media/web/spoiler-icon.webp
+!/public/media/web/sumo2026-robot-2.webp
+!/public/media/web/sumo2026-robot-icon.webp
+!/public/media/web/sumo2026-robot.webp
+!/public/tsatmfreni.svg
+# END REVIEWED PUBLIC ASSETS

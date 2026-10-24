@@ -1,0 +1,18 @@
+{
+  "id": "2026-08-27-lara-standing",
+  "slug": "2026-08-27-lara-standing",
+  "title": "LARA, standing on its own bench.",
+  "date": "2026-08-27",
+  "author": "dachi",
+  "category": "project-update",
+  "summary": "A view of the physical arm assembly: printed links, actuators, wiring, and the geometry behind the simulation.",
+  "tags": [
+    "LARA",
+    "Mechanisms",
+    "Prototype"
+  ],
+  "media": "media/web/lara-standing.webp",
+  "mediaAlt": "The orange and purple LARA mechanical arm standing upright.",
+  "relatedProject": "lara",
+  "content": "## The physical side of the notebook\n\nThis photo records the mechanical prototype on the bench. It does not establish a completed autonomous task or a precision specification.\n\nThe project connects arm design, simulation, inverse kinematics, and joint tracking. The LARA code repository will be linked when it is available; the project page keeps that space open."
+}
