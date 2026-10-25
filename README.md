@@ -97,7 +97,7 @@ The renderer supports Markdown headings, lists, tables, links, images, and synta
 
 The website is an independent Git repository. Its root is this directory, and `origin` is [Sherekilebi-labs/Sherekilebi-labs.github.io](https://github.com/Sherekilebi-labs/Sherekilebi-labs.github.io). The parent HUB and local firmware checkouts are outside the website history. No license is granted for the lab artwork or photographs merely by publishing them.
 
-Every push to `main` runs `.github/workflows/deploy.yml`: a clean Node 24 install, content/type/output checks, a production build, Chromium browser and accessibility tests, then a GitHub Pages deployment. A failed check prevents publication. The workflow can also be started manually from the repository's Actions tab. Repository Settings → Pages must use **GitHub Actions** as its source; this is configured for the initial deployment. No deployment token is stored in the repository.
+Every push to `main` runs `.github/workflows/deploy.yml`: a clean Node 24 install, content/type/output checks, a production build, Chrome browser and accessibility tests, then a GitHub Pages deployment. A failed check prevents publication. The workflow can also be started manually from the repository's Actions tab. Repository Settings → Pages must use **GitHub Actions** as its source; this is configured for the initial deployment. No deployment token is stored in the repository.
 
 To publish an edit from this directory:
 

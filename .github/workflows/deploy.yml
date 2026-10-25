@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: read
@@ -30,12 +30,12 @@ jobs:
       - run: npm ci
       - name: Check content, types and production output
         run: npm run build
-      - name: Install test browser
-        run: npx playwright install --with-deps chromium
+      - name: Check preinstalled test browser
+        run: google-chrome --version
       - name: Verify browser interactions and accessibility
         run: npm test
         env:
-          PLAYWRIGHT_CHANNEL: chromium
+          PLAYWRIGHT_CHANNEL: chrome
       - name: Configure GitHub Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - name: Upload static site
