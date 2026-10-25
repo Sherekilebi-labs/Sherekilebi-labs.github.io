@@ -226,9 +226,14 @@
       "icon": "media/web/spoiler-icon.webp",
       "gallery": [
         {
-          "src": "media/web/spoiler-control-circuit.webp",
-          "alt": "Spoiler control board and connected actuators on a cutting mat",
-          "caption": "The controller and actuator wiring."
+          "src": "media/web/spoiler-1.webp",
+          "alt": "Pop-up spoiler prototype with one wing panel fully raised and the other fully lowered",
+          "caption": "One wing panel fully raised; the other fully lowered."
+        },
+        {
+          "src": "media/web/spoiler-2.webp",
+          "alt": "Pop-up spoiler prototype with both wing panels fully raised",
+          "caption": "Both wing panels fully raised."
         },
         {
           "src": "media/web/spoiler-complete-circuit.webp",

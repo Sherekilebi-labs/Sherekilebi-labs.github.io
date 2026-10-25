@@ -51,11 +51,15 @@
     "width": 900,
     "height": 1200
   },
-  "media/web/spoiler-complete-circuit.webp": {
-    "width": 900,
-    "height": 1200
+  "media/web/spoiler-1.webp": {
+    "width": 1600,
+    "height": 984
   },
-  "media/web/spoiler-control-circuit.webp": {
+  "media/web/spoiler-2.webp": {
+    "width": 1600,
+    "height": 893
+  },
+  "media/web/spoiler-complete-circuit.webp": {
     "width": 900,
     "height": 1200
   },
