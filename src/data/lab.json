@@ -153,20 +153,22 @@
     {
       "id": "active-spoiler",
       "number": "02",
-      "title": "Active Spoiler",
-      "subtitle": "An ESP32 controller maps measured roll and pitch to two spoiler servos, with editable response curves and a local tuning dashboard.",
-      "folder": "Dynamic spoiler",
+      "title": "Pop-up Spoiler",
+      "subtitle": "Two ESP32 boards translate adjustable roll and pitch response curves into coordinated motion for four encoder-feedback motors.",
+      "folder": "Project Tsintsadze",
       "sourceRoot": "platformio",
       "category": "Prototypes",
       "accent": "cyan",
       "status": "In development",
       "period": "2026",
-      "summary": "An ESP32 controller maps measured roll and pitch to two spoiler servos, with editable response curves and a local tuning dashboard.",
+      "summary": "A pop-up spoiler prototype for a third-generation BMW 6 Series. Four feedback-controlled motors move two wings through four-bar linkages, with adjustable response curves for sensed roll and pitch.",
       "tags": [
         "ESP32",
-        "C++",
+        "Motorsport",
+        "Four-bar Linkage",
+        "Motor Control",
         "MPU6050",
-        "Control"
+        "Web Dashboard"
       ],
       "media": {
         "diagram": "spoiler",
@@ -176,36 +178,48 @@
       },
       "contributorIds": [],
       "notes": [
-        "Current attitude estimates come from accelerometer-derived roll and pitch; the loop does not implement gyro fusion despite the presence of a Kalman header.",
-        "Three presets hold 21-point response maps. Pitch output is tied across both sides, roll is mirrored, and the two contributions are summed and constrained to 0–80 degrees.",
-        "Calibration and maps are saved in SPIFFS. A separate servo-drive prototype uses MT6701 feedback and a 1 kHz PID loop; it is an alternative actuator experiment, not an integrated guarantee of the main controller."
+        "Four bars, one guided motion: each wing rides on connected arms that lift and tilt it along a defined path, rather than simply turning around a hinge.",
+        "Getting the dimensions right: arm lengths and pivot spacing must produce the required lift, tilt, and clearance together. Near the flat starting position, small errors or joint play can make the linkage bind or move unpredictably.",
+        "Two motors per wing: powering both arms is intended to share the load. The unequal arms need different, coordinated angles; encoder feedback helps each motor follow its target rather than fight the linkage.",
+        "Tune the response visually: set the sensor's neutral reference, then drag curve points or enter values to choose how sensed roll and pitch move the wings. Three presets let different responses be compared.",
+        "Wing angles first, motor angles second: roll gives a mirrored left/right response, while pitch acts on both wings. The curves combine into 0–70° wing commands, and the linkage calculation converts each command into two motor targets.",
+        "Keep motion separate from the dashboard: one ESP32 handles sensing and tuning; the other controls the motors. Manual wing and individual-motor modes help check the mechanism before trying automatic operation.",
+        "Test the physical result: position feedback corrects tracking errors, and lost encoder data or communication disarms the motors. The sensor estimates tilt from acceleration, so response under braking, cornering, and aerodynamic load still needs testing."
       ],
       "specs": [
         {
-          "label": "Input",
-          "value": "MPU6050 roll / pitch"
+          "label": "Mechanism",
+          "value": "Two independent four-bar wing linkages"
         },
         {
-          "label": "Mapping",
-          "value": "3 presets · 21 points each"
+          "label": "Actuation",
+          "value": "4 DC motors with magnetic position feedback"
         },
         {
-          "label": "Output",
-          "value": "2 servo channels"
+          "label": "Tuning",
+          "value": "3 presets · 21 points per response curve"
         }
       ],
       "bom": [
         {
-          "component": "Controller",
-          "detail": "ESP32 DevKit"
+          "component": "Controllers",
+          "detail": "Two ESP32 DevKit boards: N1 for motor control, N2 for sensing and the dashboard"
         },
         {
-          "component": "Inertial sensing",
-          "detail": "MPU6050"
+          "component": "Motion sensing",
+          "detail": "MPU6050 accelerometer and gyroscope module; current wing commands use accelerometer-derived roll and pitch"
         },
         {
-          "component": "Actuation",
-          "detail": "Two PWM servo channels"
+          "component": "Position sensing",
+          "detail": "Four MT6701 magnetic encoders, one per motor"
+        },
+        {
+          "component": "Motor drive",
+          "detail": "Four DC motors through H-bridges; motor and driver models are not specified in the code"
+        },
+        {
+          "component": "Linkages",
+          "detail": "125 mm and 100 mm arms, 55 mm motor-shaft spacing, and a 30 mm wing-carrying connecting link per side"
         }
       ],
       "sourceUrl": "https://github.com/Sherekilebi-labs/Active-Spoiler",

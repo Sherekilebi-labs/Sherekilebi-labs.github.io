@@ -13,10 +13,18 @@
     {
       "projectId": "active-spoiler",
       "root": "platformio",
-      "path": "Dynamic spoiler/src/dynamicSpoiler.ino",
-      "heading": "Preset response-map structure",
-      "start": "// === USER-DEFINED MAPPING POINTS ===",
-      "end": "ServoMap presets"
+      "path": "Project Tsintsadze/include/model.h",
+      "heading": "Editable roll and pitch response mapping",
+      "start": "struct Curve {",
+      "end": "inline Curve defaultCurve()"
+    },
+    {
+      "projectId": "active-spoiler",
+      "root": "platformio",
+      "path": "Project Tsintsadze/include/model.h",
+      "heading": "Coordinated four-bar arm targets",
+      "start": "// Local linkage coordinates:",
+      "end": "inline bool validTargets"
     },
     {
       "projectId": "sumo-2026",

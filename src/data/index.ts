@@ -11,7 +11,11 @@ function diagramKind(value: string): Media['diagram'] {
 
 export const lab: LabData = {
   ...raw,
-  projects: raw.projects.map(project => ({ ...project, media: { ...project.media, diagram: diagramKind(project.media.diagram) } })),
+  projects: raw.projects.map(project => ({
+    ...project,
+    summary: Array.isArray(project.summary) ? project.summary.join('\n') : project.summary,
+    media: { ...project.media, diagram: diagramKind(project.media.diagram) },
+  })),
 };
 export const excerpts: DocumentationExcerpt[] = rawExcerpts;
 export const categories = [...new Set(lab.projects.map(project => project.category))];

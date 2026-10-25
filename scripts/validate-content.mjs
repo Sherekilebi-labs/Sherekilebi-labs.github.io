@@ -22,10 +22,12 @@ const checkMedia = async src => {
   await access(path.join(root, 'public', src));
 };
 for (const project of lab.projects) {
-  for (const field of ['id', 'title', 'folder', 'category', 'summary', 'status']) requireValue(project[field]?.trim(), `${project.id}: missing ${field}`);
+  for (const field of ['id', 'title', 'folder', 'category', 'status']) requireValue(project[field]?.trim(), `${project.id}: missing ${field}`);
+  const summaryLines = Array.isArray(project.summary) ? project.summary : [project.summary];
+  requireValue(summaryLines.length && summaryLines.every(line => typeof line === 'string' && line.trim()), `${project.id}: summary must contain non-empty text`);
   requireValue(['cyan','orange','green'].includes(project.accent), `Invalid accent: ${project.id}`);
   requireValue(['arm','sumo','hydrofoil','pcb','education','racer','door','spoiler','scale'].includes(project.media.diagram), `Invalid diagram: ${project.id}`);
-  requireValue(project.media.alt && project.media.caption, `Missing media description: ${project.id}`);
+  requireValue(project.media.alt?.trim() && typeof project.media.caption === 'string', `Missing media description: ${project.id}`);
   requireValue(!project.contributorIds.some(id => !people.has(id)), `Unknown contributor: ${project.id}`);
   requireValue(excerpts.some(excerpt => excerpt.projectId === project.id), `Missing documentation: ${project.id}`);
   if (project.sourceUrl) checkURL(project.sourceUrl);

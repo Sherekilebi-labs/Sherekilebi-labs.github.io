@@ -3,13 +3,19 @@
     "projectId": "lara",
     "source": "LARA/lara old/L.A.R.A./meshes 2.0/Lara/README.md",
     "heading": "Actuation Model (Current)",
-    "text": "-**joints** use position actuators intended to represent the **GX G25 coreless servos** (stall torque ≈ 25 kg·cm @ 7.4V; torque-limited in simulation).\n\nSee `docs/servo-info.md` for the numbers used."
+    "text": "- **Base yaw** uses a torque actuator intended to represent the **R550 DC motor + reducer** (stall torque ≈ 80 kg·cm, no-load speed ≈ 160 rpm).\n- **Other joints** use position actuators intended to represent the **GX G25 coreless servos** (stall torque ≈ 25 kg·cm @ 7.4V; torque-limited in simulation).\n\nSee `docs/servo-info.md` for the numbers used."
   },
   {
     "projectId": "active-spoiler",
-    "source": "Dynamic spoiler/src/dynamicSpoiler.ino",
-    "heading": "Preset response-map structure",
-    "text": "// === USER-DEFINED MAPPING POINTS ===\n#define MAX_PRESETS 3\n#define POINTS 21\n\nstruct ServoMap {\n  float rollInput[POINTS];\n  float pitchInput[POINTS];\n  float rollToRight[POINTS];\n  float pitchToRight[POINTS];\n  float rollToLeft[POINTS];\n  float pitchToLeft[POINTS];\n};"
+    "source": "Project Tsintsadze/include/model.h",
+    "heading": "Editable roll and pitch response mapping",
+    "text": "struct Curve { float rollRight[Points] = {}, pitchBoth[Points] = {}; };\ninline float interpolate(const float *v, float input) {\n  const float position = (clamp(input, -90.0f, 90.0f) + 90) / 9;\n  const unsigned i = unsigned(position);\n  return i >= Points-1 ? v[Points-1] : v[i] + (v[i+1]-v[i])*(position-i);\n}\ninline void mapWings(const Curve &c, float roll, float pitch, float &left, float &right) {\n  const float common = interpolate(c.pitchBoth, pitch);\n  left = clamp(interpolate(c.rollRight, -roll)+common, 0.0f, WingLimit);\n  right = clamp(interpolate(c.rollRight, roll)+common, 0.0f, WingLimit);\n}"
+  },
+  {
+    "projectId": "active-spoiler",
+    "source": "Project Tsintsadze/include/model.h",
+    "heading": "Coordinated four-bar arm targets",
+    "text": "// Local linkage coordinates: both cranks point right at home. The right\n// assembly uses its own mirrored coordinate frame, not negated PID gains.\n// A positive UI/curve command means a negative physical coupler angle. Keep\n// the +acos branch so both crank angles remain positive (both arms rise).\ninline bool inverseKinematics(float wing, float &longArm, float &shortArm) {\n  if (!std::isfinite(wing) || wing < 0 || wing > WingLimit) return false;\n  if (wing == 0) { longArm = shortArm = 0; return true; }\n  const double phi = -wing * Pi / 180;\n  const double x = 55 - 30 * std::cos(phi), y = -30 * std::sin(phi);\n  const double d = std::hypot(x, y);\n  double cosine = (125 * 125 + d*d - 100 * 100) / (250 * d);\n  if (cosine < -1.000000001 || cosine > 1.000000001) return false;\n  const double a = std::atan2(y, x) + std::acos(clamp(cosine, -1.0, 1.0));\n  const double b = std::atan2(125 * std::sin(a) + 30 * std::sin(phi),\n                             125 * std::cos(a) + 30 * std::cos(phi) - 55);\n  longArm = float(a * 180 / Pi); shortArm = float(b * 180 / Pi);\n  return std::isfinite(longArm) && std::isfinite(shortArm);\n}"
   },
   {
     "projectId": "sumo-2026",

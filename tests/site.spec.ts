@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import labData from '../src/data/lab.json' with { type: 'json' };
 
 const projectIds = ['lara', 'active-spoiler', 'sumo-2026', 'cupexs', 'door-security', 'gym-scale'];
 
@@ -22,7 +23,7 @@ test('new branding, removed sections, combined filters, and official GitHub link
   const titleFamily = await page.locator('.hero h1').evaluate(element => getComputedStyle(element).fontFamily);
   expect(titleFamily).toContain('Helvetica');
   expect(titleFamily).not.toMatch(/Eurostile|Michroma/);
-  await expect(page.locator('.person-card')).toHaveCount(3);
+  await expect(page.locator('.person-card')).toHaveCount(labData.people.length);
   await expect(page.getByRole('navigation').getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/Sherekilebi-labs');
   await page.getByRole('button', { name: 'Competition', exact: true }).click();
   await expect(page.locator('.project-grid .project-card')).toHaveCount(2);
@@ -140,7 +141,12 @@ test('project routes load directly and source links match the uploaded repositor
   await page.goto('/projects/door-security');
   await expect(page.locator('.engineering-notes')).toContainText('38 kHz');
   await page.goto('/projects/active-spoiler');
-  await expect(page.locator('.engineering-notes')).toContainText('does not implement gyro fusion');
+  await expect(page.locator('ul.engineering-notes')).toBeVisible();
+  await expect(page.locator('.engineering-notes')).toContainText('Two motors per wing');
+  await expect(page.locator('.engineering-notes')).toContainText('drag curve points');
+  await expect(page.locator('.engineering-notes')).toContainText('0–70° wing commands');
+  await page.locator('.source-excerpt summary').filter({ hasText: 'Editable roll and pitch response mapping' }).click();
+  await expect(page.locator('.source-excerpt[open]')).toContainText('mapWings');
   await page.goto('/projects/sumo-2026');
   await expect(page.locator('.engineering-notes')).toContainText('two active-low edge inputs');
   await expect(page.getByRole('link', { name: 'Earlier RoboSumo 2024 firmware' })).toHaveAttribute('href', 'https://github.com/ChoteX/RoboSumo-2024');

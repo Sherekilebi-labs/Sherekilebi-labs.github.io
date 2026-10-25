@@ -41,6 +41,8 @@ The source-code repository mapping is:
 | CupExS Drag Racer | [CupExS-drag-racer](https://github.com/Sherekilebi-labs/CupExS-drag-racer) |
 | GYM Scale | [GYM-scale](https://github.com/Sherekilebi-labs/GYM-scale) |
 
+The pop-up spoiler now uses `Project Tsintsadze`: two ESP32 firmwares, four encoder-feedback DC motors, two four-bar wing linkages, and a local response-curve dashboard. Its source excerpts come from `include/model.h`; the previous standalone mapping and servo-drive implementation is no longer the current project.
+
 LARA has an explicit repository placeholder. Add its future URL to `sourceUrl` and remove `sourcePending`. The current Sumo 2026 description comes from the 2026 firmware; its separately labelled 2024 link is an earlier implementation. No new repository URL is guessed for Sumo 2026. AeroDHS was an earlier Active Spoiler version and is no longer listed as a separate project.
 
 Actuator A0, RoBook, and the former research-domain section have been removed from the website. The project count derives from the current records. Project cards and carousel items link to `/projects/<id>`; dispatches cross-link using `relatedProject`.
@@ -54,6 +56,8 @@ Large titles now use **Helvetica Bold (700)**. Body text uses Helvetica, with He
 The theme uses original workshop / flight-log copy, paper and brass colors, and the artwork you confirmed you own or have permission to use. The text acknowledges Eldar Shengelaia's *The Eccentrics* as the name's inspiration and states that the lab is independent. The site does not import film stills, posters, dialogue, soundtrack, or footage. Attribution is not represented as a substitute for permission. See [BRANDING.md](BRANDING.md) for sources and future-media guidance.
 
 ## Update project content
+
+A project `summary` can be a string or an array of non-empty text lines; the data loader normalizes the latter for rendering.
 
 Edit the relevant project in `src/data/lab.json`: `id`, `number`, `title`, `folder`, `sourceRoot`, `category`, `status`, `summary`, `tags`, `notes`, `specs`, `bom`, and media. Leave undocumented component lists and project-specific credits empty. `sourceUrl` is the primary GitHub link; `sourceLinks` supports clearly labelled alternate or historical sources; `sourcePending` is a non-clickable placeholder.
 
