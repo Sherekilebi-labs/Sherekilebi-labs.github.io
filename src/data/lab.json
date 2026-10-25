@@ -1,7 +1,7 @@
 {
   "name": "Sherekilebi Lab",
   "location": "Varketili, Tbilisi, Georgia",
-  "introduction": "Built in Tbilisi, Georgia · April–June 2026.",
+  "introduction": "Built in Tbilisi, Georgia",
   "origins": {
     "title": "A space built from curiosity.",
     "period": "April–June 2026",
@@ -226,13 +226,13 @@
     {
       "id": "sumo-2026",
       "number": "03",
-      "title": "Sumo 2026",
-      "subtitle": "An autonomous sumo platform with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
+      "title": "Tekkai 2.0",
+      "subtitle": "An autonomous sumo robot with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
       "folder": "Sumo 2026",
       "sourceRoot": "platformio",
       "category": "Competition",
       "accent": "orange",
-      "status": "In development",
+      "status": "Completed",
       "period": "2026",
       "summary": "An autonomous sumo platform with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
       "tags": [

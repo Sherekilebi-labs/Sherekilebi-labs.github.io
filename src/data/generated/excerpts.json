@@ -3,7 +3,7 @@
     "projectId": "lara",
     "source": "LARA/lara old/L.A.R.A./meshes 2.0/Lara/README.md",
     "heading": "Actuation Model (Current)",
-    "text": "- **Base yaw** uses a torque actuator intended to represent the **R550 DC motor + reducer** (stall torque ≈ 80 kg·cm, no-load speed ≈ 160 rpm).\n- **Other joints** use position actuators intended to represent the **GX G25 coreless servos** (stall torque ≈ 25 kg·cm @ 7.4V; torque-limited in simulation).\n\nSee `docs/servo-info.md` for the numbers used."
+    "text": "-**joints** use position actuators intended to represent the **GX G25 coreless servos** (stall torque ≈ 25 kg·cm @ 7.4V; torque-limited in simulation).\n\nSee `docs/servo-info.md` for the numbers used."
   },
   {
     "projectId": "active-spoiler",

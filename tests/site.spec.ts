@@ -9,7 +9,8 @@ test('new branding, removed sections, combined filters, and official GitHub link
   await page.goto('/');
   await expect(page).toHaveTitle(/Built by eccentrics/);
   await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/tsatmfreni.svg');
-  await expect(page.locator('.brand img').first()).toHaveAttribute('src', '/Sherekilebi logo.png');
+  await expect(page.locator('.site-header .brand img')).toHaveAttribute('src', '/tsatmfreni.svg');
+  await expect(page.locator('.site-footer .brand img')).toHaveAttribute('src', '/Sherekilebi logo.png');
   await expect(page.locator('.project-grid .project-card')).toHaveCount(6);
   await expect(page.getByText('Three ways to explore.')).toHaveCount(0);
   await expect(page.getByText('Research & build domains')).toHaveCount(0);
