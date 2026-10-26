@@ -11,6 +11,6 @@
     "Audio",
     "Experiments"
   ],
-  "media": "media/Kinect camera.jpg",
+  "media": "media/web/kinect-camera.webp",
   "mediaAlt": "A Kinect sensor beneath a laptop displaying audio waveforms."
 }

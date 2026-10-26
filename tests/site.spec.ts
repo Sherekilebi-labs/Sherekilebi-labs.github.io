@@ -177,8 +177,7 @@ test('dispatches pin announcements, filter categories, expand Markdown, and cros
   await expect(post.locator('..').locator('time')).toHaveAttribute('datetime', '2026-07-29');
   await post.getByText('Read the field notes').click();
   await expect(post.locator('.dispatch-reader')).toHaveAttribute('open', '');
-  await expect(post.locator('pre code')).toContainText('MT6701_SDA_PIN');
-  await expect(post.locator('.hljs-keyword').first()).toBeVisible();
+  await expect(post.locator('.dispatch-reader .markdown p')).toContainText('high precision magnetic encoder MT6701');
   await expect(post.getByRole('link', { name: 'Linked project: CupExS Drag Racer' })).toHaveAttribute('href', '/projects/cupexs');
 });
 

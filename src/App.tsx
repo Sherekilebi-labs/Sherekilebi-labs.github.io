@@ -219,7 +219,7 @@ function HomePage() {
               skeptics.
             </p>
             <p className="hero-description">
-              Sherekilebi Labs takes its name and spirit from the iconic Georgian film{' '}
+              <b>Sherekilebi Labs</b> takes its name and spirit from the iconic Georgian film{' '}
               <em>The Eccentrics</em>: think beyond convention, stay curious, and give
               improbable ideas a chance to fly.
             </p>
@@ -245,11 +245,11 @@ function HomePage() {
           <div className="hero-stats">
             <div>
               <strong>{String(lab.projects.length).padStart(2, '0')}</strong>
-              <span>Projects in the notebook</span>
+              <span>Projects</span>
             </div>
             <div>
-              <strong>2026</strong>
-              <span>A space of our own</span>
+              <strong>05</strong>
+              <span>Members</span>
             </div>
             <div>
               <img
@@ -259,7 +259,7 @@ function HomePage() {
                 width="36"
                 height="24"
               />
-              <span>Made in Tbilisi</span>
+              <span>Space of our own in Georgia</span>
             </div>
           </div>
         </div>
