@@ -14,7 +14,7 @@ sources = set()
 for project in lab['projects']:
     if project['media'].get('src'):
         sources.add(project['media']['src'])
-    for image in project.get('gallery', []):
+    for image in [*project.get('gallery', []), *project.get('analysisFigures', [])]:
         sources.add(image['src'])
 for file in (root / 'content/news').glob('*.json'):
     post = json.loads(file.read_text())

@@ -1,11 +1,11 @@
 {
   "id": "2026-08-01-drag-car-chassis",
   "slug": "2026-08-01-drag-car-chassis",
-  "title": "A car you can hold. A model you can question.",
+  "title": "CupExS Drag Racer",
   "date": "2026-08-01",
   "author": "dachi",
   "category": "project-update",
-  "summary": "The printed drag-car chassis takes shape. Gearing, wheel geometry, and firmware all get a vote in what happens next.",
+  "summary": "The final version is ready to be put into production for the competition",
   "tags": [
     "CupExS",
     "CAD",

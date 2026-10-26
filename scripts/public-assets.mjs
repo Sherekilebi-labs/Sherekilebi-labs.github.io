@@ -6,11 +6,12 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 /** Only reviewed, referenced assets ship; the original media folder stays local. */
 export async function publicAssets() {
   const lab = JSON.parse(await readFile(path.join(root, 'src/data/lab.json'), 'utf8'));
-  const files = new Set(['Sherekilebi logo.png', 'tsatmfreni.svg', 'licenses/jetbrains-mono-OFL.txt', 'licenses/georgia-flag-source.txt', 'media/georgia-flag.svg', 'media/cupexs-model-fit.svg']);
+  const files = new Set(['Sherekilebi logo.png', 'tsatmfreni.svg', 'licenses/jetbrains-mono-OFL.txt', 'licenses/georgia-flag-source.txt', 'media/georgia-flag.svg']);
   const add = source => { if (source && !source.startsWith('https://')) files.add(source.replace(/^\/+/, '')); };
   for (const project of lab.projects) {
     add(project.icon); add(project.media.src);
     for (const image of project.gallery || []) add(image.src);
+    for (const figure of project.analysisFigures || []) add(figure.src);
   }
   for (const name of await readdir(path.join(root, 'content/news'))) {
     if (!name.endsWith('.json')) continue;

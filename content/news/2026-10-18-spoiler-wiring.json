@@ -1,11 +1,11 @@
 {
   "id": "2026-10-18-spoiler-wiring",
   "slug": "2026-10-18-spoiler-wiring",
-  "title": "A spoiler with a mind of its own. Almost.",
+  "title": "We gave a spoiler a mind of its own. Almost.",
   "date": "2026-10-18",
   "author": "dachi",
   "category": "project-update",
-  "summary": "A look back at the earlier spoiler control electronics: orientation in, servo motion out, and response curves to tune in between.",
+  "summary": "A final look at the spoiler control electronics before mounting it on the car.",
   "tags": [
     "ESP32",
     "MPU6050",
@@ -14,5 +14,5 @@
   "media": "media/web/spoiler-complete-circuit.webp",
   "mediaAlt": "The active-spoiler electronics and actuator assembly on the bench.",
   "relatedProject": "active-spoiler",
-  "content": "## Attitude becomes a response curve\n\nThe earlier ESP32 sketch calculated roll and pitch from the MPU6050 accelerometer. It interpolated editable curves from one of three presets and combined them into two servo commands. This photograph documents that electronics stage.\n\nThe presets used **21 input points**. A browser interface made calibration and response changes visible while iterating.\n\nThe project has since moved to **Project Tsintsadze**: two ESP32 boards, four encoder-feedback DC motors, and paired four-bar wing linkages. The linked project page and repository describe the current implementation."
+  "content": "### Pastrana's Subaru GL wagon will soon have a competitor. \n\n- A custom independent right and left wing control will make our f06 break harder and stay more stable in the corners. \n\n- two ESP32 board architecture ensure super fast acceleromater reading without interrupting high frequency servo feedback loop. \n\n- four large DC gearmotors on four-bar wing linkages can deliver enough torque to hold the large pop-up spoiler panels vertically at more then 150kph"
 }

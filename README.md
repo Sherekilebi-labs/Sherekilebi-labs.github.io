@@ -47,13 +47,17 @@ LARA has an explicit repository placeholder. Add its future URL to `sourceUrl` a
 
 Actuator A0, RoBook, and the former research-domain section have been removed from the website. The project count derives from the current records. Project cards and carousel items link to `/projects/<id>`; dispatches cross-link using `relatedProject`.
 
+## Dark theme preview
+
+The current preview uses the flight deck's blue-gray (`#2d3440`) throughout the interface, with white typography. `src/dark-theme.css` is imported after the original stylesheet in `src/main.tsx`. To restore the paper theme, comment out that one import and set the `theme-color` meta tag in `index.html` back to `#f3eee2`. Layout, content, supplied images, and the original palette remain in their existing files.
+
 ## Fonts and visual identity
 
 The site uses the supplied **Sherekilebi logo.png** and a true vector **tsatmfreni.svg** converted from the supplied PNG. The SVG contains colored paths, with no embedded bitmap. The old icon file has been removed from the site.
 
 Large titles now use **Helvetica Bold (700)**. Body text uses Helvetica, with Helvetica Neue and Arial fallbacks. Eurostile Extended and the Michroma fallback have been removed from the title stack. No commercial font binary is embedded or distributed. Monospace labels use the bundled JetBrains Mono font and its SIL OFL notice.
 
-The theme uses original workshop / flight-log copy, paper and brass colors, and the artwork you confirmed you own or have permission to use. The text acknowledges Eldar Shengelaia's *The Eccentrics* as the name's inspiration and states that the lab is independent. The site does not import film stills, posters, dialogue, soundtrack, or footage. Attribution is not represented as a substitute for permission. See [BRANDING.md](BRANDING.md) for sources and future-media guidance.
+The visual identity uses original workshop / flight-log copy and the artwork you confirmed you own or have permission to use. The original paper and brass palette is preserved beneath the optional dark preview stylesheet. The text acknowledges Eldar Shengelaia's *The Eccentrics* as the name's inspiration and states that the lab is independent. The site does not import film stills, posters, dialogue, soundtrack, or footage. Attribution is not represented as a substitute for permission. See [BRANDING.md](BRANDING.md) for sources and future-media guidance.
 
 ## Update project content
 
@@ -61,13 +65,13 @@ A project `summary` can be a string or an array of non-empty text lines; the dat
 
 Edit the relevant project in `src/data/lab.json`: `id`, `number`, `title`, `folder`, `sourceRoot`, `category`, `status`, `summary`, `tags`, `notes`, `specs`, `bom`, and media. Leave undocumented component lists and project-specific credits empty. `sourceUrl` is the primary GitHub link; `sourceLinks` supports clearly labelled alternate or historical sources; `sourcePending` is a non-clickable placeholder.
 
-Set `icon` to a supplied project-icon asset to include it in the hero slider. Set `media.src` for its card and project reader. Add `gallery` entries with `src`, `alt`, and factual `caption`. Category and technology filters derive from the records. A failed project image falls back to an illustrative schematic.
+Set `icon` to a supplied project-icon asset to include it in the hero slider. Set `media.src` for its card and project reader. Add `gallery` entries with `src`, `alt`, and factual `caption`. Add `analysisFigures` entries with the same fields for engineering charts displayed below the gallery. Category and technology filters derive from the records. A failed project image falls back to an illustrative schematic.
 
 The flight deck uses `TapeSlider`, a reusable fixed-aspect window with a single connected flex track. It starts automatically at a **2,000 ms** cadence; each movement lasts **600 ms**, using `cubic-bezier(0.22, 1, 0.36, 1)`. All frames share one transform, remain opaque, and have no gap. A clone at each end permits one-frame wrapping in either direction, followed by an invisible non-animated reset.
 
-Hover, keyboard focus, and a hidden browser tab hold automatic rolling. Previous / Next buttons, Left / Right arrow keys, and horizontal touch/pen swipes switch the slider to **Manual Step** for the rest of that page visit. If a roll is already underway, the latest manual direction is queued and runs as soon as it settles. Vertical gestures keep normal page scrolling; swipes do not open a project link. There is no play/pause button. Reduced-motion preference disables automatic rolling and makes manual steps instant.
+Hover, keyboard focus, and a hidden browser tab hold automatic rolling. Previous / Next buttons, Left / Right arrow keys, and horizontal touch/pen swipes switch the slider to **Manual Step** for the rest of that page visit. If a roll is already underway, the latest manual direction is queued and runs as soon as it settles. Vertical gestures keep normal page scrolling; swipes do not open a project link. The title, subtitle, project link, and frame counter update as each roll starts. Playback status text and decorative tape perforations are omitted; arrow controls remain at the right. There is no play/pause button. Reduced-motion preference disables automatic rolling and makes manual steps instant.
 
-`TapeSlider` accepts `items` with `id`, `src`, `alt`, `title`, optional `subtitle`, and optional project `href`. Optional props include `intervalMs`, `durationMs`, `autoRoll`, `fit` (`cover` by default), `aspectRatio`, `tapeEdges`, labels, heading, and footnote. The flight deck selects `contain` for the project illustrations and a 4:3 window. Empty input renders nothing; a single image is static without arrow controls. The minimum timer interval leaves time for the transition and loop reset.
+`TapeSlider` accepts `items` with `id`, `src`, `alt`, `title`, optional `subtitle`, and optional project `href`. Optional props include `intervalMs`, `durationMs`, `autoRoll`, `fit` (`cover` by default), `aspectRatio`, labels, heading, and footnote. The flight deck selects `contain` for the project illustrations and a 4:3 window. Empty input renders nothing; a single image is static without arrow controls. The minimum timer interval leaves time for the transition and loop reset.
 
 The deck borders meet the hero divider lines, and its right edge aligns with the outer container. On phones the deck spans the available page width beneath the introduction.
 

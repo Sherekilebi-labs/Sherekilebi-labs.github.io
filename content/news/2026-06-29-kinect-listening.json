@@ -1,16 +1,16 @@
 {
   "id": "2026-06-29-kinect-listening",
   "slug": "2026-06-29-kinect-listening",
-  "title": "Listening to the room.",
+  "title": "RGB + Depth camera & Mic array for $20",
   "date": "2026-06-29",
   "author": "dachi",
   "category": "lab-news",
-  "summary": "A Kinect microphone experiment on the bench, with audio traces visible on screen. Another old piece of hardware finds a new question.",
+  "summary": "Just bought a used XBOX 360 Kinect - this is geniune cheat code if you want a complete vision + voice prototype for dirt cheap.",
   "tags": [
     "Kinect",
     "Audio",
     "Experiments"
   ],
-  "media": "media/web/kinect-microphone.webp",
+  "media": "media/Kinect camera.jpg",
   "mediaAlt": "A Kinect sensor beneath a laptop displaying audio waveforms."
 }

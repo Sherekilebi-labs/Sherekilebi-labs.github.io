@@ -38,8 +38,10 @@ test('tape auto-roll starts every two seconds, holds on hover, and yields to man
   await page.goto('/');
   const carousel = page.getByRole('region', { name: 'Featured projects' });
   await expect(carousel).toBeVisible();
+  await expect(carousel.locator('.tape-status, .tape-edges')).toHaveCount(0);
   await page.mouse.move(0, 0);
   await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 02 // 05', { timeout: 3400 });
+  await expect(carousel.locator('.carousel-caption strong')).toHaveText('Pop-up Spoiler');
   await carousel.hover();
   await expect(carousel).toHaveAttribute('data-mode', 'HOLD');
   await expect(carousel.locator('.tape-track')).toHaveAttribute('data-phase', 'idle');
@@ -65,7 +67,7 @@ test('one physical track stays gapless and wraps one frame in either direction',
   const carousel = page.getByRole('region', { name: 'Featured projects' });
   await carousel.hover();
   const track = carousel.locator('.tape-track');
-  async function inspectStep(button: string, direction: number) {
+  async function inspectStep(button: string, direction: number, title: string, projectId: string) {
     await carousel.getByRole('button', { name: button }).click();
     await expect(track).toHaveAttribute('data-phase', 'rolling');
     await expect.poll(() => track.evaluate(element => element.getAnimations().length)).toBeGreaterThan(0);
@@ -74,6 +76,10 @@ test('one physical track stays gapless and wraps one frame in either direction',
       animation.pause();
       const duration = Number(animation.effect!.getTiming().duration);
       animation.currentTime = 0;
+      const carousel = element.closest('.project-carousel')!;
+      const caption = carousel.querySelector('.carousel-caption strong')!.textContent;
+      const href = carousel.querySelector('.carousel-project')!.getAttribute('href');
+      const phase = element.getAttribute('data-phase');
       const start = element.getBoundingClientRect().left;
       animation.currentTime = duration / 2;
       const middle = element.getBoundingClientRect().left;
@@ -85,8 +91,11 @@ test('one physical track stays gapless and wraps one frame in either direction',
       animation.currentTime = duration;
       const end = element.getBoundingClientRect().left;
       animation.finish();
-      return { start, middle, end, width, frames, duration, easing: getComputedStyle(element).transitionTimingFunction };
+      return { start, middle, end, width, frames, duration, caption, href, phase, easing: getComputedStyle(element).transitionTimingFunction };
     });
+    expect(geometry.phase).toBe('rolling');
+    expect(geometry.caption).toBe(title);
+    expect(geometry.href).toBe(`/projects/${projectId}`);
     expect(geometry.duration).toBe(600);
     expect(geometry.easing).toBe('cubic-bezier(0.22, 1, 0.36, 1)');
     expect(Math.abs(geometry.end - geometry.start + direction * geometry.width)).toBeLessThan(1);
@@ -100,11 +109,11 @@ test('one physical track stays gapless and wraps one frame in either direction',
     await expect(track).toHaveAttribute('data-phase', 'idle');
     expect(await track.evaluate(element => element.getAnimations().length)).toBe(0);
   }
-  await inspectStep('Previous featured project', -1);
+  await inspectStep('Previous featured project', -1, 'Door Security System', 'door-security');
   await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 05 // 05');
-  await inspectStep('Next featured project', 1);
+  await inspectStep('Next featured project', 1, 'LARA', 'lara');
   await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 01 // 05');
-  await inspectStep('Next featured project', 1);
+  await inspectStep('Next featured project', 1, 'Pop-up Spoiler', 'active-spoiler');
   await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 02 // 05');
 });
 
@@ -162,8 +171,10 @@ test('dispatches pin announcements, filter categories, expand Markdown, and cros
   await expect(page.locator('.micro-label')).toHaveCount(2);
   await page.getByRole('link', { name: 'Linked project: Door Security System' }).click();
   await expect(page).toHaveURL(/\/projects\/door-security$/);
-  await page.goto('/news#2026-10-24-dyno-on-the-bench');
-  const post = page.locator('[id="2026-10-24-dyno-on-the-bench"]');
+  await page.goto('/news#2026-07-29-dyno-on-the-bench');
+  const post = page.locator('[id="2026-07-29-dyno-on-the-bench"]');
+  await expect(post.locator('.media-stamp')).toContainText('2026.07.29');
+  await expect(post.locator('..').locator('time')).toHaveAttribute('datetime', '2026-07-29');
   await post.getByText('Read the field notes').click();
   await expect(post.locator('.dispatch-reader')).toHaveAttribute('open', '');
   await expect(post.locator('pre code')).toContainText('MT6701_SDA_PIN');
@@ -176,7 +187,7 @@ test('homepage preview contains three most recent dispatches and the correct dee
   const section = page.getByRole('region', { name: 'Latest Lab Dispatches' });
   await expect(section.locator('.dispatch-card')).toHaveCount(3);
   const links = await section.locator('.dispatch-read-link').evaluateAll(items => items.map(item => item.getAttribute('href')));
-  expect(links).toEqual(['/news#2026-10-24-dyno-on-the-bench','/news#2026-10-24-unscheduled-inspector','/news#2026-10-18-spoiler-wiring']);
+  expect(links).toEqual(['/news#2026-10-24-unscheduled-inspector','/news#2026-10-18-spoiler-wiring','/news#2026-10-13-drawer-for-every-idea']);
   await section.getByRole('link', { name: 'The complete flight log' }).click();
   await expect(page).toHaveURL(/\/news$/);
 });
@@ -254,7 +265,7 @@ test('home, dispatch feed, expanded Markdown, and project reader pass accessibil
     else if (route === '/news') await expect(page.locator('.news-header h1')).toBeVisible();
     else await expect(page.locator('.hero h1')).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
-    if (route === '/news') await page.locator('[id="2026-10-24-dyno-on-the-bench"] summary').click();
+    if (route === '/news') await page.locator('[id="2026-07-29-dyno-on-the-bench"] summary').click();
     const results = await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
     expect(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => ({ target: n.target, details: n.failureSummary })) }))).toEqual([]);
   }

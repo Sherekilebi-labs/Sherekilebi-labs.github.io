@@ -22,7 +22,6 @@ export interface TapeSliderProps {
   autoRoll?: boolean;
   fit?: 'cover' | 'contain';
   aspectRatio?: string;
-  tapeEdges?: boolean;
   previousLabel?: string;
   nextLabel?: string;
   footnote?: string;
@@ -35,7 +34,7 @@ type Motion = { index: number; position: number; phase: 'idle' | 'rolling' | 're
 export function TapeSlider({
   items, label = 'Image filmstrip', heading = 'FILMSTRIP', intervalMs = 2000,
   durationMs = 600, autoRoll = true, fit = 'cover', aspectRatio = '4 / 3',
-  tapeEdges = false, previousLabel = 'Previous image', nextLabel = 'Next image', footnote,
+  previousLabel = 'Previous image', nextLabel = 'Next image', footnote,
 }: TapeSliderProps) {
   const count = items.length;
   const initial: Motion = { index: 0, position: count > 1 ? 1 : 0, phase: 'idle' };
@@ -60,11 +59,12 @@ export function TapeSlider({
       if (fromUser) queuedStep.current = direction;
       return;
     }
+    const index = (current.index + direction + count) % count;
     if (reduced || durationMs <= 0) {
-      const index = (current.index + direction + count) % count;
       publish({ index, position: index + 1, phase: 'idle' });
     } else {
-      publish({ ...current, position: current.position + direction, phase: 'rolling' });
+      // Caption, project link, and frame counter follow the incoming frame immediately.
+      publish({ index, position: current.position + direction, phase: 'rolling' });
     }
   }, [count, durationMs, reduced, publish]);
 
@@ -135,7 +135,7 @@ export function TapeSlider({
   const mode = reduced ? 'STILL MODE' : manual || !autoRoll ? 'MANUAL STEP' : hovered || focused ? 'HOLD' : 'AUTO-ROLL';
   const style = { '--tape-duration': `${Math.max(0, durationMs)}ms`, '--tape-fit': fit, '--tape-aspect': aspectRatio } as CSSProperties;
   const picture = <>
-    <div className={`tape-window ${tapeEdges ? 'tape-edges' : ''}`} role="group" aria-roledescription="slide" aria-label={`${motion.index + 1} of ${count}: ${current.title}`}
+    <div className="tape-window" role="group" aria-roledescription="slide" aria-label={`${motion.index + 1} of ${count}: ${current.title}`}
       onPointerDown={event => { suppressClick.current = false; if (event.pointerType !== 'mouse') pointerStart.current = { x: event.clientX, y: event.clientY }; }}
       onPointerUp={endPointer} onPointerCancel={() => { pointerStart.current = null; }}>
       <div className="tape-track" data-phase={motion.phase} aria-hidden="true" style={{ transform: `translate3d(${-motion.position * 100}%, 0, 0)` }}
@@ -153,7 +153,7 @@ export function TapeSlider({
     onClickCapture={event => { if (suppressClick.current && (event.target as Element).closest('.tape-window')) { suppressClick.current = false; event.preventDefault(); event.stopPropagation(); } }}>
     <div className="carousel-heading"><span className="eyebrow">{heading}</span><span className="mono tape-counter" aria-live={manual ? 'polite' : 'off'}>FRAME {String(motion.index + 1).padStart(2, '0')} // {String(count).padStart(2, '0')}</span></div>
     {current.href ? <Link className="carousel-project" to={current.href} aria-label={`Explore ${current.title}`}>{picture}</Link> : <div className="carousel-project" role="img" aria-label={current.alt}>{picture}</div>}
-    <div className="carousel-controls"><span className="tape-status mono"><span aria-hidden="true"/>{mode}</span>{count > 1 && <div className="carousel-buttons"><button className="icon-button carousel-prev" aria-label={previousLabel} onClick={() => step(-1, true)}><Arrow/></button><button className="icon-button" aria-label={nextLabel} onClick={() => step(1, true)}><Arrow/></button></div>}</div>
+    {count > 1 && <div className="carousel-controls"><div className="carousel-buttons"><button className="icon-button carousel-prev" aria-label={previousLabel} onClick={() => step(-1, true)}><Arrow/></button><button className="icon-button" aria-label={nextLabel} onClick={() => step(1, true)}><Arrow/></button></div></div>}
     {footnote && <p className="carousel-footnote mono">{footnote}</p>}
   </section>;
 }

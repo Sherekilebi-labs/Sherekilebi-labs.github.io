@@ -17,7 +17,6 @@ export function ProjectCarousel() {
     durationMs={600}
     fit="contain"
     aspectRatio="4 / 3"
-    tapeEdges
     previousLabel="Previous featured project"
     nextLabel="Next featured project"
     footnote="A FEW OF OUR MORE REASONABLE IDEAS. CLICK TO INVESTIGATE."

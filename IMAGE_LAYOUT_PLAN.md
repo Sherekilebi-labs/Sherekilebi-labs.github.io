@@ -21,3 +21,17 @@ Do not automatically center-crop every photo. A manual crop may remove empty bac
 After adding/replacing photos, run `python3 scripts/prepare-image-metadata.py` to refresh `src/data/generated/image-dimensions.json`, then build the website. The optional helper reads images with Pillow and never changes the originals.
 
 Check portrait and landscape examples on project pages, `/news`, and homepage previews at desktop and phone widths. Confirm the full frame is visible, no image opens a raw file, captions stay outside the picture, and the page has no horizontal overflow. Existing browser checks cover these behaviors.
+
+
+## GYM Scale background removal
+
+The original `public/media/GYM scale.jpg` is preserved. The transparent cutout is
+`public/media/GYM scale.png`; the website continues to use
+`public/media/web/gym-scale.webp`, now with alpha transparency. Created with the
+built-in imagegen tool using the JPEG as the edit target.
+
+Edit prompt:
+
+```text
+Use case: background-extraction. Edit target: the supplied GYM scale CAD-render image. Remove only the white/off-white background surrounding the scale and replace it with true transparent alpha. Preserve the scale exactly: the blue weighing platform, silver/gray enclosure, dark contour lines, perspective, framing, proportions, all four round controls and their markings, the digital display and its tiny markings. Keep all parts of the scale opaque, including silver highlights and light-colored details; these are not background. Preserve the original appearance and colors. Keep clean antialiased edges without a white halo. Do not redesign, redraw, relight, rotate, add or remove hardware, change text, or add a shadow/backdrop. Output a transparent PNG cutout of the same complete scale.
+```

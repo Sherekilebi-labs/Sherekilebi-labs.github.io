@@ -58,8 +58,8 @@
       "links": []
     },
     {
-      "id": "Robi",
-      "name": "Tsintsadze",
+      "id": "Robiko",
+      "name": "Robiko Tsintsadze",
       "initials": "RT",
       "role": "Associate",
       "bio": "Automotive expert, Physics Teacher",
@@ -71,13 +71,38 @@
     },
     {
       "id": "Temiko",
-      "name": "Machavariani",
+      "name": "Temiko Machavariani",
       "initials": "TM",
       "role": "Associate",
       "bio": "2nd year Undergraduate at MBZUAI; Robotics Systems Engineer",
       "specialties": [
         "AI",
         "Simulation",
+        "Robotics"
+      ],
+      "links": []
+    },
+    {
+      "id": "Nino",
+      "name": "Nino Matcharashvili",
+      "initials": "NM",
+      "role": "Associate",
+      "bio": "2nd year Undergraduate at MBZUAI; Entrepreneur",
+      "specialties": [
+        "Electrical Engineering",
+        "Project Management",
+        "Design"
+      ],
+      "links": []
+    },
+    {
+      "id": "Nikoloz",
+      "name": "Nikoloz Chkhaidze",
+      "initials": "NC",
+      "role": "Associate",
+      "bio": "1st year Undergraduate at MBZUAI, AI Engineer",
+      "specialties": [
+        "AI",
         "Robotics"
       ],
       "links": []
@@ -100,8 +125,12 @@
       "category": "Prototypes",
       "accent": "cyan",
       "status": "In development",
-      "period": "Ongoing research",
-      "summary": "A robotic arm study connecting mechanical design, inverse kinematics, simulation, and visual joint tracking.",
+      "period": "2026 August - Present",
+      "summary": [
+        "MBZUAI-backed research focusing on 2 areas:",
+        " - Eliminating backlash using Stochastic mechanics",
+        " - Computer vision-based automation of complex manufacturing tasks using auto tool changer"
+      ],
       "tags": [
         "Python",
         "CAD",
@@ -111,14 +140,12 @@
       "media": {
         "diagram": "arm",
         "alt": "LARA robotic arm CAD illustration",
-        "caption": "Lab-supplied LARA illustration",
         "src": "media/web/lara-icon.webp"
       },
       "contributorIds": [],
       "notes": [
-        "The repository contains multiple mechanical revisions and a legacy MuJoCo model with an inverse-kinematics heart-trace demonstration.",
-        "A separate AprilTag generator produces twelve markers for six joints. Visual pose tracking requires measured marker-to-link transforms.",
-        "Tool changing and surface-finishing ideas appear in planning notes; they are proposed demonstrations rather than verified physical capabilities."
+        "The repository contains multiple mechanical revisions and a legacy MuJoCo model",
+        "A separate AprilTag generator produces twelve markers for six joints. Visual pose tracking is done by measuring marker-to-link transforms."
       ],
       "specs": [
         {
@@ -141,7 +168,7 @@
         {
           "src": "media/web/lara-standing.webp",
           "alt": "Orange and purple LARA arm standing on the workbench",
-          "caption": "LARA mechanical prototype on the bench."
+          "caption": "LARA v1 mechanical prototype on the bench."
         },
         {
           "src": "media/web/lara-idle.webp",
@@ -160,20 +187,18 @@
       "category": "Prototypes",
       "accent": "cyan",
       "status": "In development",
-      "period": "2026",
+      "period": "2026 August - Present",
       "summary": "A pop-up spoiler prototype for a third-generation BMW 6 Series. Four feedback-controlled motors move two wings through four-bar linkages, with adjustable response curves for sensed roll and pitch.",
       "tags": [
         "ESP32",
         "Motorsport",
         "Four-bar Linkage",
         "Motor Control",
-        "MPU6050",
         "Web Dashboard"
       ],
       "media": {
         "diagram": "spoiler",
         "alt": "Active Spoiler project render",
-        "caption": "Lab-supplied project illustration",
         "src": "media/web/spoiler-icon.webp"
       },
       "contributorIds": [],
@@ -238,7 +263,7 @@
         {
           "src": "media/web/spoiler-complete-circuit.webp",
           "alt": "Assembled spoiler electronics on the bench",
-          "caption": "A wider view of the electronics prototype."
+          "caption": "A wider view of the complete circuit."
         }
       ]
     },
@@ -250,9 +275,9 @@
       "folder": "Sumo 2026",
       "sourceRoot": "platformio",
       "category": "Competition",
-      "accent": "orange",
+      "accent": "green",
       "status": "Completed",
-      "period": "2026",
+      "period": "2026 June",
       "summary": "An autonomous sumo platform with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
       "tags": [
         "ESP32",
@@ -263,7 +288,6 @@
       "media": {
         "diagram": "sumo",
         "alt": "Sumo 2026 project render",
-        "caption": "Lab-supplied project illustration",
         "src": "media/web/sumo2026-robot-icon.webp"
       },
       "contributorIds": [],
@@ -312,32 +336,29 @@
       "id": "cupexs",
       "number": "04",
       "title": "CupExS Drag Racer",
-      "subtitle": "A Wi-Fi-controlled drag car, a separate two-lane infrared finish timer, and a companion motor-dyno experiment.",
+      "subtitle": "An educational physics experiment kit designed for Cup of Experimental Science 2026. The goal of the experimental kit: find the optimal gear ratio between motor and drive shaft that achieves the quickest 10m run",
       "folder": "Cupexs drag race",
       "sourceRoot": "platformio",
       "category": "Competition",
-      "accent": "orange",
-      "status": "In development",
-      "period": "2026",
-      "summary": "A Wi-Fi-controlled drag car, a separate two-lane infrared finish timer, and a companion motor-dyno experiment.",
+      "accent": "green",
+      "status": "Completed",
+      "period": "2026, August",
+      "summary": "An educational physics experiment kit designed for Cup of Experimental Science 2026. The goal of the experimental kit: find the optimal gear ratio between motor and drive shaft that achieves the quickest 10m run",
       "tags": [
-        "ESP32",
-        "C++",
+        "Education",
         "CAD",
         "Data analysis"
       ],
       "media": {
         "diagram": "racer",
         "alt": "CupExS Drag Racer project render",
-        "caption": "Lab-supplied project illustration",
         "src": "media/web/cupexs-drag-car-icon.webp"
       },
       "contributorIds": [],
       "notes": [
         "The current car controller provides browser Start / Stop commands, 20 kHz 10-bit forward PWM, and an automatic stop after a 60-second run window.",
         "A separate ESP32 timer alternates 36 kHz bursts across two lanes, handles a countdown, and records independent finish times when beams are interrupted. The browser control does not synchronize the vehicle launch to the timer.",
-        "The companion dyno firmware samples an MT6701 encoder and ACS712 current sensor and estimates torque and power from a configured inertia. It is a separate test program; its current GPIO21 reverse-drive / encoder-SDA overlap must be reconciled with the wiring.",
-        "CAD and fitted motion models in the workspace support drivetrain experiments. No competition placing or certified power result is inferred from the photographs."
+        "The companion dyno firmware samples an MT6701 encoder and ACS712 current sensor and estimates torque and power from a configured inertia."
       ],
       "specs": [
         {
@@ -373,17 +394,19 @@
         {
           "src": "media/web/cupexs-car.webp",
           "alt": "Orange drag car chassis and wheels held over the workbench",
-          "caption": "The physical drag-car chassis."
+          "caption": "The final physical drag-car chassis."
         },
         {
           "src": "media/web/cupexs-dyno-setup.webp",
-          "alt": "Purple motor dyno fixture with electronics attached",
-          "caption": "A separate motor test fixture."
-        },
+          "alt": "Motor dyno fixture with electronics attached",
+          "caption": "Idependent experiment to measure motor torque vs rpm curve"
+        }
+      ],
+      "analysisFigures": [
         {
-          "src": "media/web/cupexs-dyno-results.webp",
-          "alt": "A laptop showing a plotted motor test run",
-          "caption": "A recorded test-screen photograph; not a verified performance specification."
+          "src": "media/cupexs-model-fit.svg",
+          "alt": "Recorded vehicle motion compared with fitted drivetrain models",
+          "caption": "Experimental results used to estimate rolling and gearbox friction and validate the theoretical model against real acceleration data"
         }
       ]
     },
@@ -396,9 +419,9 @@
       "sourceRoot": "platformio",
       "category": "Lab systems",
       "accent": "green",
-      "status": "Firmware prototype",
-      "period": "2026",
-      "summary": "An ESP32 door monitor combines an infrared beam, motion-based tamper detection, a buzzer, a local web panel, and optional email alerts.",
+      "status": "Completed",
+      "period": "2026, July",
+      "summary": "An ESP32-based door security monitor combines an infrared beam, motion-based tamper detection, a buzzer, a local web panel, and optional email alerts. Used as a anti-theft protection for the lab",
       "tags": [
         "ESP32",
         "C++",
@@ -408,7 +431,6 @@
       "media": {
         "diagram": "door",
         "alt": "Door Security System project render",
-        "caption": "Lab-supplied project illustration",
         "src": "media/web/door-security-icon.webp"
       },
       "contributorIds": [],
@@ -455,7 +477,7 @@
         {
           "src": "media/web/cat-testing-door-security.webp",
           "alt": "A cat standing outside the lab doorway",
-          "caption": "An unscheduled visitor at the door. Photograph only; no detection result is claimed."
+          "caption": "An unscheduled visitor at the door."
         }
       ]
     },
@@ -468,8 +490,8 @@
       "sourceRoot": "platformio",
       "category": "Lab systems",
       "accent": "green",
-      "status": "In development",
-      "period": "2026",
+      "status": "Completed",
+      "period": "2026 August",
       "summary": "A BLE-connected ESP32 load-cell scale with filtered weight telemetry and a Flutter companion app for local measurements and food logging.",
       "tags": [
         "ESP32",
@@ -479,8 +501,9 @@
       ],
       "media": {
         "diagram": "scale",
-        "alt": "GYM Scale engineering illustration",
-        "caption": "Illustrative engineering study"
+        "alt": "GYM Scale CAD model with a blue weighing platform and front controls",
+        "caption": "GYM Scale enclosure and weighing-platform design.",
+        "src": "media/web/gym-scale.webp"
       },
       "contributorIds": [],
       "notes": [
@@ -516,7 +539,14 @@
           "detail": "Strain-gauge load cell"
         }
       ],
-      "sourceUrl": "https://github.com/Sherekilebi-labs/GYM-scale"
+      "sourceUrl": "https://github.com/Sherekilebi-labs/GYM-scale",
+      "gallery": [
+        {
+          "src": "media/web/gym-scale-ui.webp",
+          "alt": "GYM Scale browser interface showing a weight readout, tare and mode controls, and food nutrition information",
+          "caption": "Browser interface with weight, tare controls, and food nutrition information."
+        }
+      ]
     }
   ]
 }

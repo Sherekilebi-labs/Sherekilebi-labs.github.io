@@ -11,10 +11,6 @@
     "width": 1429,
     "height": 1200
   },
-  "media/web/cupexs-dyno-results.webp": {
-    "width": 1500,
-    "height": 1125
-  },
   "media/web/cupexs-dyno-setup.webp": {
     "width": 846,
     "height": 1061
@@ -22,6 +18,14 @@
   "media/web/door-security-icon.webp": {
     "width": 1189,
     "height": 1200
+  },
+  "media/web/gym-scale-ui.webp": {
+    "width": 1080,
+    "height": 2340
+  },
+  "media/web/gym-scale.webp": {
+    "width": 1431,
+    "height": 1099
   },
   "media/web/gyroid-infill.webp": {
     "width": 900,
@@ -60,8 +64,8 @@
     "height": 893
   },
   "media/web/spoiler-complete-circuit.webp": {
-    "width": 900,
-    "height": 1200
+    "width": 1600,
+    "height": 739
   },
   "media/web/spoiler-icon.webp": {
     "width": 1472,

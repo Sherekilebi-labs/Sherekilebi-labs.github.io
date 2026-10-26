@@ -1,11 +1,11 @@
 {
   "id": "2026-10-13-drawer-for-every-idea",
   "slug": "2026-10-13-drawer-for-every-idea",
-  "title": "A drawer for every unfinished idea.",
+  "title": "A drawer for every unfinished project.",
   "date": "2026-10-13",
   "author": "dachi",
   "category": "lab-news",
-  "summary": "Some projects need a breakthrough. Others first need a labelled drawer. A small improvement to keeping the workbench usable.",
+  "summary": "Cheapest (both money and effort wise) approach to organize your drawers.",
   "tags": [
     "Workshop",
     "Organization",
@@ -13,6 +13,6 @@
   ],
   "media": "media/web/lab-project-managment.webp",
   "mediaAlt": "Labelled project drawers stacked in the laboratory.",
-  "content": "## A little structure for the chaos\n\nThis is a workshop for experiments at different stages. Giving parts and project assemblies a visible home makes it easier to put a build down and return to it.\n\nThe labels will change as the projects do. The useful part is being able to find the thing you were certain you left right here.",
+  "content": "\n\nAfter 2 years working in the school physics lab I am convinced that sorting items based on their type or size is useless. Instead, it is far more practical to throw everything into one box and call it one project.",
   "pinned": true
 }

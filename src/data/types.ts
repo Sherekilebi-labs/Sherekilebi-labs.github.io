@@ -2,7 +2,7 @@ export interface Media {
   diagram: 'arm' | 'sumo' | 'hydrofoil' | 'pcb' | 'education' | 'racer' | 'door' | 'spoiler' | 'scale';
   src?: string;
   alt: string;
-  caption: string;
+  caption?: string;
 }
 
 export interface Project {
@@ -21,6 +21,7 @@ export interface Project {
   media: Media;
   icon?: string;
   gallery?: { src: string; alt: string; caption: string }[];
+  analysisFigures?: { src: string; alt: string; caption: string }[];
   contributorIds: string[];
   notes: string[];
   specs: { label: string; value: string }[];

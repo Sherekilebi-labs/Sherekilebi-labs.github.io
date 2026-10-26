@@ -1,0 +1,18 @@
+{
+  "id": "2026-07-29-dyno-on-the-bench",
+  "slug": "2026-07-29-dyno-on-the-bench",
+  "title": "Dyno rig",
+  "date": "2026-07-29",
+  "author": "dachi",
+  "category": "project-update",
+  "summary": "Reusing Tekkai 1.0 control board to kickstart CupExS Drag Car development",
+  "tags": [
+    "CupExS",
+    "Dyno",
+    "Work in progress"
+  ],
+  "media": "media/web/cupexs-dyno-setup.webp",
+  "mediaAlt": "A purple printed motor-dyno fixture with its electronics.",
+  "relatedProject": "cupexs",
+  "content": "## \n\nBefore I decide what the optimal gear ratio of the car, I need to measure the torque vs rpm characteristic of our DC motors. I printed a seperate stand and mount for a high precision magnetic encoder MT6701 which records wheel rotation. Measuring acceleration on the shaft gave me a power-rpm torque that revealed optimal rpm range that outputs maximum power."
+}
