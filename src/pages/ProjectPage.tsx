@@ -4,6 +4,7 @@ import { ProjectMedia } from '../components/ProjectMedia';
 import { Arrow } from '../components/Diagrams';
 import { imageDimensions, mediaUrl } from '../lib/media';
 import { Markdown } from '../components/Markdown';
+import { ProjectSummary } from '../components/ProjectSummary';
 
 export function ProjectPage() {
   const { projectId } = useParams();
@@ -15,9 +16,15 @@ export function ProjectPage() {
 
   return <article className={`project-page container accent-${project.accent}`}>
     <Link className="back-link mono" to="/#projects">← BACK TO THE PROJECT INDEX</Link>
-    <header className="project-page-header"><div><p className="eyebrow">PROJECT FILE / {project.number} <span>— {project.category}</span></p><h1>{project.title}</h1><p className="project-page-summary">{project.summary}</p><div className="tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div><div className="project-file-stamp"><span className="status-label"><span/>{project.status}</span><p className="mono">{project.period}</p><span className="source-path">/{project.folder}</span></div></header>
+    <header className="project-page-header"><div><p className="eyebrow">PROJECT FILE / {project.number} <span>— {project.category}</span></p><h1>{project.title}</h1><ProjectSummary className="project-page-summary">{project.summary}</ProjectSummary><div className="tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div><div className="project-file-stamp"><span className="status-label"><span/>{project.status}</span><p className="mono">{project.period}</p><span className="source-path">/{project.folder}</span></div></header>
     <div className="project-page-grid"><div className="project-page-main"><ProjectMedia media={project.media} detailed/>
       <dl className="project-specs">{project.specs.map(spec => <div key={spec.label}><dt>{spec.label}</dt><dd>{spec.value}</dd></div>)}</dl>
+      <section className="project-detail-section" aria-labelledby="project-introduction-title">
+        <h2 id="project-introduction-title">Introduction</h2>
+        <ProjectSummary className="project-introduction">
+          {project.introduction}
+        </ProjectSummary>
+      </section>
       <section className="project-detail-section"><p className="eyebrow">01 / UNDER THE HOOD</p><h2>Engineering notes</h2><NotesList className="engineering-notes">{project.notes.map(note => <li key={note}>{note}</li>)}</NotesList></section>
       {!!project.gallery?.length && <section className="project-detail-section"><p className="eyebrow">02 / ON THE BENCH</p><h2>From the workshop</h2><div className="project-gallery">{project.gallery.map(image => <figure key={image.src}><img src={mediaUrl(image.src)} alt={image.alt} loading="lazy" {...imageDimensions(image.src)}/><figcaption>{image.caption}</figcaption></figure>)}</div></section>}
       {project.analysisFigures?.map(figure => (

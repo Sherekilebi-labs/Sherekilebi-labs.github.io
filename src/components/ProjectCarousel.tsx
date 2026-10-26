@@ -12,13 +12,12 @@ export function ProjectCarousel() {
       href: `/projects/${project.id}`,
     }))}
     label="Featured projects"
-    heading="THE FLIGHT DECK"
+    heading="Projects:"
     intervalMs={2000}
     durationMs={600}
     fit="contain"
     aspectRatio="4 / 3"
     previousLabel="Previous featured project"
     nextLabel="Next featured project"
-    footnote="A FEW OF OUR MORE REASONABLE IDEAS. CLICK TO INVESTIGATE."
   />;
 }

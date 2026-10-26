@@ -41,9 +41,7 @@ export function TapeSlider({
   const [motion, setMotion] = useState<Motion>(initial);
   const latest = useRef<Motion>(initial);
   const queuedStep = useRef<Direction | null>(null);
-  const [manual, setManual] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const [focused, setFocused] = useState(false);
+  const [pauseUntil, setPauseUntil] = useState(0);
   const [visible, setVisible] = useState(() => !document.hidden);
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
@@ -52,7 +50,7 @@ export function TapeSlider({
 
   const publish = useCallback((next: Motion) => { latest.current = next; setMotion(next); }, []);
   const step = useCallback((direction: Direction, fromUser = false) => {
-    if (fromUser) setManual(true);
+    if (fromUser) setPauseUntil(Date.now() + 3000);
     if (count < 2) return;
     const current = latest.current;
     if (current.phase !== 'idle') {
@@ -63,7 +61,7 @@ export function TapeSlider({
     if (reduced || durationMs <= 0) {
       publish({ index, position: index + 1, phase: 'idle' });
     } else {
-      // Caption, project link, and frame counter follow the incoming frame immediately.
+      // Caption and project link follow the incoming frame immediately.
       publish({ index, position: current.position + direction, phase: 'rolling' });
     }
   }, [count, durationMs, reduced, publish]);
@@ -79,7 +77,7 @@ export function TapeSlider({
   useEffect(() => {
     queuedStep.current = null;
     publish({ index: 0, position: count > 1 ? 1 : 0, phase: 'idle' });
-    setManual(false);
+    setPauseUntil(0);
   }, [itemKey, count, publish]);
 
   useEffect(() => {
@@ -92,10 +90,18 @@ export function TapeSlider({
   }, []);
 
   useEffect(() => {
-    if (!autoRoll || manual || hovered || focused || !visible || reduced || count < 2) return;
-    const timer = window.setInterval(() => step(1), Math.max(intervalMs, durationMs + 100));
-    return () => window.clearInterval(timer);
-  }, [autoRoll, manual, hovered, focused, visible, reduced, count, intervalMs, durationMs, step]);
+    if (!autoRoll || !visible || reduced || count < 2) return;
+    const cadence = Math.max(intervalMs, durationMs + 100);
+    let timer: number;
+    const roll = () => {
+      setPauseUntil(0);
+      step(1);
+      timer = window.setTimeout(roll, cadence);
+    };
+    // Resume with a roll three seconds after the latest user input.
+    timer = window.setTimeout(roll, pauseUntil ? Math.max(0, pauseUntil - Date.now()) : cadence);
+    return () => window.clearTimeout(timer);
+  }, [autoRoll, pauseUntil, visible, reduced, count, intervalMs, durationMs, step]);
 
   useEffect(() => {
     if (motion.phase !== 'rolling') return;
@@ -112,7 +118,7 @@ export function TapeSlider({
         publish({ ...latest.current, phase: 'idle' });
         const pending = queuedStep.current;
         queuedStep.current = null;
-        if (pending) step(pending, true);
+        if (pending) step(pending);
       });
     });
     return () => { cancelAnimationFrame(firstFrame); cancelAnimationFrame(secondFrame); };
@@ -132,7 +138,7 @@ export function TapeSlider({
   if (!count) return null;
   const current = items[motion.index % count];
   const frames = count > 1 ? [items[count - 1], ...items, items[0]] : items;
-  const mode = reduced ? 'STILL MODE' : manual || !autoRoll ? 'MANUAL STEP' : hovered || focused ? 'HOLD' : 'AUTO-ROLL';
+  const mode = reduced ? 'STILL MODE' : pauseUntil || !autoRoll ? 'MANUAL STEP' : 'AUTO-ROLL';
   const style = { '--tape-duration': `${Math.max(0, durationMs)}ms`, '--tape-fit': fit, '--tape-aspect': aspectRatio } as CSSProperties;
   const picture = <>
     <div className="tape-window" role="group" aria-roledescription="slide" aria-label={`${motion.index + 1} of ${count}: ${current.title}`}
@@ -147,11 +153,9 @@ export function TapeSlider({
   </>;
 
   return <section className="project-carousel tape-slider" style={style} aria-roledescription="carousel" aria-label={label} tabIndex={0} data-mode={mode} data-phase={motion.phase}
-    onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)}
-    onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}
     onKeyDown={event => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); step(event.key === 'ArrowLeft' ? -1 : 1, true); } }}
     onClickCapture={event => { if (suppressClick.current && (event.target as Element).closest('.tape-window')) { suppressClick.current = false; event.preventDefault(); event.stopPropagation(); } }}>
-    <div className="carousel-heading"><span className="eyebrow">{heading}</span><span className="mono tape-counter" aria-live={manual ? 'polite' : 'off'}>FRAME {String(motion.index + 1).padStart(2, '0')} // {String(count).padStart(2, '0')}</span></div>
+    <div className="carousel-heading"><span className="carousel-title">{heading}</span></div>
     {current.href ? <Link className="carousel-project" to={current.href} aria-label={`Explore ${current.title}`}>{picture}</Link> : <div className="carousel-project" role="img" aria-label={current.alt}>{picture}</div>}
     {count > 1 && <div className="carousel-controls"><div className="carousel-buttons"><button className="icon-button carousel-prev" aria-label={previousLabel} onClick={() => step(-1, true)}><Arrow/></button><button className="icon-button" aria-label={nextLabel} onClick={() => step(1, true)}><Arrow/></button></div></div>}
     {footnote && <p className="carousel-footnote mono">{footnote}</p>}

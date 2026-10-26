@@ -17,6 +17,7 @@ export interface Project {
   status: string;
   period: string;
   summary: string;
+  introduction: string;
   tags: string[];
   media: Media;
   icon?: string;

@@ -6,6 +6,7 @@ import type { Project } from './data/types';
 import { Arrow, EquipmentIcon } from './components/Diagrams';
 import { ProjectMedia } from './components/ProjectMedia';
 import { ProjectCarousel } from './components/ProjectCarousel';
+import { ProjectSummary } from './components/ProjectSummary';
 import { DispatchCard } from './components/DispatchCard';
 const NewsPage = lazy(() =>
   import('./pages/NewsPage').then((module) => ({ default: module.NewsPage })),
@@ -176,7 +177,9 @@ function ProjectCard({ project }: { project: Project }) {
           </h3>
           <Arrow diagonal />
         </div>
-        <p>{project.summary}</p>
+        <ProjectSummary className="card-summary">
+          {project.summary}
+        </ProjectSummary>
         <div className="tags">
           {project.tags.slice(0, 3).map((tag) => (
             <span key={tag}>{tag}</span>
@@ -329,10 +332,6 @@ function HomePage() {
             </button>
           </div>
         )}
-        <p className="section-footnote">
-          <span aria-hidden="true">+</span> Prototypes stay prototypes until the
-          evidence says otherwise. The engineering notes tell the rest.
-        </p>
       </section>
       <section className="dispatches-home" aria-label="Latest Lab Dispatches">
         <div className="container section">
@@ -350,7 +349,7 @@ function HomePage() {
       </section>
       <section className="section container" id="workbench" aria-label="Lab equipment">
         <SectionHeading title="The tools behind the ideas.">
-          <p>A small workshop. Enough tools to get a little carried away.</p>
+          <p>A small but effective workshop.</p>
         </SectionHeading>
         <div className="equipment-list">
           {lab.equipment.map((equipment, i) => (
@@ -416,7 +415,7 @@ function HomePage() {
       </section>
       <section className="section container" id="people" aria-label="People">
         <SectionHeading title="Sherekilebi Team.">
-          <p>We shared pation for making things work.</p>
+          <p>We share pation for making things work.</p>
         </SectionHeading>
         <div className="people-grid">
           {lab.people.map((person, i) => (

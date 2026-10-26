@@ -25,6 +25,7 @@ for (const project of lab.projects) {
   for (const field of ['id', 'title', 'folder', 'category', 'status']) requireValue(project[field]?.trim(), `${project.id}: missing ${field}`);
   const summaryLines = Array.isArray(project.summary) ? project.summary : [project.summary];
   requireValue(summaryLines.length && summaryLines.every(line => typeof line === 'string' && line.trim()), `${project.id}: summary must contain non-empty text`);
+  requireValue(typeof project.introduction === 'string' && project.introduction.trim(), `${project.id}: introduction must contain non-empty text`);
   requireValue(['cyan','orange','green'].includes(project.accent), `Invalid accent: ${project.id}`);
   requireValue(['arm','sumo','hydrofoil','pcb','education','racer','door','spoiler','scale'].includes(project.media.diagram), `Invalid diagram: ${project.id}`);
   requireValue(project.media.alt?.trim() && (project.media.caption === undefined || typeof project.media.caption === 'string'), `Invalid media description: ${project.id}`);

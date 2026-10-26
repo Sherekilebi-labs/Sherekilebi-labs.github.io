@@ -13,7 +13,7 @@
       "id": "printer",
       "title": "Additive manufacturing",
       "name": "Bambu Lab P2S",
-      "description": "Shorten the distance between a CAD model and a part on the bench. Iterate on chassis, mechanisms, and sensor mounts.",
+      "description": "Shorten the distance between a CAD model and a part on the bench.",
       "tags": [
         "FDM printing",
         "Rapid iteration",
@@ -24,7 +24,7 @@
       "id": "soldering",
       "title": "Electronics & assembly",
       "name": "Precision soldering station",
-      "description": "Bring circuits into the physical world, from through-hole assemblies and PCB rework to motor wiring and power harnesses.",
+      "description": "Build Robust prototype circuits in less then a day. Also perfect for pressing brass thread inserts into 3d printed parts.",
       "tags": [
         "PCB assembly",
         "Soldering",
@@ -35,7 +35,7 @@
       "id": "tools",
       "title": "Mechanical work",
       "name": "Precision hand tools",
-      "description": "Measure, assemble, take apart, and adjust. Calipers, drivers, pliers, and the small tools behind every iteration.",
+      "description": "Measure, assemble, take apart, and adjust. Calipers, drivers, pliers, drills..",
       "tags": [
         "Measurement",
         "Assembly",
@@ -119,18 +119,17 @@
     {
       "id": "lara",
       "number": "01",
-      "title": "LARA",
-      "subtitle": "Exploring the mechanics of motion.",
+      "title": "L.A.R.A.",
+      "subtitle": "Lab Assistant Robot Arm",
       "folder": "LARA",
       "category": "Prototypes",
       "accent": "cyan",
       "status": "In development",
       "period": "2026 August - Present",
       "summary": [
-        "MBZUAI-backed research focusing on 2 areas:",
-        " - Eliminating backlash using Stochastic mechanics",
-        " - Computer vision-based automation of complex manufacturing tasks using auto tool changer"
+        "MBZUAI-backed research on 6-DoF robot arm focusing on 2 areas:\n\n- Eliminating backlash using Stochastic mechanics.\n- Computer vision-based automation of complex manufacturing tasks using auto tool changer."
       ],
+      "introduction": "L.A.R.A. **Lab Assistant Robot Arm**. The project explores how a six-axis robot could become a flexible workshop assistant, taking on repeatable manufacturing tasks with different tools.\n\nThe research aims to reduce positioning errors caused by mechanical backlash and combine computer vision with an automatic tool changer. The goal is to make complex workshop tasks easier to automate with one adaptable arm.",
       "tags": [
         "Python",
         "CAD",
@@ -189,6 +188,7 @@
       "status": "In development",
       "period": "2026 August - Present",
       "summary": "A pop-up spoiler prototype for a third-generation BMW 6 Series. Four feedback-controlled motors move two wings through four-bar linkages, with adjustable response curves for sensed roll and pitch.",
+      "introduction": "This project explores active aerodynamics through a pop-up spoiler prototype for a third-generation BMW 6 Series. Instead of keeping both wing panels in one fixed position, the design allows each side to move independently.\n\nThe goal is to coordinate the motors and linkages so the wings follow adjustable responses to sensed roll and pitch. A tunable controller makes it possible to compare different responses and test the mechanism before evaluating its behavior under driving and aerodynamic loads.",
       "tags": [
         "ESP32",
         "Motorsport",
@@ -279,6 +279,7 @@
       "status": "Completed",
       "period": "2026 June",
       "summary": "An autonomous sumo platform with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
+      "introduction": "Tekkai 2.0 was built around a simple challenge: find an opponent, push it out of the sumo ring, and stay inside the boundary without a driver, and under a very tight budget. \n\nIt got massive design upgrades from v1 from 2024 including 4 wheel drive instead of 2, IR edge detectors, stronger motors, better Ultrasonic sensor logic.",
       "tags": [
         "ESP32",
         "C++",
@@ -336,14 +337,15 @@
       "id": "cupexs",
       "number": "04",
       "title": "CupExS Drag Racer",
-      "subtitle": "An educational physics experiment kit designed for Cup of Experimental Science 2026. The goal of the experimental kit: find the optimal gear ratio between motor and drive shaft that achieves the quickest 10m run",
+      "subtitle": "An educational physics experiment kit designed for Cup of Experimental Science 2026.",
       "folder": "Cupexs drag race",
       "sourceRoot": "platformio",
       "category": "Competition",
       "accent": "green",
       "status": "Completed",
       "period": "2026, August",
-      "summary": "An educational physics experiment kit designed for Cup of Experimental Science 2026. The goal of the experimental kit: find the optimal gear ratio between motor and drive shaft that achieves the quickest 10m run",
+      "summary": "An educational physics experiment kit designed for Cup of Experimental Science 2026.",
+      "introduction": "Built for the Cup of Experimental Science 2026, this drag racer turns a drivetrain design decision into a hands-on physics experiment: which gear ratio produces the quickest 10-metre run?\n\nThe goal is to compare how gearing balances wheel torque and speed, then test those predictions with measured runs. A companion motor dyno and two-lane timing system provide tools for investigating motor behavior and comparing results.",
       "tags": [
         "Education",
         "CAD",
@@ -421,7 +423,8 @@
       "accent": "green",
       "status": "Completed",
       "period": "2026, July",
-      "summary": "An ESP32-based door security monitor combines an infrared beam, motion-based tamper detection, a buzzer, a local web panel, and optional email alerts. Used as a anti-theft protection for the lab",
+      "summary": "An ESP32-based door security monitor combines an infrared beam, motion-based tamper detection, a buzzer, a local web panel, and optional email alerts.",
+      "introduction": "Built to help protect the lab, this project combines a door-monitoring infrared beam with motion-based tamper detection. It brings the sensors, alarm, and controls into a system that can be checked from a local web panel.\n\nThe goal is to flag a confirmed beam interruption or disturbance while armed, sound a local alarm, and optionally send an email alert. Confirmation delays help distinguish sustained events from brief sensor disturbances.",
       "tags": [
         "ESP32",
         "C++",
@@ -493,6 +496,7 @@
       "status": "Completed",
       "period": "2026 August",
       "summary": "A BLE-connected ESP32 load-cell scale with filtered weight telemetry and a Flutter companion app for local measurements and food logging.",
+      "introduction": "A weight reading becomes more useful when it can be recorded alongside what was measured. GYM Scale connects a physical weighing platform to a companion app, bringing weight measurements and food logging into one workflow.\n\nThe goal is to produce stable readings, send them wirelessly over Bluetooth Low Energy, and keep food and measurement records locally in the app. The project brings together load-cell electronics, signal filtering, and a mobile interface.",
       "tags": [
         "ESP32",
         "C++",

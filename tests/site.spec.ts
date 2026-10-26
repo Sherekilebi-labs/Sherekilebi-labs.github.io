@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import labData from '../src/data/lab.json' with { type: 'json' };
 
 const projectIds = ['lara', 'active-spoiler', 'sumo-2026', 'cupexs', 'door-security', 'gym-scale'];
+const laraTitle = labData.projects.find(project => project.id === 'lara')!.title;
 
 test('new branding, removed sections, combined filters, and official GitHub links', async ({ page }) => {
   const errors: string[] = [];
@@ -34,32 +35,40 @@ test('new branding, removed sections, combined filters, and official GitHub link
   expect(errors).toEqual([]);
 });
 
-test('tape auto-roll starts every two seconds, holds on hover, and yields to manual arrows', async ({ page }) => {
+test('tape keeps rolling on hover and resumes three seconds after the latest manual click', async ({ page }) => {
   await page.goto('/');
   const carousel = page.getByRole('region', { name: 'Featured projects' });
-  await expect(carousel).toBeVisible();
-  await expect(carousel.locator('.tape-status, .tape-edges')).toHaveCount(0);
-  await page.mouse.move(0, 0);
-  await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 02 // 05', { timeout: 3400 });
-  await expect(carousel.locator('.carousel-caption strong')).toHaveText('Pop-up Spoiler');
-  await carousel.hover();
-  await expect(carousel).toHaveAttribute('data-mode', 'HOLD');
-  await expect(carousel.locator('.tape-track')).toHaveAttribute('data-phase', 'idle');
-  const held = await carousel.locator('.tape-counter').textContent();
-  await page.waitForTimeout(2200);
-  await expect(carousel.locator('.tape-counter')).toHaveText(held!);
+  const caption = carousel.locator('.carousel-caption strong');
+  const track = carousel.locator('.tape-track');
+  await expect(carousel.locator('.carousel-heading')).toHaveText('Projects:');
+  await expect(carousel.locator('.tape-counter, .carousel-footnote, .tape-status, .tape-edges')).toHaveCount(0);
   await expect(carousel.getByRole('button', { name: /play|pause/i })).toHaveCount(0);
+  await carousel.hover();
+  await expect(carousel).toHaveAttribute('data-mode', 'AUTO-ROLL');
+  await expect(caption).toHaveText('Pop-up Spoiler', { timeout: 3400 });
+  await expect(caption).toHaveText('Tekkai 2.0', { timeout: 2600 });
+  await expect(track).toHaveAttribute('data-phase', 'idle');
+
   await carousel.getByRole('button', { name: 'Previous featured project' }).click();
   await expect(carousel).toHaveAttribute('data-mode', 'MANUAL STEP');
-  await expect(carousel.locator('.tape-track')).toHaveAttribute('data-phase', 'idle');
-  const manual = await carousel.locator('.tape-counter').textContent();
-  await page.mouse.move(0, 0);
-  await page.waitForTimeout(2200);
-  await expect(carousel.locator('.tape-counter')).toHaveText(manual!);
-  await expect(carousel.getByRole('link', { name: 'Explore LARA', exact: true })).toHaveAttribute('href', '/projects/lara');
-  await carousel.getByRole('link', { name: 'Explore LARA', exact: true }).click();
-  await expect(page).toHaveURL(/\/projects\/lara$/);
-  await expect(page.getByRole('heading', { name: 'LARA', exact: true })).toBeVisible();
+  await expect(caption).toHaveText('Pop-up Spoiler');
+  await expect(track).toHaveAttribute('data-phase', 'idle');
+  await page.waitForTimeout(1000);
+  await expect(caption).toHaveText('Pop-up Spoiler');
+  // A second click restarts the delay, even while the button retains focus.
+  await carousel.getByRole('button', { name: 'Next featured project' }).click();
+  const clickedAt = await page.evaluate(() => Date.now());
+  await expect(caption).toHaveText('Tekkai 2.0');
+  await expect(track).toHaveAttribute('data-phase', 'idle');
+  await page.waitForTimeout(1500);
+  await expect(caption).toHaveText('Tekkai 2.0');
+  await expect(carousel).toHaveAttribute('data-mode', 'MANUAL STEP');
+  await expect(caption).toHaveText('CupExS Drag Racer', { timeout: 2000 });
+  expect(await page.evaluate(() => Date.now()) - clickedAt).toBeGreaterThanOrEqual(2900);
+  await expect(carousel).toHaveAttribute('data-mode', 'AUTO-ROLL');
+  await expect(caption).toHaveText('Door Security System', { timeout: 2600 });
+  await carousel.getByRole('link', { name: 'Explore Door Security System', exact: true }).click();
+  await expect(page).toHaveURL(/\/projects\/door-security$/);
 });
 
 test('one physical track stays gapless and wraps one frame in either direction', async ({ page }) => {
@@ -110,11 +119,11 @@ test('one physical track stays gapless and wraps one frame in either direction',
     expect(await track.evaluate(element => element.getAnimations().length)).toBe(0);
   }
   await inspectStep('Previous featured project', -1, 'Door Security System', 'door-security');
-  await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 05 // 05');
-  await inspectStep('Next featured project', 1, 'LARA', 'lara');
-  await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 01 // 05');
+  await expect(carousel.locator('.tape-window')).toHaveAttribute('aria-label', '5 of 5: Door Security System');
+  await inspectStep('Next featured project', 1, laraTitle, 'lara');
+  await expect(carousel.locator('.tape-window')).toHaveAttribute('aria-label', `1 of 5: ${laraTitle}`);
   await inspectStep('Next featured project', 1, 'Pop-up Spoiler', 'active-spoiler');
-  await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 02 // 05');
+  await expect(carousel.locator('.tape-window')).toHaveAttribute('aria-label', '2 of 5: Pop-up Spoiler');
 });
 
 test('keyboard and swipes take manual control, including input during a roll', async ({ page }) => {
@@ -125,17 +134,17 @@ test('keyboard and swipes take manual control, including input during a roll', a
   await expect(carousel).toHaveAttribute('data-mode', 'MANUAL STEP');
   await page.keyboard.press('ArrowLeft');
   await expect(carousel.locator('.tape-track')).toHaveAttribute('data-phase', 'idle');
-  await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 01 // 05');
+  await expect(carousel.locator('.tape-window')).toHaveAttribute('aria-label', `1 of 5: ${laraTitle}`);
   const window = carousel.locator('.tape-window');
   await window.dispatchEvent('pointerdown', { pointerType: 'touch', clientX: 250, clientY: 150 });
   await window.dispatchEvent('pointerup', { pointerType: 'touch', clientX: 100, clientY: 155 });
   await window.dispatchEvent('click');
   await expect(page).toHaveURL(/\/$/);
-  await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 02 // 05');
+  await expect(carousel.locator('.tape-window')).toHaveAttribute('aria-label', '2 of 5: Pop-up Spoiler');
   await expect(carousel.locator('.tape-track')).toHaveAttribute('data-phase', 'idle');
   await window.dispatchEvent('pointerdown', { pointerType: 'touch', clientX: 100, clientY: 150 });
   await window.dispatchEvent('pointerup', { pointerType: 'touch', clientX: 250, clientY: 155 });
-  await expect(carousel.locator('.tape-counter')).toHaveText('FRAME 01 // 05');
+  await expect(carousel.locator('.tape-window')).toHaveAttribute('aria-label', `1 of 5: ${laraTitle}`);
 });
 
 test('project routes load directly and source links match the uploaded repositories', async ({ page }) => {
@@ -144,6 +153,14 @@ test('project routes load directly and source links match the uploaded repositor
     const response = await page.goto(`/projects/${id}`);
     expect(response?.status()).toBe(200);
     await expect(page.locator('.project-page h1')).toBeVisible();
+    const sections = page.locator('.project-page-main > .project-detail-section');
+    await expect(sections.nth(0).getByRole('heading')).toHaveText('Introduction');
+    await expect(sections.nth(1).getByRole('heading')).toHaveText('Engineering notes');
+    await expect(sections.nth(0).locator('.project-introduction')).not.toBeEmpty();
+    if (id === 'lara') {
+      await expect(sections.nth(0)).toContainText('Lab Assistant Robot Arm');
+      await expect(page.locator('.project-page-summary ul > li')).toHaveCount(2);
+    }
     await expect(page.getByRole('link', { name: 'Sherekilebi Labs on GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/Sherekilebi-labs');
     if (links[id]) await expect(page.getByRole('link', { name: 'Open GitHub repository' })).toHaveAttribute('href', `https://github.com/Sherekilebi-labs/${links[id]}`);
   }
@@ -201,7 +218,7 @@ test('missing project media falls back and reduced motion disables autoplay', as
   await expect(page.getByRole('region', { name: 'Featured projects' })).toHaveAttribute('data-mode', 'STILL MODE');
   await expect(page.getByRole('button', { name: /play|pause/i })).toHaveCount(0);
   await page.getByRole('button', { name: 'Next featured project' }).click();
-  await expect(page.locator('.tape-counter')).toHaveText('FRAME 02 // 05');
+  await expect(page.locator('.tape-window')).toHaveAttribute('aria-label', '2 of 5: Pop-up Spoiler');
   await expect(page.locator('.tape-track')).toHaveAttribute('data-phase', 'idle');
   await expect(page.locator('html')).toHaveCSS('scroll-behavior','auto');
   const duration = await page.locator('.news-dot').evaluate(element => parseFloat(getComputedStyle(element).animationDuration));
