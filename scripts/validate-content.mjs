@@ -34,6 +34,14 @@ for (const project of lab.projects) {
   if (project.sourceUrl) checkURL(project.sourceUrl);
   for (const link of project.sourceLinks || []) checkURL(link.url);
   for (const src of [project.media.src, project.icon].filter(Boolean)) await checkMedia(src);
+  if (project.logo) {
+    requireValue(project.logo.alt?.trim(), `Missing logo description: ${project.id}`);
+    await checkMedia(project.logo.src);
+  }
+  if (project.introductionImage) {
+    requireValue(project.introductionImage.alt?.trim() && project.introductionImage.caption?.trim(), `Missing introduction image description: ${project.id}`);
+    await checkMedia(project.introductionImage.src);
+  }
   for (const image of project.gallery || []) {
     requireValue(image.alt && image.caption, `Missing gallery description: ${project.id}`);
     await checkMedia(image.src);

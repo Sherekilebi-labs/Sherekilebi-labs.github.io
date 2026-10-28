@@ -18,6 +18,8 @@ export interface Project {
   period: string;
   summary: string;
   introduction: string;
+  logo?: { src: string; alt: string };
+  introductionImage?: { src: string; alt: string; caption: string };
   tags: string[];
   media: Media;
   icon?: string;

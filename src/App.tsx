@@ -5,6 +5,7 @@ import { latestDispatches } from './data/news';
 import type { Project } from './data/types';
 import { Arrow, EquipmentIcon } from './components/Diagrams';
 import { ProjectMedia } from './components/ProjectMedia';
+import { imageDimensions, mediaUrl } from './lib/media';
 import { ProjectCarousel } from './components/ProjectCarousel';
 import { ProjectSummary } from './components/ProjectSummary';
 import { DispatchCard } from './components/DispatchCard';
@@ -164,7 +165,10 @@ function ProjectCard({ project }: { project: Project }) {
           {project.status}
         </span>
       </div>
-      <ProjectMedia media={project.media} />
+      <div className="card-cover">
+        <ProjectMedia media={project.media} />
+        {project.logo && <img className="card-cover-logo" src={mediaUrl(project.logo.src)} alt={project.logo.alt} loading="lazy" {...imageDimensions(project.logo.src)}/>}
+      </div>
       <div className="card-body">
         <div className="card-title">
           <h3>

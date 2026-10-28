@@ -14,6 +14,9 @@ sources = set()
 for project in lab['projects']:
     if project['media'].get('src'):
         sources.add(project['media']['src'])
+    for field in ['logo', 'introductionImage']:
+        if project.get(field):
+            sources.add(project[field]['src'])
     for image in [*project.get('gallery', []), *project.get('analysisFigures', [])]:
         sources.add(image['src'])
 for file in (root / 'content/news').glob('*.json'):

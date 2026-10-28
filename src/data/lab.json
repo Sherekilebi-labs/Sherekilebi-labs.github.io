@@ -335,6 +335,12 @@
     },
     {
       "id": "cupexs",
+      "logo": { "src": "media/web/cupexs-logo.webp", "alt": "CupExS logo" },
+      "introductionImage": {
+        "src": "media/web/cupexs-event.webp",
+        "alt": "A participant examining orange drag racers and interchangeable gears at an outdoor CupExS event table",
+        "caption": "The drag racers and interchangeable gears in use at the CupExS event."
+      },
       "number": "04",
       "title": "CupExS Drag Racer",
       "subtitle": "An educational physics experiment kit designed for Cup of Experimental Science 2026.",

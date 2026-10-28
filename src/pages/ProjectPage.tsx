@@ -20,10 +20,15 @@ export function ProjectPage() {
     <div className="project-page-grid"><div className="project-page-main"><ProjectMedia media={project.media} detailed/>
       <dl className="project-specs">{project.specs.map(spec => <div key={spec.label}><dt>{spec.label}</dt><dd>{spec.value}</dd></div>)}</dl>
       <section className="project-detail-section" aria-labelledby="project-introduction-title">
+        {project.logo && <img className="project-introduction-logo" src={mediaUrl(project.logo.src)} alt={project.logo.alt} loading="lazy" {...imageDimensions(project.logo.src)}/>}
         <h2 id="project-introduction-title">Introduction</h2>
         <ProjectSummary className="project-introduction">
           {project.introduction}
         </ProjectSummary>
+        {project.introductionImage && <figure className="project-introduction-photo">
+          <img src={mediaUrl(project.introductionImage.src)} alt={project.introductionImage.alt} loading="lazy" {...imageDimensions(project.introductionImage.src)}/>
+          <figcaption>{project.introductionImage.caption}</figcaption>
+        </figure>}
       </section>
       <section className="project-detail-section"><p className="eyebrow">01 / UNDER THE HOOD</p><h2>Engineering notes</h2><NotesList className="engineering-notes">{project.notes.map(note => <li key={note}>{note}</li>)}</NotesList></section>
       {!!project.gallery?.length && <section className="project-detail-section"><p className="eyebrow">02 / ON THE BENCH</p><h2>From the workshop</h2><div className="project-gallery">{project.gallery.map(image => <figure key={image.src}><img src={mediaUrl(image.src)} alt={image.alt} loading="lazy" {...imageDimensions(image.src)}/><figcaption>{image.caption}</figcaption></figure>)}</div></section>}
