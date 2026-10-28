@@ -300,6 +300,21 @@ h2 { font-size: clamp(26px, 2.7vw, 36px); line-height: 1.3; letter-spacing: -1.2
 .project-page-main { min-width: 0; }
 .detailed-media { margin-bottom: 28px; }
 .detailed-media .project-media-frame { height: 410px; }
+.cad-viewer { position: absolute; inset: 0; }
+.cad-viewer.is-ready { background: var(--deck); }
+.cad-viewer-canvas { position: absolute; inset: 0 0 52px; visibility: hidden; }
+.cad-viewer.is-ready .cad-viewer-canvas { visibility: visible; }
+.cad-viewer-canvas canvas { display: block; width: 100%; height: 100%; cursor: grab; }
+.cad-viewer-canvas canvas:active { cursor: grabbing; }
+.cad-viewer-canvas canvas:focus-visible { outline: 2px solid #f1be4f; outline-offset: -4px; }
+.cad-viewer-toolbar { position: absolute; inset: auto 0 0; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 12px; border-top: 1px solid #748091; color: #fff; }
+.cad-viewer-hint { font-size: 12px; }
+.cad-viewer-buttons { display: flex; gap: 6px; }
+.cad-viewer-buttons button { min-width: 40px; min-height: 38px; padding: 7px 10px; color: #fff; background: #3e4a5b; border: 1px solid #748091; font-size: 12px; }
+.cad-viewer-buttons button:hover { background: #4b5b70; }
+.cad-viewer-buttons button:focus-visible { outline-color: #f1be4f; outline-offset: 2px; }
+.cad-viewer-loading { position: absolute; bottom: 12px; left: 12px; padding: 5px 9px; color: #fff; background: var(--deck); font-size: 12px; }
+.cad-viewer-fallback { padding: 8px 12px; background: var(--deck); color: #fff; font-size: 12px; }
 .detailed-media img { padding: 30px; }
 .detailed-media svg { max-width: 650px; }
 .detailed-media figcaption { font-size: 12px; padding: 12px 20px; }

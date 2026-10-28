@@ -1,4 +1,5 @@
 node_modules/
+.model-build/
 dist/
 test-results/
 playwright-report/
@@ -20,6 +21,10 @@ scripts/prepare-repositories.py
 !/public/licenses/jetbrains-mono-OFL.txt
 !/public/media/cupexs-model-fit.svg
 !/public/media/georgia-flag.svg
+!/public/media/models/active-spoiler.glb
+!/public/media/models/cupexs.glb
+!/public/media/models/lara.glb
+!/public/media/models/sumo-2026.glb
 !/public/media/web/cat-testing-door-security.webp
 !/public/media/web/cupexs-car.webp
 !/public/media/web/cupexs-drag-car-icon.webp
@@ -48,5 +53,29 @@ scripts/prepare-repositories.py
 !/public/media/web/sumo2026-robot-2.webp
 !/public/media/web/sumo2026-robot-icon.webp
 !/public/media/web/sumo2026-robot.webp
+!/public/media/web/turntables/active-spoiler/000.webp
+!/public/media/web/turntables/active-spoiler/060.webp
+!/public/media/web/turntables/active-spoiler/120.webp
+!/public/media/web/turntables/active-spoiler/180.webp
+!/public/media/web/turntables/active-spoiler/240.webp
+!/public/media/web/turntables/active-spoiler/300.webp
+!/public/media/web/turntables/cupexs/000.webp
+!/public/media/web/turntables/cupexs/060.webp
+!/public/media/web/turntables/cupexs/120.webp
+!/public/media/web/turntables/cupexs/180.webp
+!/public/media/web/turntables/cupexs/240.webp
+!/public/media/web/turntables/cupexs/300.webp
+!/public/media/web/turntables/lara/000.webp
+!/public/media/web/turntables/lara/060.webp
+!/public/media/web/turntables/lara/120.webp
+!/public/media/web/turntables/lara/180.webp
+!/public/media/web/turntables/lara/240.webp
+!/public/media/web/turntables/lara/300.webp
+!/public/media/web/turntables/sumo-2026/000.webp
+!/public/media/web/turntables/sumo-2026/060.webp
+!/public/media/web/turntables/sumo-2026/120.webp
+!/public/media/web/turntables/sumo-2026/180.webp
+!/public/media/web/turntables/sumo-2026/240.webp
+!/public/media/web/turntables/sumo-2026/300.webp
 !/public/tsatmfreni.svg
 # END REVIEWED PUBLIC ASSETS

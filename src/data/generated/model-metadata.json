@@ -1,0 +1,110 @@
+[
+  {
+    "project": "cupexs",
+    "source": "Cupexs car.fbx",
+    "meshes": 21,
+    "originalTriangles": 114329,
+    "trianglesAfterDissolve": 100295,
+    "exportTriangles": 100295,
+    "glbBytes": 738124,
+    "orthoScale": 0.42435014247894287,
+    "cameraPosition": [
+      -0.9023844003677368,
+      -1.2031792402267456,
+      0.7519870400428772
+    ],
+    "angles": [
+      0,
+      60,
+      120,
+      180,
+      240,
+      300
+    ],
+    "resolution": [
+      800,
+      600
+    ]
+  },
+  {
+    "project": "lara",
+    "source": "Lara.fbx",
+    "meshes": 167,
+    "originalTriangles": 2844579,
+    "trianglesAfterDissolve": 2759136,
+    "exportTriangles": 324593,
+    "glbBytes": 5718160,
+    "orthoScale": 0.743388831615448,
+    "cameraPosition": [
+      -1.2928881645202637,
+      -1.723850965499878,
+      1.077406883239746
+    ],
+    "angles": [
+      0,
+      60,
+      120,
+      180,
+      240,
+      300
+    ],
+    "resolution": [
+      800,
+      600
+    ]
+  },
+  {
+    "project": "active-spoiler",
+    "source": "Spoiler arm v2.fbx",
+    "meshes": 35,
+    "originalTriangles": 163178,
+    "trianglesAfterDissolve": 149254,
+    "exportTriangles": 149254,
+    "glbBytes": 1123672,
+    "orthoScale": 1.2494697570800781,
+    "cameraPosition": [
+      -2.4248640537261963,
+      -3.233152151107788,
+      2.0207202434539795
+    ],
+    "angles": [
+      0,
+      60,
+      120,
+      180,
+      240,
+      300
+    ],
+    "resolution": [
+      800,
+      600
+    ]
+  },
+  {
+    "project": "sumo-2026",
+    "source": "Tekkai v2.fbx",
+    "meshes": 123,
+    "originalTriangles": 185248,
+    "trianglesAfterDissolve": 148036,
+    "exportTriangles": 148036,
+    "glbBytes": 1327568,
+    "orthoScale": 0.3182424008846283,
+    "cameraPosition": [
+      -0.6296800971031189,
+      -0.8395735025405884,
+      0.5247334241867065
+    ],
+    "angles": [
+      0,
+      60,
+      120,
+      180,
+      240,
+      300
+    ],
+    "resolution": [
+      800,
+      600
+    ]
+  }
+]

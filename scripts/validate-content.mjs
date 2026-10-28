@@ -34,6 +34,21 @@ for (const project of lab.projects) {
   if (project.sourceUrl) checkURL(project.sourceUrl);
   for (const link of project.sourceLinks || []) checkURL(link.url);
   for (const src of [project.media.src, project.icon].filter(Boolean)) await checkMedia(src);
+  if (project.media.model) {
+    const { src, alt } = project.media.model;
+    requireValue(/^media\/models\/[a-z0-9-]+\.glb$/.test(src), `Invalid model path: ${project.id}`);
+    requireValue(alt?.trim() && project.media.src, `Model needs alternative text and a poster: ${project.id}`);
+    const data = await readFile(path.join(root, 'public', src));
+    requireValue(data.length >= 20 && data.toString('ascii', 0, 4) === 'glTF' && data.readUInt32LE(4) === 2 && data.readUInt32LE(8) === data.length, `Invalid GLB: ${project.id}`);
+    const scene = JSON.parse(data.toString('utf8', 20, 20 + data.readUInt32LE(12)));
+    requireValue(scene.meshes?.length > 0, `Model has no meshes: ${project.id}`);
+    requireValue(![...(scene.buffers || []), ...(scene.images || [])].some(asset => asset.uri && !asset.uri.startsWith('data:')), `GLB must embed its resources: ${project.id}`);
+  }
+  if (project.media.turntable) {
+    const frames = project.media.turntable.frames;
+    requireValue(Array.isArray(frames) && frames.length === 6 && new Set(frames).size === 6, `Turntable needs six distinct frames: ${project.id}`);
+    for (const frame of frames) await checkMedia(frame);
+  }
   if (project.logo) {
     requireValue(project.logo.alt?.trim(), `Missing logo description: ${project.id}`);
     await checkMedia(project.logo.src);

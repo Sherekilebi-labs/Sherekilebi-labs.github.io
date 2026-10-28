@@ -14,6 +14,7 @@ sources = set()
 for project in lab['projects']:
     if project['media'].get('src'):
         sources.add(project['media']['src'])
+    sources.update(project['media'].get('turntable', {}).get('frames', []))
     for field in ['logo', 'introductionImage']:
         if project.get(field):
             sources.add(project[field]['src'])
