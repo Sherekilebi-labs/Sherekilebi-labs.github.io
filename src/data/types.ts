@@ -25,7 +25,7 @@ export interface Project {
   icon?: string;
   gallery?: { src: string; alt: string; caption: string }[];
   analysisFigures?: { src: string; alt: string; caption: string }[];
-  simulation?: { intro: string; frames: { src: string; alt: string; caption: string }[] };
+  simulation?: { intro: string; animation?: { src: string; alt: string; caption: string }; frames: { src: string; alt: string; caption: string }[] };
   contributorIds: string[];
   notes: string[];
   specs: { label: string; value: string }[];

@@ -17,7 +17,7 @@ for project in lab['projects']:
     for field in ['logo', 'introductionImage']:
         if project.get(field):
             sources.add(project[field]['src'])
-    for image in [*project.get('gallery', []), *project.get('analysisFigures', []), *project.get('simulation', {}).get('frames', [])]:
+    for image in [*project.get('gallery', []), *project.get('analysisFigures', []), *project.get('simulation', {}).get('frames', []), *([project['simulation']['animation']] if project.get('simulation', {}).get('animation') else [])]:
         sources.add(image['src'])
 for file in (root / 'content/news').glob('*.json'):
     post = json.loads(file.read_text())

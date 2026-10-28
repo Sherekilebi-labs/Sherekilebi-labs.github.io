@@ -46,7 +46,7 @@ for (const project of lab.projects) {
     requireValue(image.alt && image.caption, `Missing gallery description: ${project.id}`);
     await checkMedia(image.src);
   }
-  for (const frame of project.simulation?.frames || []) {
+  for (const frame of [project.simulation?.animation, ...(project.simulation?.frames || [])].filter(Boolean)) {
     requireValue(frame.alt?.trim() && frame.caption?.trim(), `Missing simulation frame description: ${project.id}`);
     await checkMedia(frame.src);
   }

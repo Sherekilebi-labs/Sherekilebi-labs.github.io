@@ -133,7 +133,7 @@
       "tags": [
         "Python",
         "CAD",
-        "MuJoCo",
+        "Isaac Sim",
         "Computer vision"
       ],
       "media": {
@@ -176,27 +176,32 @@
         }
       ],
       "simulation": {
-        "intro": "Headless Isaac Sim renders of the full arm, driven joint by joint. The same frames, paired with ground-truth masks, train and test the vision model: a first smoke run reached 0.95 mask IoU on poses it had never seen.",
+        "intro": "Every joint of the simulated arm, swept through its range one servo at a time. Recorded on an earlier seven-output revision of the model.",
+        "animation": {
+          "src": "media/web/lara-sim-motion.webp",
+          "alt": "Animated simulation of the LARA arm moving each joint through its range in turn",
+          "caption": "Full joint sweep: base, shoulder, top, wrist, then the three end servos, each returning to the reference pose."
+        },
         "frames": [
           {
-            "src": "media/web/lara-sim-reach.webp",
-            "alt": "Simulated LARA arm with its forearm swung forward over the base",
-            "caption": "Reach. Forearm swung forward, wrist turned toward the camera."
+            "src": "media/web/lara-sim-base.webp",
+            "alt": "Simulated LARA arm with the base yawed 60 degrees",
+            "caption": "Base yaw at −60°. Every other joint at its 90° reference."
           },
           {
-            "src": "media/web/lara-sim-raised.webp",
-            "alt": "Simulated LARA arm with its upper link raised",
-            "caption": "Raised. Same base pose, upper link lifted."
+            "src": "media/web/lara-sim-shoulder.webp",
+            "alt": "Simulated LARA arm with the shoulder folded so the long tube leans toward the base",
+            "caption": "Shoulder at 0°. The long tube folds down and the forearm stands up."
           },
           {
-            "src": "media/web/lara-sim-extended.webp",
-            "alt": "Simulated LARA arm with the forearm extended level to the side",
-            "caption": "Extended. Forearm held level, tool flange out to the side."
+            "src": "media/web/lara-sim-elbow.webp",
+            "alt": "Simulated LARA arm with the forearm swung out to the side and the tool hanging down",
+            "caption": "Top servo at 180°. The forearm swings out and the tool end hangs down."
           },
           {
             "src": "media/web/lara-sim-wrist.webp",
-            "alt": "Simulated LARA arm with the wrist rolled at full extension",
-            "caption": "Wrist roll. Full extension with the end joint turned."
+            "alt": "Simulated LARA arm with the forearm folded back alongside the long tube",
+            "caption": "Wrist at 180°. The forearm folds back alongside the long tube."
           }
         ]
       }

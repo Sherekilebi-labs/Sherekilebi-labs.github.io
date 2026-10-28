@@ -344,7 +344,9 @@ h2 { font-size: clamp(26px, 2.7vw, 36px); line-height: 1.3; letter-spacing: -1.2
 .simulation-frame { position: relative; border: 1px solid var(--line); background-color: var(--deck); background-image: radial-gradient(#e9dbb02d .65px,transparent .65px); background-size: 18px 18px; }
 .simulation-frame img { width: 100%; height: auto; max-height: 560px; object-fit: contain; padding: 22px 18px 14px; }
 .simulation-index { position: absolute; top: 10px; left: 12px; color: #f0e5ca; font-size: 9px; }
-.simulation-gallery figcaption { font-family: var(--mono); font-size: 13.5px; line-height: 1.8; color: #616f50; padding-top: 12px; }
+.simulation-motion { margin-bottom: 28px; }
+.simulation-motion .simulation-frame img { width: auto; max-width: 100%; max-height: 620px; margin-inline: auto; padding: 0; }
+.simulation-gallery figcaption, .simulation-motion figcaption { font-family: var(--mono); font-size: 13.5px; line-height: 1.8; color: #616f50; padding-top: 12px; }
 .analysis-figure > img { width: 100%; height: auto; }
 .analysis-figure figcaption { background: var(--paper); }
 .source-excerpt { border: 1px solid #b8c2a4; margin-top: 18px; padding: 18px 22px; background: #f8f6eb; min-width: 0; }

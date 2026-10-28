@@ -59,21 +59,25 @@
     "width": 900,
     "height": 1200
   },
-  "media/web/lara-sim-extended.webp": {
-    "width": 888,
-    "height": 912
+  "media/web/lara-sim-base.webp": {
+    "width": 1078,
+    "height": 1024
   },
-  "media/web/lara-sim-raised.webp": {
-    "width": 888,
-    "height": 912
+  "media/web/lara-sim-elbow.webp": {
+    "width": 1078,
+    "height": 1024
   },
-  "media/web/lara-sim-reach.webp": {
-    "width": 888,
-    "height": 912
+  "media/web/lara-sim-motion.webp": {
+    "width": 738,
+    "height": 850
+  },
+  "media/web/lara-sim-shoulder.webp": {
+    "width": 1078,
+    "height": 1024
   },
   "media/web/lara-sim-wrist.webp": {
-    "width": 888,
-    "height": 912
+    "width": 1078,
+    "height": 1024
   },
   "media/web/lara-standing.webp": {
     "width": 900,

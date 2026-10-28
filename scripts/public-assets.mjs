@@ -13,6 +13,7 @@ export async function publicAssets() {
     add(project.logo?.src); add(project.introductionImage?.src);
     for (const image of project.gallery || []) add(image.src);
     for (const figure of project.analysisFigures || []) add(figure.src);
+    add(project.simulation?.animation?.src);
     for (const frame of project.simulation?.frames || []) add(frame.src);
   }
   for (const name of await readdir(path.join(root, 'content/news'))) {
