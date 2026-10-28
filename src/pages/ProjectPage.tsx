@@ -32,6 +32,7 @@ export function ProjectPage() {
       </section>
       <section className="project-detail-section"><p className="eyebrow">01 / UNDER THE HOOD</p><h2>Engineering notes</h2><NotesList className="engineering-notes">{project.notes.map(note => <li key={note}>{note}</li>)}</NotesList></section>
       {!!project.gallery?.length && <section className="project-detail-section"><p className="eyebrow">02 / ON THE BENCH</p><h2>From the workshop</h2><div className="project-gallery">{project.gallery.map(image => <figure key={image.src}><img src={mediaUrl(image.src)} alt={image.alt} loading="lazy" {...imageDimensions(image.src)}/><figcaption>{image.caption}</figcaption></figure>)}</div></section>}
+      {project.simulation && <section className="project-detail-section"><p className="eyebrow">03 / IN SIMULATION</p><h2>Rehearsed in software</h2><p className="simulation-intro">{project.simulation.intro}</p><div className="simulation-gallery">{project.simulation.frames.map((frame, index) => <figure key={frame.src}><div className="simulation-frame"><span className="simulation-index mono">POSE {String(index + 1).padStart(2, '0')}</span><img src={mediaUrl(frame.src)} alt={frame.alt} loading="lazy" {...imageDimensions(frame.src)}/></div><figcaption>{frame.caption}</figcaption></figure>)}</div></section>}
       {project.analysisFigures?.map(figure => (
         <figure className="analysis-figure" key={figure.src}>
           <img src={mediaUrl(figure.src)} alt={figure.alt} loading="lazy" {...imageDimensions(figure.src)}/>

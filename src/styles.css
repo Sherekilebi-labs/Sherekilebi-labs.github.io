@@ -338,6 +338,13 @@ h2 { font-size: clamp(26px, 2.7vw, 36px); line-height: 1.3; letter-spacing: -1.2
 .project-gallery figure:last-child:nth-child(odd) { grid-column: 1/-1; }
 .project-gallery figcaption, .analysis-figure figcaption { font-family: var(--mono); font-size: 13.5px; line-height: 1.8; color: #616f50; padding-top: 12px; }
 .analysis-figure { background: #fff; margin-top: 35px; }
+/* Simulation renders are transparent cutouts, set on the instrument-panel dot grid. */
+.simulation-intro { max-width: 640px; margin-bottom: 28px; font-size: 14px; color: var(--muted); }
+.simulation-gallery { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px 24px; align-items: start; }
+.simulation-frame { position: relative; border: 1px solid var(--line); background-color: var(--deck); background-image: radial-gradient(#e9dbb02d .65px,transparent .65px); background-size: 18px 18px; }
+.simulation-frame img { width: 100%; height: auto; max-height: 560px; object-fit: contain; padding: 22px 18px 14px; }
+.simulation-index { position: absolute; top: 10px; left: 12px; color: #f0e5ca; font-size: 9px; }
+.simulation-gallery figcaption { font-family: var(--mono); font-size: 13.5px; line-height: 1.8; color: #616f50; padding-top: 12px; }
 .analysis-figure > img { width: 100%; height: auto; }
 .analysis-figure figcaption { background: var(--paper); }
 .source-excerpt { border: 1px solid #b8c2a4; margin-top: 18px; padding: 18px 22px; background: #f8f6eb; min-width: 0; }
@@ -616,7 +623,7 @@ h2 { font-size: clamp(26px, 2.7vw, 36px); line-height: 1.3; letter-spacing: -1.2
   .project-detail-section > h2 { font-size: 23px; }
   .engineering-notes { font-size: 13px; padding-left: 20px; }
   .project-gallery { gap: 20px; }
-  .project-gallery figcaption { font-size: 12px; }
+  .project-gallery figcaption, .simulation-gallery figcaption { font-size: 12px; }
   .source-excerpt { padding: 16px; }
   .markdown { font-size: 13px; }
   .markdown pre { padding: 15px; font-size: 10px; }
@@ -691,7 +698,7 @@ h2 { font-size: clamp(26px, 2.7vw, 36px); line-height: 1.3; letter-spacing: -1.2
   .project-specs { grid-template-columns: 1fr; gap: 18px; }
   .project-specs > div { display: grid; grid-template-columns: 110px 1fr; gap: 15px; }
   .project-specs dt { margin: 0; line-height: 1.8; }
-  .project-gallery { grid-template-columns: 1fr; }
+  .project-gallery, .simulation-gallery { grid-template-columns: 1fr; }
   .component-panel dl { grid-template-columns: 1fr; }
   .detailed-media .project-media-frame { height: 300px; }
   .detailed-media figcaption { font-size: 9px; }

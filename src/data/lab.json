@@ -174,7 +174,32 @@
           "alt": "LARA arm folded beside its wiring",
           "caption": "A folded configuration of the same mechanical build."
         }
-      ]
+      ],
+      "simulation": {
+        "intro": "Headless Isaac Sim renders of the full arm, driven joint by joint. The same frames, paired with ground-truth masks, train and test the vision model: a first smoke run reached 0.95 mask IoU on poses it had never seen.",
+        "frames": [
+          {
+            "src": "media/web/lara-sim-reach.webp",
+            "alt": "Simulated LARA arm with its forearm swung forward over the base",
+            "caption": "Reach. Forearm swung forward, wrist turned toward the camera."
+          },
+          {
+            "src": "media/web/lara-sim-raised.webp",
+            "alt": "Simulated LARA arm with its upper link raised",
+            "caption": "Raised. Same base pose, upper link lifted."
+          },
+          {
+            "src": "media/web/lara-sim-extended.webp",
+            "alt": "Simulated LARA arm with the forearm extended level to the side",
+            "caption": "Extended. Forearm held level, tool flange out to the side."
+          },
+          {
+            "src": "media/web/lara-sim-wrist.webp",
+            "alt": "Simulated LARA arm with the wrist rolled at full extension",
+            "caption": "Wrist roll. Full extension with the end joint turned."
+          }
+        ]
+      }
     },
     {
       "id": "active-spoiler",

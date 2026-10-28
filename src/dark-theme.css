@@ -125,6 +125,7 @@ button,
 .component-panel dd,
 .project-margin-note p,
 .project-gallery figcaption, .analysis-figure figcaption,
+.simulation-gallery figcaption, .simulation-index,
 .source-excerpt > summary > span,
 .markdown,
 .markdown h2, .markdown h3, .markdown h4,
@@ -165,7 +166,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .source-section { background: #222934; }
 
 .hero { background-image: linear-gradient(#ffffff09 1px, transparent 1px), linear-gradient(90deg, #ffffff09 1px, transparent 1px); }
-.project-media { background-image: radial-gradient(#ffffff22 .65px, transparent .65px); }
+.project-media, .simulation-frame { background-image: radial-gradient(#ffffff22 .65px, transparent .65px); }
 .origin-print { background-color: var(--deck); background-image: linear-gradient(#ffffff0c 1px, transparent 1px), linear-gradient(90deg, #ffffff0c 1px, transparent 1px); box-shadow: 7px 8px 0 #222832; }
 .person-avatar { background: repeating-linear-gradient(135deg, #ffffff15, #ffffff15 1px, transparent 1px, transparent 7px); }
 .project-card { box-shadow: 0 3px 0 #222832; }
