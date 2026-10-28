@@ -6,6 +6,7 @@ import type { Project } from './data/types';
 import { Arrow, EquipmentIcon } from './components/Diagrams';
 import { ProjectMedia } from './components/ProjectMedia';
 import { imageDimensions, mediaUrl } from './lib/media';
+import { useTurntable } from './lib/use-turntable';
 import { ProjectCarousel } from './components/ProjectCarousel';
 import { ProjectSummary } from './components/ProjectSummary';
 import { DispatchCard } from './components/DispatchCard';
@@ -156,8 +157,11 @@ function SectionHeading({
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const turntable = useTurntable(project.media.turntable?.frames, mediaUrl);
   return (
-    <article className={`project-card accent-${project.accent}`}>
+    <article className={`project-card accent-${project.accent}`} ref={turntable.card}
+      onPointerMove={turntable.onPointerMove} onPointerLeave={turntable.onPointerLeave}
+      data-turntable-ready={turntable.ready} data-frame={turntable.frame}>
       <div className="card-topline">
         <span className="mono">FILE / {project.number}</span>
         <span className="status-label">
@@ -166,7 +170,7 @@ function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
       <div className="card-cover">
-        <ProjectMedia media={project.media} />
+        <ProjectMedia media={project.media} frame={turntable.frame} turntableReady={turntable.ready}/>
         {project.logo && <img className="card-cover-logo" src={mediaUrl(project.logo.src)} alt={project.logo.alt} loading="lazy" {...imageDimensions(project.logo.src)}/>}
       </div>
       <div className="card-body">
@@ -227,7 +231,7 @@ function HomePage() {
             </p>
             <p className="hero-description">
               <b>Sherekilebi Labs</b> takes its name and spirit from the iconic Georgian film{' '}
-              <em>The Eccentrics</em>: think beyond convention, stay curious, and give
+              <em><b>The Eccentrics</b></em>: think beyond convention, stay curious, and give
               improbable ideas a chance to fly.
             </p>
             <div className="hero-actions">

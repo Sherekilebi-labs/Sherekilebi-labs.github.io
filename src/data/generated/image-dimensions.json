@@ -7,10 +7,6 @@
     "width": 900,
     "height": 1200
   },
-  "media/web/cupexs-drag-car-icon.webp": {
-    "width": 1429,
-    "height": 1200
-  },
   "media/web/cupexs-dyno-setup.webp": {
     "width": 846,
     "height": 1061
@@ -45,10 +41,6 @@
   },
   "media/web/lab-project-managment.webp": {
     "width": 900,
-    "height": 1200
-  },
-  "media/web/lara-icon.webp": {
-    "width": 1449,
     "height": 1200
   },
   "media/web/lara-idle.webp": {
@@ -95,20 +87,108 @@
     "width": 1600,
     "height": 739
   },
-  "media/web/spoiler-icon.webp": {
-    "width": 1472,
-    "height": 1200
-  },
   "media/web/sumo2026-robot-2.webp": {
     "width": 1500,
     "height": 1125
   },
-  "media/web/sumo2026-robot-icon.webp": {
-    "width": 1500,
-    "height": 1168
-  },
   "media/web/sumo2026-robot.webp": {
     "width": 1500,
     "height": 1125
+  },
+  "media/web/turntables/active-spoiler/000.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/active-spoiler/060.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/active-spoiler/120.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/active-spoiler/180.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/active-spoiler/240.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/active-spoiler/300.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/cupexs/000.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/cupexs/060.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/cupexs/120.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/cupexs/180.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/cupexs/240.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/cupexs/300.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/lara/000.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/lara/060.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/lara/120.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/lara/180.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/lara/240.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/lara/300.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/sumo-2026/000.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/sumo-2026/060.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/sumo-2026/120.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/sumo-2026/180.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/sumo-2026/240.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "media/web/turntables/sumo-2026/300.webp": {
+    "width": 800,
+    "height": 600
   }
 }

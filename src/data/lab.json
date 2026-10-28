@@ -138,8 +138,22 @@
       ],
       "media": {
         "diagram": "arm",
-        "alt": "LARA robotic arm CAD illustration",
-        "src": "media/web/lara-icon.webp"
+        "alt": "Orthographic CAD model of the L.A.R.A. robot arm assembly",
+        "src": "media/web/turntables/lara/000.webp",
+        "model": {
+          "src": "media/models/lara.glb",
+          "alt": "Orthographic CAD model of the L.A.R.A. robot arm assembly"
+        },
+        "turntable": {
+          "frames": [
+            "media/web/turntables/lara/000.webp",
+            "media/web/turntables/lara/060.webp",
+            "media/web/turntables/lara/120.webp",
+            "media/web/turntables/lara/180.webp",
+            "media/web/turntables/lara/240.webp",
+            "media/web/turntables/lara/300.webp"
+          ]
+        }
       },
       "contributorIds": [],
       "notes": [
@@ -228,8 +242,22 @@
       ],
       "media": {
         "diagram": "spoiler",
-        "alt": "Active Spoiler project render",
-        "src": "media/web/spoiler-icon.webp"
+        "alt": "Orthographic CAD model of the pop-up spoiler and its two actuator linkages",
+        "src": "media/web/turntables/active-spoiler/000.webp",
+        "model": {
+          "src": "media/models/active-spoiler.glb",
+          "alt": "Orthographic CAD model of the pop-up spoiler and its two actuator linkages"
+        },
+        "turntable": {
+          "frames": [
+            "media/web/turntables/active-spoiler/000.webp",
+            "media/web/turntables/active-spoiler/060.webp",
+            "media/web/turntables/active-spoiler/120.webp",
+            "media/web/turntables/active-spoiler/180.webp",
+            "media/web/turntables/active-spoiler/240.webp",
+            "media/web/turntables/active-spoiler/300.webp"
+          ]
+        }
       },
       "contributorIds": [],
       "notes": [
@@ -318,8 +346,22 @@
       ],
       "media": {
         "diagram": "sumo",
-        "alt": "Sumo 2026 project render",
-        "src": "media/web/sumo2026-robot-icon.webp"
+        "alt": "Orthographic CAD model of the Tekkai 2.0 sumo robot assembly",
+        "src": "media/web/turntables/sumo-2026/000.webp",
+        "model": {
+          "src": "media/models/sumo-2026.glb",
+          "alt": "Orthographic CAD model of the Tekkai 2.0 sumo robot assembly"
+        },
+        "turntable": {
+          "frames": [
+            "media/web/turntables/sumo-2026/000.webp",
+            "media/web/turntables/sumo-2026/060.webp",
+            "media/web/turntables/sumo-2026/120.webp",
+            "media/web/turntables/sumo-2026/180.webp",
+            "media/web/turntables/sumo-2026/240.webp",
+            "media/web/turntables/sumo-2026/300.webp"
+          ]
+        }
       },
       "contributorIds": [],
       "notes": [
@@ -365,7 +407,10 @@
     },
     {
       "id": "cupexs",
-      "logo": { "src": "media/web/cupexs-logo.webp", "alt": "CupExS logo" },
+      "logo": {
+        "src": "media/web/cupexs-logo.webp",
+        "alt": "CupExS logo"
+      },
       "introductionImage": {
         "src": "media/web/cupexs-event.webp",
         "alt": "A participant examining orange drag racers and interchangeable gears at an outdoor CupExS event table",
@@ -389,8 +434,22 @@
       ],
       "media": {
         "diagram": "racer",
-        "alt": "CupExS Drag Racer project render",
-        "src": "media/web/cupexs-drag-car-icon.webp"
+        "alt": "Orthographic CAD model of the CupExS drag racer with yellow bodywork and blue wheels",
+        "src": "media/web/turntables/cupexs/000.webp",
+        "model": {
+          "src": "media/models/cupexs.glb",
+          "alt": "Orthographic CAD model of the CupExS drag racer with yellow bodywork and blue wheels"
+        },
+        "turntable": {
+          "frames": [
+            "media/web/turntables/cupexs/000.webp",
+            "media/web/turntables/cupexs/060.webp",
+            "media/web/turntables/cupexs/120.webp",
+            "media/web/turntables/cupexs/180.webp",
+            "media/web/turntables/cupexs/240.webp",
+            "media/web/turntables/cupexs/300.webp"
+          ]
+        }
       },
       "contributorIds": [],
       "notes": [

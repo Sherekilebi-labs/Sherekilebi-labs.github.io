@@ -3,6 +3,8 @@ export interface Media {
   src?: string;
   alt: string;
   caption?: string;
+  model?: { src: string; alt: string };
+  turntable?: { frames: string[] };
 }
 
 export interface Project {
