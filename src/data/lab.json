@@ -194,14 +194,14 @@
             "caption": "Shoulder at 0°. The long tube folds down and the forearm stands up."
           },
           {
+            "src": "media/web/lara-sim-top-back.webp",
+            "alt": "Simulated LARA arm with the forearm swung back over the top of the long tube",
+            "caption": "Top servo at 0°. The forearm swings back over the long tube."
+          },
+          {
             "src": "media/web/lara-sim-elbow.webp",
             "alt": "Simulated LARA arm with the forearm swung out to the side and the tool hanging down",
             "caption": "Top servo at 180°. The forearm swings out and the tool end hangs down."
-          },
-          {
-            "src": "media/web/lara-sim-wrist.webp",
-            "alt": "Simulated LARA arm with the forearm folded back alongside the long tube",
-            "caption": "Wrist at 180°. The forearm folds back alongside the long tube."
           }
         ]
       }

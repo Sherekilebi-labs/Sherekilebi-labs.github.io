@@ -60,24 +60,24 @@
     "height": 1200
   },
   "media/web/lara-sim-base.webp": {
-    "width": 1078,
-    "height": 1024
+    "width": 1130,
+    "height": 1046
   },
   "media/web/lara-sim-elbow.webp": {
-    "width": 1078,
-    "height": 1024
+    "width": 1130,
+    "height": 1046
   },
   "media/web/lara-sim-motion.webp": {
     "width": 738,
     "height": 850
   },
   "media/web/lara-sim-shoulder.webp": {
-    "width": 1078,
-    "height": 1024
+    "width": 1130,
+    "height": 1046
   },
-  "media/web/lara-sim-wrist.webp": {
-    "width": 1078,
-    "height": 1024
+  "media/web/lara-sim-top-back.webp": {
+    "width": 1130,
+    "height": 1046
   },
   "media/web/lara-standing.webp": {
     "width": 900,
