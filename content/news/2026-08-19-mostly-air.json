@@ -3,7 +3,7 @@
   "slug": "2026-08-19-mostly-air",
   "title": "Gyroid is the best looking (and performing) infill.",
   "date": "2026-08-19",
-  "author": "dachi",
+  "authors": ["dachi"],
   "category": "shenanigans",
   "summary": "A quick idea for a project: can a 3d printed cube with a gyroid infill be used as a alternative artificial beehive?",
   "tags": [

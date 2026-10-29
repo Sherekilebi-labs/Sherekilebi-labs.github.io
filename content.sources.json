@@ -1,7 +1,8 @@
 {
   "roots": {
     "workspace": "..",
-    "platformio": "~/Documents/PlatformIO/Projects"
+    "platformio": "~/Documents/PlatformIO/Projects",
+    "platformio2026": "~/program files/PlatformIO/Projects"
   },
   "documents": [
     {
@@ -28,7 +29,7 @@
     },
     {
       "projectId": "sumo-2026",
-      "root": "platformio",
+      "root": "platformio2026",
       "path": "Sumo 2026/src/sumoFinal_wifi_debug.ino",
       "heading": "2026 sensing and motor configuration",
       "start": "const int trigPins",

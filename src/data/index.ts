@@ -1,6 +1,5 @@
 import raw from './lab.json';
-import rawExcerpts from './generated/excerpts.json';
-import type { DocumentationExcerpt, LabData, Media } from './types';
+import type { LabData, Media } from './types';
 
 function diagramKind(value: string): Media['diagram'] {
   switch (value) {
@@ -17,6 +16,5 @@ export const lab: LabData = {
     media: { ...project.media, diagram: diagramKind(project.media.diagram) },
   })),
 };
-export const excerpts: DocumentationExcerpt[] = rawExcerpts;
 export const categories = [...new Set(lab.projects.map(project => project.category))];
 export const technologies = [...new Set(lab.projects.flatMap(project => project.tags))].sort();

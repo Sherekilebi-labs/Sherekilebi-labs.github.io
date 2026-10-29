@@ -26,11 +26,20 @@ for (const project of lab.projects) {
   const summaryLines = Array.isArray(project.summary) ? project.summary : [project.summary];
   requireValue(summaryLines.length && summaryLines.every(line => typeof line === 'string' && line.trim()), `${project.id}: summary must contain non-empty text`);
   requireValue(typeof project.introduction === 'string' && project.introduction.trim(), `${project.id}: introduction must contain non-empty text`);
+  for (const field of ['cardSummary', 'currentState']) {
+    if (project[field] !== undefined) requireValue(typeof project[field] === 'string' && project[field].trim(), `${project.id}: invalid ${field}`);
+  }
+  for (const topic of project.engineeringTopics || []) {
+    requireValue(topic.title?.trim() && topic.body?.trim(), `${project.id}: empty engineering topic`);
+  }
+  for (const result of project.results || []) {
+    for (const field of ['title', 'method', 'finding', 'limitations']) requireValue(typeof result[field] === 'string' && result[field].trim(), `${project.id}: result missing ${field}`);
+  }
+  requireValue(project.nextSteps === undefined || (Array.isArray(project.nextSteps) && project.nextSteps.every(step => typeof step === 'string' && step.trim())), `${project.id}: invalid next steps`);
   requireValue(['cyan','orange','green'].includes(project.accent), `Invalid accent: ${project.id}`);
   requireValue(['arm','sumo','hydrofoil','pcb','education','racer','door','spoiler','scale'].includes(project.media.diagram), `Invalid diagram: ${project.id}`);
   requireValue(project.media.alt?.trim() && (project.media.caption === undefined || typeof project.media.caption === 'string'), `Invalid media description: ${project.id}`);
   requireValue(!project.contributorIds.some(id => !people.has(id)), `Unknown contributor: ${project.id}`);
-  requireValue(excerpts.some(excerpt => excerpt.projectId === project.id), `Missing documentation: ${project.id}`);
   if (project.sourceUrl) checkURL(project.sourceUrl);
   for (const link of project.sourceLinks || []) checkURL(link.url);
   for (const src of [project.media.src, project.icon].filter(Boolean)) await checkMedia(src);
@@ -74,7 +83,7 @@ for (const link of [...lab.links,...lab.people.flatMap(p => p.links)]) checkURL(
 for (const post of posts) {
   requireValue(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug), `Invalid dispatch slug: ${post.id}`);
   requireValue(/^\d{4}-\d{2}-\d{2}$/.test(post.date) && new Date(post.date).toISOString().slice(0,10) === post.date, `Invalid date: ${post.id}`);
-  requireValue(people.has(post.author), `Unknown dispatch author: ${post.id}`);
+  requireValue(Array.isArray(post.authors) && post.authors.length > 0 && post.authors.every(author => people.has(author)), `Unknown dispatch author: ${post.id}`);
   requireValue(['project-update','lab-news','shenanigans'].includes(post.category), `Invalid dispatch category: ${post.id}`);
   requireValue(!post.relatedProject || projects.has(post.relatedProject), `Unknown related project: ${post.id}`);
   requireValue(post.title?.trim() && post.summary?.trim(), `Missing dispatch copy: ${post.id}`);

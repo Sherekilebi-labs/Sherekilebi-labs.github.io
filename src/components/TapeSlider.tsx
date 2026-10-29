@@ -42,6 +42,8 @@ export function TapeSlider({
   const latest = useRef<Motion>(initial);
   const queuedStep = useRef<Direction | null>(null);
   const [pauseUntil, setPauseUntil] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
   const [visible, setVisible] = useState(() => !document.hidden);
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
@@ -50,7 +52,7 @@ export function TapeSlider({
 
   const publish = useCallback((next: Motion) => { latest.current = next; setMotion(next); }, []);
   const step = useCallback((direction: Direction, fromUser = false) => {
-    if (fromUser) setPauseUntil(Date.now() + 3000);
+    if (fromUser) setPauseUntil(Date.now() + intervalMs);
     if (count < 2) return;
     const current = latest.current;
     if (current.phase !== 'idle') {
@@ -64,7 +66,7 @@ export function TapeSlider({
       // Caption and project link follow the incoming frame immediately.
       publish({ index, position: current.position + direction, phase: 'rolling' });
     }
-  }, [count, durationMs, reduced, publish]);
+  }, [count, durationMs, intervalMs, reduced, publish]);
 
   const finish = useCallback(() => {
     const current = latest.current;
@@ -90,7 +92,7 @@ export function TapeSlider({
   }, []);
 
   useEffect(() => {
-    if (!autoRoll || !visible || reduced || count < 2) return;
+    if (!autoRoll || !visible || reduced || hovered || focused || count < 2) return;
     const cadence = Math.max(intervalMs, durationMs + 100);
     let timer: number;
     const roll = () => {
@@ -98,10 +100,10 @@ export function TapeSlider({
       step(1);
       timer = window.setTimeout(roll, cadence);
     };
-    // Resume with a roll three seconds after the latest user input.
-    timer = window.setTimeout(roll, pauseUntil ? Math.max(0, pauseUntil - Date.now()) : cadence);
+    // Leaving the carousel starts a fresh interval; never jump immediately on exit.
+    timer = window.setTimeout(roll, Math.max(cadence, pauseUntil - Date.now()));
     return () => window.clearTimeout(timer);
-  }, [autoRoll, pauseUntil, visible, reduced, count, intervalMs, durationMs, step]);
+  }, [autoRoll, pauseUntil, visible, reduced, hovered, focused, count, intervalMs, durationMs, step]);
 
   useEffect(() => {
     if (motion.phase !== 'rolling') return;
@@ -138,7 +140,7 @@ export function TapeSlider({
   if (!count) return null;
   const current = items[motion.index % count];
   const frames = count > 1 ? [items[count - 1], ...items, items[0]] : items;
-  const mode = reduced ? 'STILL MODE' : pauseUntil || !autoRoll ? 'MANUAL STEP' : 'AUTO-ROLL';
+  const mode = reduced ? 'STILL MODE' : hovered || focused || !autoRoll ? 'MANUAL STEP' : 'AUTO-ROLL';
   const style = { '--tape-duration': `${Math.max(0, durationMs)}ms`, '--tape-fit': fit, '--tape-aspect': aspectRatio } as CSSProperties;
   const picture = <>
     <div className="tape-window" role="group" aria-roledescription="slide" aria-label={`${motion.index + 1} of ${count}: ${current.title}`}
@@ -153,11 +155,17 @@ export function TapeSlider({
   </>;
 
   return <section className="project-carousel tape-slider" style={style} aria-roledescription="carousel" aria-label={label} tabIndex={0} data-mode={mode} data-phase={motion.phase}
+    onPointerEnter={event => { if (event.pointerType === 'mouse' || event.pointerType === 'pen') setHovered(true); }}
+    onPointerLeave={event => { if (event.pointerType === 'mouse' || event.pointerType === 'pen') setHovered(false); }}
+    onFocusCapture={event => { if ((event.target as HTMLElement).matches(':focus-visible')) setFocused(true); }}
+    onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false); }}
     onKeyDown={event => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); step(event.key === 'ArrowLeft' ? -1 : 1, true); } }}
     onClickCapture={event => { if (suppressClick.current && (event.target as Element).closest('.tape-window')) { suppressClick.current = false; event.preventDefault(); event.stopPropagation(); } }}>
     <div className="carousel-heading"><span className="carousel-title">{heading}</span></div>
     {current.href ? <Link className="carousel-project" to={current.href} aria-label={`Explore ${current.title}`}>{picture}</Link> : <div className="carousel-project" role="img" aria-label={current.alt}>{picture}</div>}
-    {count > 1 && <div className="carousel-controls"><div className="carousel-buttons"><button className="icon-button carousel-prev" aria-label={previousLabel} onClick={() => step(-1, true)}><Arrow/></button><button className="icon-button" aria-label={nextLabel} onClick={() => step(1, true)}><Arrow/></button></div></div>}
+    {count > 1 && <div className="carousel-controls">
+      <div className="carousel-buttons"><button className="icon-button carousel-prev" aria-label={previousLabel} onClick={() => step(-1, true)}><Arrow/></button><button className="icon-button" aria-label={nextLabel} onClick={() => step(1, true)}><Arrow/></button></div>
+    </div>}
     {footnote && <p className="carousel-footnote mono">{footnote}</p>}
   </section>;
 }

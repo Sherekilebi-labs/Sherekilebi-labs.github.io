@@ -8,7 +8,7 @@ import { lazy, Suspense } from 'react';
 const Markdown = lazy(() => import('./Markdown').then(module => ({ default: module.Markdown })));
 
 export function DispatchCard({ post, preview = false }: { post: NewsPost; preview?: boolean }) {
-  const author = lab.people.find(person => person.id === post.author)!;
+  const authors = post.authors.map(authorId => lab.people.find(person => person.id === authorId)!);
   const project = lab.projects.find(item => item.id === post.relatedProject);
   const category = newsCategories[post.category];
   return <article className={`dispatch-card dispatch-${post.category} ${preview ? 'dispatch-preview' : ''}`} id={preview ? undefined : post.slug}>
@@ -16,10 +16,10 @@ export function DispatchCard({ post, preview = false }: { post: NewsPost; previe
     <div className="dispatch-body"><div className="dispatch-meta"><span className="dispatch-category"><span/>{category.shortLabel}</span>{post.pinned && <span className="pinned-label mono">PINNED</span>}</div>
       {preview ? <h3><Link to={`/news#${post.slug}`}>{post.title}</Link></h3> : <h2>{post.title}</h2>}
       <p className="dispatch-summary">{post.summary}</p>
-      {!preview && post.content && <details className="dispatch-reader"><summary>Read the field notes <Arrow/></summary><Suspense fallback={<p className="mono">Opening field notes…</p>}><Markdown>{post.content}</Markdown></Suspense></details>}
-      {!preview && !post.content && <p className="micro-label mono">↗ MICRO-TRANSMISSION</p>}
+      {!preview && post.content && <details className="dispatch-reader"><summary>Read more <Arrow/></summary><Suspense fallback={<p className="mono">Loading update…</p>}><Markdown>{post.content}</Markdown></Suspense></details>}
+      {!preview && !post.content && <p className="micro-label mono">Brief update</p>}
       <div className="dispatch-tags">{post.tags.map(tag => <span key={tag}>#{tag.replaceAll(' ', '')}</span>)}</div>
-      <div className="dispatch-footer"><span className="author-credit"><span className="author-avatar" aria-hidden="true">{author.initials}</span>{author.name}</span>{project && <Link className="linked-project" to={`/projects/${project.id}`} aria-label={`Linked project: ${project.title}`}>↗ {project.title}</Link>}</div>
+      <div className="dispatch-footer"><span className="author-credit" aria-label={`Authors: ${authors.map(author => author.name).join(', ')}`}>{authors.map(author => <span className="author-person" key={author.id}><span className="author-avatar" aria-hidden="true">{author.initials}</span>{author.name}</span>)}</span>{project && <Link className="linked-project" to={`/projects/${project.id}`} aria-label={`Linked project: ${project.title}`}>↗ {project.title}</Link>}</div>
       {preview && <Link className="dispatch-read-link text-link" to={`/news#${post.slug}`}>Read dispatch <Arrow diagonal/></Link>}
     </div>
   </article>;

@@ -19,7 +19,12 @@ export interface Project {
   status: string;
   period: string;
   summary: string;
+  cardSummary?: string;
   introduction: string;
+  currentState?: string;
+  engineeringTopics?: { title: string; body: string }[];
+  results?: { title: string; method: string; finding: string; limitations: string }[];
+  nextSteps?: string[];
   logo?: { src: string; alt: string };
   introductionImage?: { src: string; alt: string; caption: string };
   tags: string[];
@@ -27,7 +32,7 @@ export interface Project {
   icon?: string;
   gallery?: { src: string; alt: string; caption: string }[];
   analysisFigures?: { src: string; alt: string; caption: string }[];
-  simulation?: { intro: string; animation?: { src: string; alt: string; caption: string }; frames: { src: string; alt: string; caption: string }[] };
+  simulation?: { intro: string; animation?: { src: string; alt: string; caption: string } };
   contributorIds: string[];
   notes: string[];
   specs: { label: string; value: string }[];
@@ -70,7 +75,7 @@ export interface NewsPost {
   slug: string;
   title: string;
   date: string;
-  author: string;
+  authors: string[];
   category: NewsCategory;
   relatedProject?: string;
   pinned?: boolean;
@@ -80,11 +85,4 @@ export interface NewsPost {
   summary: string;
   content?: string;
   tags: string[];
-}
-
-export interface DocumentationExcerpt {
-  projectId: string;
-  source: string;
-  heading: string;
-  text: string;
 }

@@ -8,7 +8,11 @@ const workspace = await realpath(path.resolve(site, '..'));
 const config = JSON.parse(await readFile(path.join(site, 'content.sources.json'), 'utf8'));
 const lab = JSON.parse(await readFile(path.join(site, 'src/data/lab.json'), 'utf8'));
 const check = process.argv.includes('--check');
-const roots = { workspace, platformio: path.resolve(process.env.PLATFORMIO_PROJECTS || path.join(os.homedir(), 'Documents/PlatformIO/Projects')) };
+const roots = {
+  workspace,
+  platformio: path.resolve(process.env.PLATFORMIO_PROJECTS || path.join(os.homedir(), 'Documents/PlatformIO/Projects')),
+  platformio2026: path.resolve(process.env.PLATFORMIO_2026_PROJECTS || path.join(os.homedir(), 'program files/PlatformIO/Projects')),
+};
 
 async function sourceFile(relative, rootName = 'workspace') {
   if (path.isAbsolute(relative) || relative.split(/[\\/]/).includes('..')) throw new Error(`Unsafe source path: ${relative}`);

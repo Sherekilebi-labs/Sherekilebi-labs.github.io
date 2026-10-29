@@ -12,8 +12,9 @@ export function ProjectCarousel() {
       href: `/projects/${project.id}`,
     }))}
     label="Featured projects"
-    heading="Projects:"
-    intervalMs={2000}
+    heading="From the workshop"
+    autoRoll
+    intervalMs={3000}
     durationMs={600}
     fit="contain"
     aspectRatio="4 / 3"

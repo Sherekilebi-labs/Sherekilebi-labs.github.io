@@ -3,7 +3,7 @@
   "slug": "2026-06-21-sumo-on-the-mat",
   "title": "Post fight photo shoot",
   "date": "2026-06-21",
-  "author": "dachi",
+  "authors": ["dachi"],
   "category": "project-update",
   "summary": "Our second iteration - Tekkai 2.0 finished up 3rd in the National Sumo Championship in Tbilisi.",
   "tags": [
@@ -14,5 +14,5 @@
   "media": "media/web/sumo2026-robot.webp",
   "mediaAlt": "The sumo robot on a green cutting mat.",
   "relatedProject": "sumo-2026",
-  "content": "We wrap up 2025-2026 robotics season with a heavily brused Tekkai 2.0 (we lost a rear-left wheel against the winning team and obviosly had to give the lost wheel to them as a remembering gift."
+  "content": "We wrap up 2025-2026 robotics season with a heavily brused Tekkai 2.0 (we lost a rear-left wheel against the winning team and obviosly had to give the lost wheel to them as a remembering gift.)"
 }

@@ -40,6 +40,7 @@ export function ProjectModelViewer({ model, onFailure }: { model: NonNullable<Me
 
   return <div className={`cad-viewer ${ready ? 'is-ready' : ''}`} data-state={ready ? 'ready' : 'loading'}>
     <div className="cad-viewer-canvas" ref={host}/>
+    {ready && <button className="cad-viewer-sign" type="button" onClick={() => host.current?.querySelector('canvas')?.focus({ preventScroll: true })}>Explore in 3D</button>}
     {!ready && <p className="cad-viewer-loading" role="status">Loading 3D model…</p>}
     {ready && <div className="cad-viewer-toolbar">
       <span className="cad-viewer-hint">Drag to rotate</span>

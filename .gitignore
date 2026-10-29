@@ -19,7 +19,6 @@ scripts/prepare-repositories.py
 !/public/Sherekilebi logo.png
 !/public/licenses/georgia-flag-source.txt
 !/public/licenses/jetbrains-mono-OFL.txt
-!/public/media/cupexs-model-fit.svg
 !/public/media/georgia-flag.svg
 !/public/media/models/active-spoiler.glb
 !/public/media/models/cupexs.glb
@@ -40,11 +39,7 @@ scripts/prepare-repositories.py
 !/public/media/web/lara-icon.webp
 !/public/media/web/lara-idle.webp
 !/public/media/web/lara-printing.webp
-!/public/media/web/lara-sim-base.webp
-!/public/media/web/lara-sim-elbow.webp
 !/public/media/web/lara-sim-motion.webp
-!/public/media/web/lara-sim-shoulder.webp
-!/public/media/web/lara-sim-top-back.webp
 !/public/media/web/lara-standing.webp
 !/public/media/web/spoiler-1.webp
 !/public/media/web/spoiler-2.webp

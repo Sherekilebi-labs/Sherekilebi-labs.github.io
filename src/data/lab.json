@@ -24,7 +24,7 @@
       "id": "soldering",
       "title": "Electronics & assembly",
       "name": "Precision soldering station",
-      "description": "Build Robust prototype circuits in less then a day. Also perfect for pressing brass thread inserts into 3d printed parts.",
+      "description": "Assemble prototype circuits, solder wiring, and install brass threaded inserts in 3D-printed parts.",
       "tags": [
         "PCB assembly",
         "Soldering",
@@ -35,7 +35,7 @@
       "id": "tools",
       "title": "Mechanical work",
       "name": "Precision hand tools",
-      "description": "Measure, assemble, take apart, and adjust. Calipers, drivers, pliers, drills..",
+      "description": "Calipers, drivers, pliers, and drills for measuring, assembling, and adjusting prototypes.",
       "tags": [
         "Measurement",
         "Assembly",
@@ -49,7 +49,7 @@
       "name": "Dachi Tchotashvili",
       "initials": "DT",
       "role": "Founder · Builder",
-      "bio": "2nd year Undergraduate at MBZUAI; Passionate builder of robotic systems through hands-on prototyping and experimentation.",
+      "bio": "Second-year undergraduate at MBZUAI, building robotic systems through hands-on prototyping and experimentation.",
       "specialties": [
         "Robotics",
         "AI",
@@ -62,7 +62,7 @@
       "name": "Robiko Tsintsadze",
       "initials": "RT",
       "role": "Associate",
-      "bio": "Automotive expert, Physics Teacher",
+      "bio": "Automotive expert and physics teacher.",
       "specialties": [
         "Physics",
         "Mechanical Engineering"
@@ -74,7 +74,7 @@
       "name": "Temiko Machavariani",
       "initials": "TM",
       "role": "Associate",
-      "bio": "2nd year Undergraduate at MBZUAI; Robotics Systems Engineer",
+      "bio": "Second-year undergraduate at MBZUAI and robotics systems engineer.",
       "specialties": [
         "AI",
         "Simulation",
@@ -87,7 +87,7 @@
       "name": "Nino Matcharashvili",
       "initials": "NM",
       "role": "Associate",
-      "bio": "2nd year Undergraduate at MBZUAI; Entrepreneur",
+      "bio": "Second-year undergraduate at MBZUAI and entrepreneur.",
       "specialties": [
         "Electrical Engineering",
         "Project Management",
@@ -100,7 +100,7 @@
       "name": "Nikoloz Chkhaidze",
       "initials": "NC",
       "role": "Associate",
-      "bio": "1st year Undergraduate at MBZUAI, AI Engineer",
+      "bio": "First-year undergraduate at MBZUAI and AI engineer.",
       "specialties": [
         "AI",
         "Robotics"
@@ -125,11 +125,9 @@
       "category": "Prototypes",
       "accent": "cyan",
       "status": "In development",
-      "period": "2026 August - Present",
-      "summary": [
-        "MBZUAI-backed research on 6-DoF robot arm focusing on 2 areas:\n\n- Eliminating backlash using Stochastic mechanics.\n- Computer vision-based automation of complex manufacturing tasks using auto tool changer."
-      ],
-      "introduction": "L.A.R.A. **Lab Assistant Robot Arm**. The project explores how a six-axis robot could become a flexible workshop assistant, taking on repeatable manufacturing tasks with different tools.\n\nThe research aims to reduce positioning errors caused by mechanical backlash and combine computer vision with an automatic tool changer. The goal is to make complex workshop tasks easier to automate with one adaptable arm.",
+      "period": "Aug 2026–present",
+      "summary": "A six-axis workshop robot arm investigating motion-error compensation, with a modular tool changer in development.",
+      "introduction": "L.A.R.A. (Lab Assistant Robot Arm) explores how a six-axis arm could become a flexible workshop assistant. The project brings together mechanical design, joint control, and research into tracking a desired motion more closely.\n\nThe research plan is to collect extensive motion data from the physical arm and use stochastic analysis to model the small, random errors seen during movement. The aim is to investigate whether adjusting motor targets can bring the actual position-versus-time trajectory closer to the intended one.",
       "tags": [
         "Python",
         "CAD",
@@ -157,21 +155,22 @@
       },
       "contributorIds": [],
       "notes": [
-        "The repository contains multiple mechanical revisions and a legacy MuJoCo model",
-        "A separate AprilTag generator produces twelve markers for six joints. Visual pose tracking is done by measuring marker-to-link transforms."
+        "The v1 arm is assembled; all joints have been tested separately.",
+        "The v2 arm design and 3D-printed parts are complete.",
+        "Stochastic analysis and target-position compensation are planned research."
       ],
       "specs": [
         {
-          "label": "Simulation",
-          "value": "MuJoCo + inverse kinematics"
+          "label": "Arm",
+          "value": "Six axes"
         },
         {
-          "label": "Joint markers",
-          "value": "12 AprilTags / 6 joints"
+          "label": "Physical testing",
+          "value": "Individual v1 joints"
         },
         {
-          "label": "Artifacts",
-          "value": "CAD, simulation, tracking tools"
+          "label": "Modeling environment",
+          "value": "Isaac Sim"
         }
       ],
       "bom": [],
@@ -190,35 +189,34 @@
         }
       ],
       "simulation": {
-        "intro": "Every joint of the simulated arm, swept through its range one servo at a time. Recorded on an earlier seven-output revision of the model.",
+        "intro": "Illustrative animation of an earlier arm model.",
         "animation": {
           "src": "media/web/lara-sim-motion.webp",
           "alt": "Animated simulation of the LARA arm moving each joint through its range in turn",
-          "caption": "Full joint sweep: base, shoulder, top, wrist, then the three end servos, each returning to the reference pose."
+          "caption": "Illustrative motion of an earlier arm model."
+        }
+      },
+      "cardSummary": "A six-axis workshop robot arm investigating motion-error compensation, with a modular tool changer in development.",
+      "currentState": "**V1: assembled and tested joint by joint.** Each joint works separately on the real arm. Coordinated sequence and task testing are planned.\n\n**V2: designed and printed.** The 3D design is complete and its parts have been 3D-printed. The first tool-changer design is also complete; issues found in that design are being addressed in its second version.",
+      "engineeringTopics": [
+        {
+          "title": "From individual joints to coordinated motion",
+          "body": "The v1 assembly has been checked one joint at a time. Coordinated trajectories and workshop tasks remain to be tested."
         },
-        "frames": [
-          {
-            "src": "media/web/lara-sim-base.webp",
-            "alt": "Simulated LARA arm with the base yawed 60 degrees",
-            "caption": "Base yaw at −60°. Every other joint at its 90° reference."
-          },
-          {
-            "src": "media/web/lara-sim-shoulder.webp",
-            "alt": "Simulated LARA arm with the shoulder folded so the long tube leans toward the base",
-            "caption": "Shoulder at 0°. The long tube folds down and the forearm stands up."
-          },
-          {
-            "src": "media/web/lara-sim-top-back.webp",
-            "alt": "Simulated LARA arm with the forearm swung back over the top of the long tube",
-            "caption": "Top servo at 0°. The forearm swings back over the long tube."
-          },
-          {
-            "src": "media/web/lara-sim-elbow.webp",
-            "alt": "Simulated LARA arm with the forearm swung out to the side and the tool hanging down",
-            "caption": "Top servo at 180°. The forearm swings out and the tool end hangs down."
-          }
-        ]
-      }
+        {
+          "title": "Learn from motion error",
+          "body": "The planned study will record real joint motion, compare actual and target position over time, and use stochastic analysis to investigate error patterns. Predicting and compensating future tracking error is the research objective."
+        },
+        {
+          "title": "Interchangeable tools",
+          "body": "A first tool-changer design has been completed. Its identified issues are being revised for v2 before tool swapping can be evaluated as part of a working task."
+        }
+      ],
+      "nextSteps": [
+        "Collect position-versus-time data from the physical arm and compare it with the target trajectory.",
+        "Investigate whether stochastic models of the tracking error can improve motor-target compensation.",
+        "Evaluate coordinated motion and the revised tool changer before attempting workshop tasks."
+      ]
     },
     {
       "id": "active-spoiler",
@@ -230,9 +228,9 @@
       "category": "Prototypes",
       "accent": "cyan",
       "status": "In development",
-      "period": "2026 August - Present",
-      "summary": "A pop-up spoiler prototype for a third-generation BMW 6 Series. Four feedback-controlled motors move two wings through four-bar linkages, with adjustable response curves for sensed roll and pitch.",
-      "introduction": "This project explores active aerodynamics through a pop-up spoiler prototype for a third-generation BMW 6 Series. Instead of keeping both wing panels in one fixed position, the design allows each side to move independently.\n\nThe goal is to coordinate the motors and linkages so the wings follow adjustable responses to sensed roll and pitch. A tunable controller makes it possible to compare different responses and test the mechanism before evaluating its behavior under driving and aerodynamic loads.",
+      "period": "Aug 2026–present",
+      "summary": "A two-wing spoiler prototype with coordinated motor control and adjustable responses to sensed roll and pitch.",
+      "introduction": "This project explores active aerodynamics through a pop-up spoiler prototype for a third-generation BMW 6 Series. The design allows each wing panel to move independently.\n\nThe goal is to coordinate the motors and linkages so the wings follow adjustable responses to sensed roll and pitch. A tunable controller makes it possible to compare different responses and test the mechanism before evaluating its behavior under driving and aerodynamic loads.",
       "tags": [
         "ESP32",
         "Motorsport",
@@ -261,9 +259,9 @@
       },
       "contributorIds": [],
       "notes": [
-        "Four bars, one guided motion: each wing rides on connected arms that lift and tilt it along a defined path, rather than simply turning around a hinge.",
+        "Four bars, one guided motion: each wing rides on connected arms that lift and tilt it along a defined path.",
         "Getting the dimensions right: arm lengths and pivot spacing must produce the required lift, tilt, and clearance together. Near the flat starting position, small errors or joint play can make the linkage bind or move unpredictably.",
-        "Two motors per wing: powering both arms is intended to share the load. The unequal arms need different, coordinated angles; encoder feedback helps each motor follow its target rather than fight the linkage.",
+        "Two motors per wing: powering both arms is intended to share the load. The unequal arms need different, coordinated angles; encoder feedback helps each motor follow its coordinated target.",
         "Tune the response visually: set the sensor's neutral reference, then drag curve points or enter values to choose how sensed roll and pitch move the wings. Three presets let different responses be compared.",
         "Wing angles first, motor angles second: roll gives a mirrored left/right response, while pitch acts on both wings. The curves combine into 0–70° wing commands, and the linkage calculation converts each command into two motor targets.",
         "Keep motion separate from the dashboard: one ESP32 handles sensing and tuning; the other controls the motors. Manual wing and individual-motor modes help check the mechanism before trying automatic operation.",
@@ -298,7 +296,7 @@
         },
         {
           "component": "Motor drive",
-          "detail": "Four DC motors through H-bridges; motor and driver models are not specified in the code"
+          "detail": "Four DC motors through H-bridges"
         },
         {
           "component": "Linkages",
@@ -323,6 +321,30 @@
           "alt": "Assembled spoiler electronics on the bench",
           "caption": "A wider view of the complete circuit."
         }
+      ],
+      "cardSummary": "A two-wing spoiler prototype with coordinated motor control and adjustable responses to sensed roll and pitch.",
+      "currentState": "The project combines a mechanical prototype with two ESP32 firmwares for sensing, tuning, and coordinated motor control. Its controller supports manual checks and automatic responses to sensed roll and pitch.\n\nBehavior under braking, cornering, and aerodynamic loads still needs physical testing. The present controller estimates tilt from acceleration.",
+      "engineeringTopics": [
+        {
+          "title": "Two wings, four motors",
+          "body": "Each wing rides on a four-bar linkage. Two motors per wing follow coordinated, unequal angles to lift and tilt the panel along its intended path. Encoder feedback helps the motors track their targets."
+        },
+        {
+          "title": "Wing commands become motor targets",
+          "body": "Roll gives a mirrored left/right response, while pitch acts on both wings. Adjustable curves combine into 0–70° wing commands; a linkage calculation converts each command into two motor targets."
+        },
+        {
+          "title": "Tune before automatic operation",
+          "body": "Set the sensor’s neutral reference, then drag curve points or enter values in the local dashboard. Three presets, manual wing control, and individual-motor modes support checking and comparing responses."
+        },
+        {
+          "title": "Separate control and supervision",
+          "body": "One ESP32 handles sensing and tuning; the other controls the motors. The firmware disarms the motors when encoder data or communication is lost. Physical travel, clearance, and tracking still need to be checked on the assembled mechanism."
+        }
+      ],
+      "nextSteps": [
+        "Check assembled linkage clearance and synchronized tracking across the commanded range.",
+        "Evaluate the sensing and control response under realistic motion and aerodynamic loads."
       ]
     },
     {
@@ -331,13 +353,13 @@
       "title": "Tekkai 2.0",
       "subtitle": "An autonomous sumo robot with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
       "folder": "Sumo 2026",
-      "sourceRoot": "platformio",
+      "sourceRoot": "platformio2026",
       "category": "Competition",
       "accent": "green",
       "status": "Completed",
-      "period": "2026 June",
-      "summary": "An autonomous sumo platform with three ultrasonic sensors, two edge sensors, remote motor enable, and an onboard Wi-Fi debug interface.",
-      "introduction": "Tekkai 2.0 was built around a simple challenge: find an opponent, push it out of the sumo ring, and stay inside the boundary without a driver, and under a very tight budget. \n\nIt got massive design upgrades from v1 from 2024 including 4 wheel drive instead of 2, IR edge detectors, stronger motors, better Ultrasonic sensor logic.",
+      "period": "Jun 2026",
+      "summary": "An autonomous sumo robot with ultrasonic opponent tracking, front edge sensing, remote motor enable, and an onboard Wi-Fi debug interface.",
+      "introduction": "Tekkai 2.0 was built to find an opponent, push it out of a sumo ring, and avoid crossing the boundary without a driver. The project brings mechanical design, opponent sensing, and autonomous control together under a tight budget.\n\nThe 2026 version builds on the 2024 robot with four-wheel drive, infrared edge detection, stronger motors, and revised ultrasonic sensing logic.",
       "tags": [
         "ESP32",
         "C++",
@@ -365,26 +387,25 @@
       },
       "contributorIds": [],
       "notes": [
-        "The current firmware adds two active-low edge inputs and remote ON/OFF control, alongside the three ultrasonic opponent sensors.",
-        "Edge readings are confirmed over multiple samples. A timed reverse-and-search response handles simultaneous front-edge detection; other branches combine target direction and edge state.",
-        "The debug page exposes sensor readings, speed, motor state, and a motor test. The linked 2024 repository below is an earlier implementation and does not contain all 2026 behavior."
+        "Three ultrasonic channels classify the opponent direction using a 40 cm detection threshold. Valid target readings take priority over edge detection; the controller searches toward the last detected side when no target is visible.",
+        "The two active-low edge inputs require two consecutive confirmations. Without an ultrasonic target, both edges trigger a 500 ms reverse followed by a left search; individual edges cause an evasive turn.",
+        "The robot boots OFF. Remote ON/OFF inputs control the motor-driver enable output, and the local Wi-Fi page provides manual ON/OFF, a motor test, sensor readings, and motor PWM telemetry. The separately linked 2024 firmware is historical."
       ],
       "specs": [
         {
           "label": "Opponent sensing",
-          "value": "3 ultrasonic channels"
+          "value": "3 ultrasonic channels · 40 cm threshold"
         },
         {
           "label": "Boundary sensing",
-          "value": "2 edge inputs"
+          "value": "2 front edge inputs · checked without a target"
         },
         {
-          "label": "Debugging",
-          "value": "Wi-Fi dashboard + motor test"
+          "label": "Control & debugging",
+          "value": "Remote ON/OFF · Wi-Fi dashboard · motor test"
         }
       ],
       "bom": [],
-      "sourcePending": "Repository link coming soon",
       "icon": "media/web/sumo2026-robot-icon.webp",
       "sourceLinks": [
         {
@@ -403,7 +424,10 @@
           "alt": "Front wedge and three ultrasonic modules on the sumo robot",
           "caption": "Front sensing and wedge layout."
         }
-      ]
+      ],
+      "cardSummary": "An autonomous sumo robot with ultrasonic opponent tracking, front edge sensing, remote motor enable, and an onboard Wi-Fi debug interface.",
+      "currentState": "The current 2026 firmware combines three ultrasonic opponent sensors, two front edge sensors, remote ON/OFF inputs, a motor-driver enable output, and a local Wi-Fi debug interface. It boots with the motors disabled.\n\nOpponent pursuit takes priority: when an ultrasonic target is detected, the controller drives toward it. Edge detection is evaluated only while the ultrasonic sensors are clear.",
+      "sourceUrl": "https://github.com/Sherekilebi-labs/Tekkai-2.0"
     },
     {
       "id": "cupexs",
@@ -424,8 +448,8 @@
       "category": "Competition",
       "accent": "green",
       "status": "Completed",
-      "period": "2026, August",
-      "summary": "An educational physics experiment kit designed for Cup of Experimental Science 2026.",
+      "period": "Aug 2026",
+      "summary": "A hands-on physics kit for investigating how gear ratio changes a small car’s acceleration, speed, and stopping behavior.",
       "introduction": "Built for the Cup of Experimental Science 2026, this drag racer turns a drivetrain design decision into a hands-on physics experiment: which gear ratio produces the quickest 10-metre run?\n\nThe goal is to compare how gearing balances wheel torque and speed, then test those predictions with measured runs. A companion motor dyno and two-lane timing system provide tools for investigating motor behavior and comparing results.",
       "tags": [
         "Education",
@@ -454,7 +478,7 @@
       "contributorIds": [],
       "notes": [
         "The current car controller provides browser Start / Stop commands, 20 kHz 10-bit forward PWM, and an automatic stop after a 60-second run window.",
-        "A separate ESP32 timer alternates 36 kHz bursts across two lanes, handles a countdown, and records independent finish times when beams are interrupted. The browser control does not synchronize the vehicle launch to the timer.",
+        "A separate ESP32 timer alternates 36 kHz bursts across two lanes, handles a countdown, and records independent finish times when beams are interrupted. Vehicle launch and lane timing use separate controllers.",
         "The companion dyno firmware samples an MT6701 encoder and ACS712 current sensor and estimates torque and power from a configured inertia."
       ],
       "specs": [
@@ -499,13 +523,8 @@
           "caption": "Idependent experiment to measure motor torque vs rpm curve"
         }
       ],
-      "analysisFigures": [
-        {
-          "src": "media/cupexs-model-fit.svg",
-          "alt": "Recorded vehicle motion compared with fitted drivetrain models",
-          "caption": "Experimental results used to estimate rolling and gearbox friction and validate the theoretical model against real acceleration data"
-        }
-      ]
+      "cardSummary": "A hands-on physics kit for investigating how gear ratio changes a small car’s acceleration, speed, and stopping behavior.",
+      "currentState": "We made a total of **5 functional kits**, bringing together the drag racer, interchangeable gears, and the supporting experiment tools. A separate two-lane timing system and companion motor dyno support investigations of the drivetrain.\n\nVehicle launch and lane timing are controlled independently."
     },
     {
       "id": "door-security",
@@ -517,8 +536,8 @@
       "category": "Lab systems",
       "accent": "green",
       "status": "Completed",
-      "period": "2026, July",
-      "summary": "An ESP32-based door security monitor combines an infrared beam, motion-based tamper detection, a buzzer, a local web panel, and optional email alerts.",
+      "period": "Jul 2026",
+      "summary": "A lab door monitor that detects beam interruptions and movement, sounds an alarm, and can send email alerts.",
       "introduction": "Built to help protect the lab, this project combines a door-monitoring infrared beam with motion-based tamper detection. It brings the sensors, alarm, and controls into a system that can be checked from a local web panel.\n\nThe goal is to flag a confirmed beam interruption or disturbance while armed, sound a local alarm, and optionally send an email alert. Confirmation delays help distinguish sustained events from brief sensor disturbances.",
       "tags": [
         "ESP32",
@@ -535,7 +554,7 @@
       "notes": [
         "The controller emits NEC-coded IR at 38 kHz and watches receiver CH1. A confirmed beam interruption while armed latches the alarm.",
         "MPU6050 tilt, angular speed, and acceleration changes are checked against a calibrated baseline, with a confirmation interval to reject brief disturbances.",
-        "The web panel switches Open / Armed modes and shows a bounded breach log. Wi-Fi credentials and Gmail app credentials are supplied locally; no private configuration is included in the repository."
+        "The web panel switches Open / Armed modes and shows a bounded breach log. Wi-Fi credentials and Gmail app credentials are supplied locally."
       ],
       "specs": [
         {
@@ -577,7 +596,9 @@
           "alt": "A cat standing outside the lab doorway",
           "caption": "An unscheduled visitor at the door."
         }
-      ]
+      ],
+      "cardSummary": "A lab door monitor that detects beam interruptions and movement, sounds an alarm, and can send email alerts.",
+      "currentState": "The controller implements infrared beam monitoring, motion-based tamper detection, a local alarm, and a web panel. Email alerts are optional and depend on local configuration. Confirmation intervals reject brief disturbances before an alarm is latched."
     },
     {
       "id": "gym-scale",
@@ -589,8 +610,8 @@
       "category": "Lab systems",
       "accent": "green",
       "status": "Completed",
-      "period": "2026 August",
-      "summary": "A BLE-connected ESP32 load-cell scale with filtered weight telemetry and a Flutter companion app for local measurements and food logging.",
+      "period": "Aug 2026",
+      "summary": "A Bluetooth-connected weighing platform with a companion app for recording measurements and food logs locally.",
       "introduction": "A weight reading becomes more useful when it can be recorded alongside what was measured. GYM Scale connects a physical weighing platform to a companion app, bringing weight measurements and food logging into one workflow.\n\nThe goal is to produce stable readings, send them wirelessly over Bluetooth Low Energy, and keep food and measurement records locally in the app. The project brings together load-cell electronics, signal filtering, and a mobile interface.",
       "tags": [
         "ESP32",
@@ -608,7 +629,7 @@
       "notes": [
         "HX711 readings pass through a median window and a Kalman-style denoiser after startup tare. The configured calibration factor and 10 kg capacity must match the actual load cell.",
         "A versioned 16-byte BLE packet carries readiness flags, sequence, uptime, grams, and raw delta. Notifications are limited to a 200 ms interval.",
-        "The Flutter app scans and subscribes over BLE, checks packet validity and stale readings, and uses local SQLite storage for food and measurement workflows. This is a prototype platform, not a certified weighing instrument."
+        "The Flutter app scans and subscribes over BLE, checks packet validity and stale readings, and uses local SQLite storage for food and measurement workflows. This is a prototype platform."
       ],
       "specs": [
         {
@@ -645,7 +666,9 @@
           "alt": "GYM Scale browser interface showing a weight readout, tare and mode controls, and food nutrition information",
           "caption": "Browser interface with weight, tare controls, and food nutrition information."
         }
-      ]
+      ],
+      "cardSummary": "A Bluetooth-connected weighing platform with a companion app for recording measurements and food logs locally.",
+      "currentState": "The prototype combines load-cell firmware with a Flutter app for BLE measurements and local food and measurement records. Its software filters the sensor readings and marks stale or invalid packets. The configured capacity and calibration must match the physical load cell."
     }
   ]
 }

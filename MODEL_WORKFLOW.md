@@ -72,3 +72,5 @@ in `tests/project-models.spec.ts`: six zones, pointer exit, navigation, touch,
 reduced motion, model failure, context loss, keyboard controls, zoom/reset, and
 desktop/mobile captures. Inspect the captures for framing, CAD colors, black
 edges, readable seams, and smooth curved surfaces.
+
+The bright Explore in 3D sign identifies the active viewer and focuses its canvas. It does not gate model loading. Posters use contained flex frames, so loading/fallback images cannot expand an implicit grid track and be cropped.

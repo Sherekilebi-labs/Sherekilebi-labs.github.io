@@ -10,7 +10,7 @@ export function ProjectMedia({ media, detailed = false, frame = 0, turntableRead
   const failModel = useCallback(() => setModelFailed(true), []);
   const showingImage = media.src && !failed;
   const source = !detailed && turntableReady ? media.turntable?.frames[frame] || media.src : media.src;
-  return <figure className={`project-media ${showingImage ? 'repository-image' : 'schematic-media'} ${detailed ? 'detailed-media' : ''}`}>
+  return <figure className={`project-media ${showingImage ? 'repository-image' : 'schematic-media'} ${detailed ? 'detailed-media' : ''} ${detailed && !media.model ? 'static-media' : ''}`}>
     <div className="project-media-frame">{showingImage ? <img src={mediaUrl(source!)} alt={media.alt} loading="lazy" {...imageDimensions(source!)} onError={() => setFailed(true)}/> : <ProjectDiagram kind={media.diagram}/>}
       {detailed && media.model && !modelFailed && <ProjectModelViewer model={media.model} onFailure={failModel}/>}
     </div>

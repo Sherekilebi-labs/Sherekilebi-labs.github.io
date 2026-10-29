@@ -3,7 +3,7 @@
   "slug": "2026-07-29-dyno-on-the-bench",
   "title": "Dyno rig",
   "date": "2026-07-29",
-  "author": "dachi",
+  "authors": ["dachi", "Robiko"],
   "category": "project-update",
   "summary": "Reusing Tekkai 1.0 control board to kickstart CupExS Drag Car development",
   "tags": [

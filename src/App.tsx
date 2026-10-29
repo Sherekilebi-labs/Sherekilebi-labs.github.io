@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
-import { categories, lab, technologies } from './data';
+import { categories, lab } from './data';
 import { latestDispatches } from './data/news';
 import type { Project } from './data/types';
 import { Arrow, EquipmentIcon } from './components/Diagrams';
@@ -46,10 +46,10 @@ function ScrollAndTitle() {
     );
     document.title =
       location.pathname === '/news'
-        ? 'Lab Dispatches // Flight Log — Sherekilebi Labs'
+        ? 'Lab Dispatches — Sherekilebi Labs'
         : project
           ? `${project.title} — Sherekilebi Labs`
-          : 'Sherekilebi Labs — Built by eccentrics.';
+          : 'Sherekilebi Labs';
     let frame: number;
     let attempts = 0;
     const scroll = () => {
@@ -162,13 +162,6 @@ function ProjectCard({ project }: { project: Project }) {
     <article className={`project-card accent-${project.accent}`} ref={turntable.card}
       onPointerMove={turntable.onPointerMove} onPointerLeave={turntable.onPointerLeave}
       data-turntable-ready={turntable.ready} data-frame={turntable.frame}>
-      <div className="card-topline">
-        <span className="mono">FILE / {project.number}</span>
-        <span className="status-label">
-          <span />
-          {project.status}
-        </span>
-      </div>
       <div className="card-cover">
         <ProjectMedia media={project.media} frame={turntable.frame} turntableReady={turntable.ready}/>
         {project.logo && <img className="card-cover-logo" src={mediaUrl(project.logo.src)} alt={project.logo.alt} loading="lazy" {...imageDimensions(project.logo.src)}/>}
@@ -186,17 +179,14 @@ function ProjectCard({ project }: { project: Project }) {
           <Arrow diagonal />
         </div>
         <ProjectSummary className="card-summary">
-          {project.summary}
+          {project.cardSummary || project.summary}
         </ProjectSummary>
+        <span className="status-label"><span aria-hidden="true" />{project.status}</span>
         <div className="tags">
-          {project.tags.slice(0, 3).map((tag) => (
+          {project.tags.slice(0, 2).map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
         </div>
-      </div>
-      <div className="card-footer">
-        <span className="source-path">/{project.folder}</span>
-        <span className="mono">{project.category}</span>
       </div>
     </article>
   );
@@ -204,62 +194,44 @@ function ProjectCard({ project }: { project: Project }) {
 
 function HomePage() {
   const [category, setCategory] = useState('All projects');
-  const [technology, setTechnology] = useState('All technologies');
   const filtered = lab.projects.filter(
-    (project) =>
-      (category === 'All projects' || project.category === category) &&
-      (technology === 'All technologies' || project.tags.includes(technology)),
+    (project) => category === 'All projects' || project.category === category,
   );
-  const filtersActive =
-    category !== 'All projects' || technology !== 'All technologies';
-  function reset() {
-    setCategory('All projects');
-    setTechnology('All technologies');
-  }
+  const filtersActive = category !== 'All projects';
+  function reset() { setCategory('All projects'); }
   return (
     <>
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-grid container">
           <div className="hero-copy">
-            <p className="eyebrow hero-eyebrow"></p>
-            <h1 id="hero-title">
-              <em>“I told you they would fly, you suit!”</em>
-            </h1>
-            <p className="hero-quote-credit">
-              — <cite>Sherekilebi (The Eccentrics)</cite>, 1973 — a reply to the
-              skeptics.
-            </p>
+            <h1 id="hero-title">Robotics, built in our workshop in Tbilisi.</h1>
             <p className="hero-description">
-              <b>Sherekilebi Labs</b> takes its name and spirit from the iconic Georgian film{' '}
-              <em><b>The Eccentrics</b></em>: think beyond convention, stay curious, and give
-              improbable ideas a chance to fly.
+              We build robot arms, competition robots, and practical tools - covering
+               CAD, electronics, code, and experiments.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
-                Explore our projects <Arrow />
+                Explore projects <Arrow />
               </a>
               <Link className="text-link" to="/news">
-                Read the flight log <Arrow diagonal />
+                Latest updates <Arrow diagonal />
               </Link>
             </div>
-            <p className="hero-origin-line">
-              <span aria-hidden="true">↗</span>
-              {lab.introduction}
-            </p>
+            <blockquote className="hero-supporting-quote">
+              <p>“I told you they would fly, you suit!”</p>
+              <cite>- Sherekilebi (The Eccentrics), 1973</cite>
+            </blockquote>
           </div>
           <ProjectCarousel />
         </div>
         <div className="hero-bottom container">
-          <p className="hero-margin-note mono">
-            <img src="/tsatmfreni.svg" alt="" width="35" height="35" />
-          </p>
           <div className="hero-stats">
             <div>
-              <strong>{String(lab.projects.length).padStart(2, '0')}</strong>
+              <strong>{lab.projects.length}</strong>
               <span>Projects</span>
             </div>
             <div>
-              <strong>05</strong>
+              <strong>{lab.people.length}</strong>
               <span>Members</span>
             </div>
             <div>
@@ -270,13 +242,13 @@ function HomePage() {
                 width="36"
                 height="24"
               />
-              <span>Space of our own in Georgia</span>
+              <span>Tbilisi, Georgia</span>
             </div>
           </div>
         </div>
       </section>
       <section className="section container" id="projects" aria-label="Projects">
-        <SectionHeading title="A few (eccentric) projects"></SectionHeading>
+        <SectionHeading title="Projects"></SectionHeading>
         <div className="filter-bar">
           <div
             className="category-filters"
@@ -296,29 +268,14 @@ function HomePage() {
               </button>
             ))}
           </div>
-          <label className="technology-filter">
-            <span className="sr-only">Filter by technology</span>
-            <span aria-hidden="true">⌕</span>
-            <select
-              value={technology}
-              onChange={(event) => setTechnology(event.target.value)}
-            >
-              <option>All technologies</option>
-              {technologies.map((tag) => (
-                <option key={tag}>{tag}</option>
-              ))}
-            </select>
-          </label>
         </div>
         <div className="results-line">
           <p aria-live="polite" aria-atomic="true">
-            {String(filtered.length).padStart(2, '0')} /{' '}
-            {String(lab.projects.length).padStart(2, '0')} PROJECT FILES
-            {filtersActive ? ' · FILTERED VIEW' : ' · OPEN FOR INVESTIGATION'}
+            {filtered.length} of {lab.projects.length} projects
           </p>
           {filtersActive && (
             <button className="reset-filters" onClick={reset}>
-              Reset filters ↺
+              Show all projects
             </button>
           )}
         </div>
@@ -333,8 +290,8 @@ function HomePage() {
             <span aria-hidden="true" className="empty-symbol">
               [ ∅ ]
             </span>
-            <h3>No experiments on this frequency.</h3>
-            <p>Try a different combination of category and technology.</p>
+            <h3>No projects match this category.</h3>
+            <p>Choose another category to explore the workshop’s projects.</p>
             <button className="button button-primary" onClick={reset}>
               Show all projects <Arrow />
             </button>
@@ -343,9 +300,9 @@ function HomePage() {
       </section>
       <section className="dispatches-home" aria-label="Latest Lab Dispatches">
         <div className="container section">
-          <SectionHeading title="Latest Lab Dispatches.">
+          <SectionHeading title="Latest dispatches">
             <Link className="button button-secondary" to="/news">
-              The complete flight log <Arrow diagonal />
+              All dispatches <Arrow diagonal />
             </Link>
           </SectionHeading>
           <div className="latest-dispatch-grid">
@@ -356,19 +313,17 @@ function HomePage() {
         </div>
       </section>
       <section className="section container" id="workbench" aria-label="Lab equipment">
-        <SectionHeading title="The tools behind the ideas.">
-          <p>A small but effective workshop.</p>
+        <SectionHeading title="The workshop">
         </SectionHeading>
         <div className="equipment-list">
-          {lab.equipment.map((equipment, i) => (
+          {lab.equipment.map((equipment) => (
             <article className="equipment" key={equipment.id}>
-              <span className="equipment-number mono">0{i + 1}</span>
               <div className="equipment-icon">
                 <EquipmentIcon kind={equipment.id} />
               </div>
               <div className="equipment-name">
-                <p className="eyebrow">{equipment.title}</p>
                 <h3>{equipment.name}</h3>
+                <p className="equipment-capability">{equipment.title}</p>
               </div>
               <div className="equipment-description">
                 <p>{equipment.description}</p>
@@ -395,16 +350,11 @@ function HomePage() {
               <p>
                 Our name is a nod to <em>The Eccentrics</em>, Eldar Shengelaia’s
                 Georgian film, and to the freedom of imagining something improbable. Our
-                experiments, workshop, and flight log are our own.
+                experiments and workshop are our own.
               </p>
-              <span className="mono">AN INDEPENDENT LAB · NO FILM AFFILIATION</span>
             </div>
           </div>
           <div className="origin-print">
-            <div className="origin-print-top mono">
-              <span>THE FIRST BUILD</span>
-              <span>№ 000</span>
-            </div>
             <img
               src="/tsatmfreni.svg"
               alt="The lab’s own Tsatmfreni flying-machine emblem"
@@ -414,25 +364,23 @@ function HomePage() {
             <div className="origin-print-bottom">
               <strong>2026</strong>
               <span className="mono">
-                APRIL — JUNE
-                <br />A PLACE TO BUILD
+                A place to build
               </span>
             </div>
           </div>
         </div>
       </section>
       <section className="section container" id="people" aria-label="People">
-        <SectionHeading title="Sherekilebi Team.">
-          <p>We share pation for making things work.</p>
+        <SectionHeading title="Our team">
         </SectionHeading>
         <div className="people-grid">
-          {lab.people.map((person, i) => (
+          {lab.people.map((person) => (
             <article className="person-card" key={person.id}>
               <div className="person-top">
                 <div className="person-avatar" aria-hidden="true">
                   {person.initials}
                 </div>
-                <span className="mono">PEER / {String(i + 1).padStart(2, '0')}</span>
+
               </div>
               <p className="eyebrow">{person.role}</p>
               <h3>{person.name}</h3>
@@ -466,7 +414,6 @@ function HomePage() {
               <br />
               in the source.
             </h2>
-            <p>The code, the experiments, and the next iteration.</p>
           </div>
           <a
             className="source-org-link"
@@ -501,7 +448,7 @@ function Footer() {
         </div>
         <div className="footer-links">
           <Link to="/news">
-            Flight log <Arrow diagonal />
+            Dispatches <Arrow diagonal />
           </Link>
           <a
             href="https://github.com/Sherekilebi-labs"
@@ -528,7 +475,7 @@ export default function App() {
         <Suspense
           fallback={
             <div className="container section mono" role="status">
-              Opening the notebook…
+              Loading page…
             </div>
           }
         >

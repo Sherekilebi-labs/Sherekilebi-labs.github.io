@@ -5,11 +5,11 @@ import labData from '../src/data/lab.json' with { type: 'json' };
 const projectIds = ['lara', 'active-spoiler', 'sumo-2026', 'cupexs', 'door-security', 'gym-scale'];
 const laraTitle = labData.projects.find(project => project.id === 'lara')!.title;
 
-test('new branding, removed sections, combined filters, and official GitHub links', async ({ page }) => {
+test('branding, concise project index, category filters, and official GitHub links', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');
-  await expect(page).toHaveTitle(/Built by eccentrics/);
+  await expect(page).toHaveTitle('Sherekilebi Labs');
   await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/tsatmfreni.svg');
   await expect(page.locator('.site-header .brand img')).toHaveAttribute('src', '/tsatmfreni.svg');
   await expect(page.locator('.site-footer .brand img')).toHaveAttribute('src', '/Sherekilebi logo.png');
@@ -19,7 +19,7 @@ test('new branding, removed sections, combined filters, and official GitHub link
   await expect(page.getByText('Actuator A0', { exact: true })).toHaveCount(0);
   await expect(page.getByText('RoBook', { exact: true })).toHaveCount(0);
   await expect(page.getByText('AeroDHS', { exact: true })).toHaveCount(0);
-  await expect(page.locator('.hero-stats').first()).toContainText('06');
+  await expect(page.locator('.hero-stats strong').first()).toHaveText(String(labData.projects.length));
   await expect(page.locator('.hero h1')).toHaveCSS('font-weight', '700');
   const titleFamily = await page.locator('.hero h1').evaluate(element => getComputedStyle(element).fontFamily);
   expect(titleFamily).toContain('Helvetica');
@@ -28,47 +28,41 @@ test('new branding, removed sections, combined filters, and official GitHub link
   await expect(page.getByRole('navigation').getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/Sherekilebi-labs');
   await page.getByRole('button', { name: 'Competition', exact: true }).click();
   await expect(page.locator('.project-grid .project-card')).toHaveCount(2);
-  await page.getByLabel('Filter by technology').selectOption('MPU6050');
-  await expect(page.getByText('No experiments on this frequency.')).toBeVisible();
+  await expect(page.getByLabel('Filter by technology')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Lab systems', exact: true }).click();
+  await expect(page.locator('.project-grid .project-card')).toHaveCount(2);
   await page.getByRole('button', { name: 'Show all projects' }).click();
   await expect(page.locator('.project-grid .project-card')).toHaveCount(6);
   expect(errors).toEqual([]);
 });
 
-test('tape keeps rolling on hover and resumes three seconds after the latest manual click', async ({ page }) => {
+test('carousel advances every three seconds, pauses across its border, and resumes after pointer exit', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-10-29T00:00:00Z') });
+  await page.clock.pauseAt(new Date('2026-10-29T00:00:01Z'));
   await page.goto('/');
   const carousel = page.getByRole('region', { name: 'Featured projects' });
   const caption = carousel.locator('.carousel-caption strong');
-  const track = carousel.locator('.tape-track');
-  await expect(carousel.locator('.carousel-heading')).toHaveText('Projects:');
-  await expect(carousel.locator('.tape-counter, .carousel-footnote, .tape-status, .tape-edges')).toHaveCount(0);
-  await expect(carousel.getByRole('button', { name: /play|pause/i })).toHaveCount(0);
+  await expect(carousel).toHaveAttribute('data-mode', 'AUTO-ROLL');
+  await page.clock.fastForward(2999);
+  await expect(caption).toHaveText(laraTitle);
+  await page.clock.fastForward(1);
+  await expect(caption).toHaveText('Pop-up Spoiler');
   await carousel.hover();
-  await expect(carousel).toHaveAttribute('data-mode', 'AUTO-ROLL');
-  await expect(caption).toHaveText('Pop-up Spoiler', { timeout: 3400 });
-  await expect(caption).toHaveText('Tekkai 2.0', { timeout: 2600 });
-  await expect(track).toHaveAttribute('data-phase', 'idle');
-
-  await carousel.getByRole('button', { name: 'Previous featured project' }).click();
+  await page.clock.fastForward(10000);
+  await page.clock.runFor(50);
+  await expect(caption).toHaveText('Pop-up Spoiler');
   await expect(carousel).toHaveAttribute('data-mode', 'MANUAL STEP');
-  await expect(caption).toHaveText('Pop-up Spoiler');
-  await expect(track).toHaveAttribute('data-phase', 'idle');
-  await page.waitForTimeout(1000);
-  await expect(caption).toHaveText('Pop-up Spoiler');
-  // A second click restarts the delay, even while the button retains focus.
   await carousel.getByRole('button', { name: 'Next featured project' }).click();
-  const clickedAt = await page.evaluate(() => Date.now());
   await expect(caption).toHaveText('Tekkai 2.0');
-  await expect(track).toHaveAttribute('data-phase', 'idle');
-  await page.waitForTimeout(1500);
+  await page.clock.fastForward(10000);
+  await page.clock.runFor(50);
   await expect(caption).toHaveText('Tekkai 2.0');
-  await expect(carousel).toHaveAttribute('data-mode', 'MANUAL STEP');
-  await expect(caption).toHaveText('CupExS Drag Racer', { timeout: 2000 });
-  expect(await page.evaluate(() => Date.now()) - clickedAt).toBeGreaterThanOrEqual(2900);
+  await page.mouse.move(0, 0);
   await expect(carousel).toHaveAttribute('data-mode', 'AUTO-ROLL');
-  await expect(caption).toHaveText('Door Security System', { timeout: 2600 });
-  await carousel.getByRole('link', { name: 'Explore Door Security System', exact: true }).click();
-  await expect(page).toHaveURL(/\/projects\/door-security$/);
+  await page.clock.fastForward(2999);
+  await expect(caption).toHaveText('Tekkai 2.0');
+  await page.clock.fastForward(1);
+  await expect(caption).toHaveText('CupExS Drag Racer');
 });
 
 test('one physical track stays gapless and wraps one frame in either direction', async ({ page }) => {
@@ -148,18 +142,23 @@ test('keyboard and swipes take manual control, including input during a roll', a
 });
 
 test('project routes load directly and source links match the uploaded repositories', async ({ page }) => {
-  const links: Record<string, string> = { 'active-spoiler': 'Active-Spoiler', 'door-security': 'Door-Security-System', cupexs: 'CupExS-drag-racer', 'gym-scale': 'GYM-scale' };
+  const links: Record<string, string> = { 'sumo-2026': 'Tekkai-2.0', 'active-spoiler': 'Active-Spoiler', 'door-security': 'Door-Security-System', cupexs: 'CupExS-drag-racer', 'gym-scale': 'GYM-scale' };
   for (const id of projectIds) {
     const response = await page.goto(`/projects/${id}`);
     expect(response?.status()).toBe(200);
     await expect(page.locator('.project-page h1')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'From the documentation', exact: true })).toHaveCount(0);
+    await expect(page.locator('.source-excerpt')).toHaveCount(0);
     const sections = page.locator('.project-page-main > .project-detail-section');
-    await expect(sections.nth(0).getByRole('heading')).toHaveText('Introduction');
-    await expect(sections.nth(1).getByRole('heading')).toHaveText('Engineering notes');
+    await expect(sections.nth(0).getByRole('heading')).toHaveText('Overview');
+    await expect(sections.nth(1).getByRole('heading')).toHaveText('Current state');
     await expect(sections.nth(0).locator('.project-introduction')).not.toBeEmpty();
     if (id === 'lara') {
+      await expect(page.locator('.project-specs')).toContainText('Isaac Sim');
+      await expect(page.locator('.project-page')).not.toContainText('MuJoCo');
       await expect(sections.nth(0)).toContainText('Lab Assistant Robot Arm');
-      await expect(page.locator('.project-page-summary ul > li')).toHaveCount(2);
+      await expect(page.locator('.project-current-state')).toContainText('Each joint works separately');
+      await expect(page.locator('.project-page-summary ul')).toHaveCount(0);
     }
     await expect(page.getByRole('link', { name: 'Sherekilebi Labs on GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/Sherekilebi-labs');
     if (links[id]) await expect(page.getByRole('link', { name: 'Open GitHub repository' })).toHaveAttribute('href', `https://github.com/Sherekilebi-labs/${links[id]}`);
@@ -167,12 +166,9 @@ test('project routes load directly and source links match the uploaded repositor
   await page.goto('/projects/door-security');
   await expect(page.locator('.engineering-notes')).toContainText('38 kHz');
   await page.goto('/projects/active-spoiler');
-  await expect(page.locator('ul.engineering-notes')).toBeVisible();
-  await expect(page.locator('.engineering-notes')).toContainText('Two motors per wing');
-  await expect(page.locator('.engineering-notes')).toContainText('drag curve points');
-  await expect(page.locator('.engineering-notes')).toContainText('0–70° wing commands');
-  await page.locator('.source-excerpt summary').filter({ hasText: 'Editable roll and pitch response mapping' }).click();
-  await expect(page.locator('.source-excerpt[open]')).toContainText('mapWings');
+  await expect(page.locator('.engineering-topics')).toContainText('Two motors per wing');
+  await expect(page.locator('.engineering-topics')).toContainText('drag curve points');
+  await expect(page.locator('.engineering-topics')).toContainText('0–70° wing commands');
   await page.goto('/projects/sumo-2026');
   await expect(page.locator('.engineering-notes')).toContainText('two active-low edge inputs');
   await expect(page.getByRole('link', { name: 'Earlier RoboSumo 2024 firmware' })).toHaveAttribute('href', 'https://github.com/ChoteX/RoboSumo-2024');
@@ -180,7 +176,7 @@ test('project routes load directly and source links match the uploaded repositor
 
 test('dispatches pin announcements, filter categories, expand Markdown, and cross-link projects', async ({ page }) => {
   await page.goto('/news');
-  await expect(page.getByRole('heading', { name: 'Lab Dispatches // Flight Log' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Lab Dispatches', exact: true })).toBeVisible();
   await expect(page.locator('.dispatch-timeline .dispatch-card')).toHaveCount(10);
   await expect(page.locator('.dispatch-timeline .dispatch-card').first()).toHaveAttribute('id', '2026-10-13-drawer-for-every-idea');
   await page.getByRole('button', { name: 'Shenanigans', exact: true }).click();
@@ -192,7 +188,7 @@ test('dispatches pin announcements, filter categories, expand Markdown, and cros
   const post = page.locator('[id="2026-07-29-dyno-on-the-bench"]');
   await expect(post.locator('.media-stamp')).toContainText('2026.07.29');
   await expect(post.locator('..').locator('time')).toHaveAttribute('datetime', '2026-07-29');
-  await post.getByText('Read the field notes').click();
+  await post.getByText('Read more', { exact: true }).click();
   await expect(post.locator('.dispatch-reader')).toHaveAttribute('open', '');
   await expect(post.locator('.dispatch-reader .markdown p')).toContainText('high precision magnetic encoder MT6701');
   await expect(post.getByRole('link', { name: 'Linked project: CupExS Drag Racer' })).toHaveAttribute('href', '/projects/cupexs');
@@ -204,7 +200,7 @@ test('homepage preview contains three most recent dispatches and the correct dee
   await expect(section.locator('.dispatch-card')).toHaveCount(3);
   const links = await section.locator('.dispatch-read-link').evaluateAll(items => items.map(item => item.getAttribute('href')));
   expect(links).toEqual(['/news#2026-10-24-unscheduled-inspector','/news#2026-10-18-spoiler-wiring','/news#2026-10-13-drawer-for-every-idea']);
-  await section.getByRole('link', { name: 'The complete flight log' }).click();
+  await section.getByRole('link', { name: 'All dispatches' }).click();
   await expect(page).toHaveURL(/\/news$/);
 });
 
@@ -221,20 +217,17 @@ test('missing project media falls back and reduced motion disables autoplay', as
   await expect(page.locator('.tape-window')).toHaveAttribute('aria-label', '2 of 5: Pop-up Spoiler');
   await expect(page.locator('.tape-track')).toHaveAttribute('data-phase', 'idle');
   await expect(page.locator('html')).toHaveCSS('scroll-behavior','auto');
-  const duration = await page.locator('.news-dot').evaluate(element => parseFloat(getComputedStyle(element).animationDuration));
-  expect(duration).toBeLessThanOrEqual(0.01);
+
 });
 
 test('desktop and mobile layouts fit, navigation works, and previews are captured', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await page.evaluate(() => document.fonts.ready);
+  await expect(page.locator('.hero h1')).toContainText('Robotics');
   const deck = await page.locator('.project-carousel').boundingBox();
-  const hero = await page.locator('.hero-grid').boundingBox();
-  const divider = await page.locator('.hero-bottom').boundingBox();
-  expect(Math.abs(deck!.y - hero!.y)).toBeLessThan(1);
-  expect(Math.abs(deck!.y + deck!.height - divider!.y)).toBeLessThan(1);
-  expect(Math.abs(deck!.x + deck!.width - hero!.x - hero!.width)).toBeLessThan(1);
+  const copy = await page.locator('.hero-copy').boundingBox();
+  expect(deck!.x).toBeGreaterThanOrEqual(copy!.x + copy!.width);
   await page.screenshot({ path: 'test-results/desktop-hero.png' });
   await page.screenshot({ path: 'test-results/desktop-full.png', fullPage: true });
   for (const route of ['/', '/news', '/projects/door-security', '/projects/cupexs']) {
@@ -334,4 +327,88 @@ test('photos remain fully visible inline without raw-image links', async ({ page
   await page.locator('.latest-dispatch-grid').screenshot({ path: 'test-results/full-frame-dispatches.png' });
   await page.goto('/projects/aerodhs');
   await expect(page.getByRole('heading', { name: 'Project not found.' })).toBeVisible();
+});
+
+test('project readers expose useful actions, kit count, and dated updates', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/projects/cupexs');
+  await expect(page.getByRole('heading', { name: 'CupExS Drag Racer', exact: true })).toBeVisible();
+  const source = page.getByRole('link', { name: 'Open GitHub repository' });
+  const sourceBounds = (await source.boundingBox())!;
+  const mediaBounds = (await page.locator('.detailed-media').boundingBox())!;
+  expect(sourceBounds.y + sourceBounds.height).toBeLessThan(mediaBounds.y);
+  await expect(page.getByRole('heading', { name: 'Testing and results' })).toHaveCount(0);
+  await expect(page.locator('.project-current-state')).toContainText('5 functional kits');
+  await expect(page.locator('.analysis-figure')).toHaveCount(0);
+  await page.getByRole('heading', { name: 'Project updates' }).scrollIntoViewIfNeeded();
+  await page.locator('.project-updates a').first().click();
+  await expect(page).toHaveURL(/\/news#2026-/);
+  await page.goto('/projects/door-security');
+  await expect(page.getByRole('heading', { name: 'Overview' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Testing and results' })).toHaveCount(0);
+  await expect(page.locator('.source-path,.project-file-stamp,.project-margin-note')).toHaveCount(0);
+});
+
+test('project models load automatically and simulation retains only the animation', async ({ page }) => {
+  await page.goto('/projects/lara');
+  await expect(page.locator('.cad-viewer')).toHaveAttribute('data-state', 'ready', { timeout: 30000 });
+  await expect(page.getByRole('button', { name: 'Explore in 3D' })).toBeVisible();
+  await expect(page.locator('.simulation-motion img')).toHaveAttribute('src', /lara-sim-motion\.webp$/);
+  await expect(page.locator('.simulation-gallery')).toHaveCount(0);
+  await expect(page.locator('img[src*="lara-sim-"]')).toHaveCount(1);
+  await expect(page.locator('.simulation-motion button')).toHaveCount(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.reload();
+  await expect(page.locator('.simulation-motion img')).toHaveAttribute('src', /lara-sim-motion\.webp$/);
+  await expect(page.locator('.simulation-motion button')).toHaveCount(0);
+});
+
+test('static project media fits in its frame and CupExS logos occupy the requested corners', async ({ page }) => {
+  for (const id of ['door-security', 'gym-scale']) {
+    await page.goto(`/projects/${id}`);
+    const image = page.locator('.detailed-media .project-media-frame > img');
+    await expect(image).toBeVisible();
+    await expect.poll(() => image.evaluate(element => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    for (const width of [1440, 390]) {
+      await page.setViewportSize({ width, height: 1000 });
+      const geometry = await image.evaluate(element => {
+        const image = element as HTMLImageElement, box = image.getBoundingClientRect(), frame = image.parentElement!.getBoundingClientRect();
+        return { top: box.top, bottom: box.bottom, left: box.left, right: box.right, frameTop: frame.top, frameBottom: frame.bottom, frameLeft: frame.left, frameRight: frame.right, fit: getComputedStyle(image).objectFit };
+      });
+      expect(geometry.fit).toBe('contain');
+      expect(geometry.top).toBeGreaterThanOrEqual(geometry.frameTop - 1);
+      expect(geometry.bottom).toBeLessThanOrEqual(geometry.frameBottom + 1);
+      expect(geometry.left).toBeGreaterThanOrEqual(geometry.frameLeft - 1);
+      expect(geometry.right).toBeLessThanOrEqual(geometry.frameRight + 1);
+    }
+  }
+  await page.goto('/');
+  const card = page.locator('.project-card').filter({ hasText: 'CupExS Drag Racer' });
+  await card.scrollIntoViewIfNeeded();
+  const cover = (await card.locator('.card-cover').boundingBox())!;
+  const cardLogo = (await card.locator('.card-cover-logo').boundingBox())!;
+  expect(cardLogo.x - cover.x).toBeLessThan(20);
+  expect(cardLogo.y - cover.y).toBeLessThan(20);
+  await page.goto('/projects/cupexs');
+  const photo = (await page.locator('.project-introduction-image-frame').boundingBox())!;
+  const logo = (await page.locator('.project-photo-logo').boundingBox())!;
+  expect(photo.x + photo.width - logo.x - logo.width).toBeLessThan(20);
+  expect(logo.y - photo.y).toBeLessThan(20);
+});
+
+test('essential text stays readable and 200 percent enlargement preserves layout', async ({ page }) => {
+  for (const route of ['/', '/news', '/projects/lara']) {
+    await page.goto(route);
+    await expect(page.locator('main h1')).toBeVisible();
+    for (const width of [1440, 390]) {
+      await page.setViewportSize({ width, height: 1000 });
+      const sizes = await page.locator('.card-summary,.status-label,.tags > span,.back-link,.news-intro,.project-specs dt,.engineering-topics p,.project-meta').evaluateAll(elements => elements.map(element => parseFloat(getComputedStyle(element).fontSize)));
+      expect(sizes.length).toBeGreaterThan(0);
+      expect(Math.min(...sizes)).toBeGreaterThanOrEqual(12);
+    }
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.addStyleTag({ content: 'html { font-size: 200%; }' });
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await expect(page.locator('main h1')).toBeVisible();
+  }
 });

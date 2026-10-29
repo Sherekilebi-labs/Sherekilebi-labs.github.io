@@ -12,6 +12,7 @@ test('CAD viewers load, respond to keyboard and zoom, and reset', async ({ page 
     await expect(viewer).toHaveAttribute('data-state', 'ready', { timeout: 30000 });
     const canvas = viewer.locator('canvas');
     await expect(canvas).toBeVisible();
+    await expect(viewer.getByRole('button', { name: 'Explore in 3D' })).toBeVisible();
     await expect(canvas).toHaveAttribute('aria-label', /arrow keys/);
     await canvas.scrollIntoViewIfNeeded();
     const initial = await canvas.screenshot();
