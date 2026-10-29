@@ -36,14 +36,14 @@ test('branding, concise project index, category filters, and official GitHub lin
   expect(errors).toEqual([]);
 });
 
-test('carousel advances every three seconds, pauses across its border, and resumes after pointer exit', async ({ page }) => {
+test('carousel advances every two seconds, pauses across its border, and resumes after pointer exit', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-29T00:00:00Z') });
   await page.clock.pauseAt(new Date('2026-10-29T00:00:01Z'));
   await page.goto('/');
   const carousel = page.getByRole('region', { name: 'Featured projects' });
   const caption = carousel.locator('.carousel-caption strong');
   await expect(carousel).toHaveAttribute('data-mode', 'AUTO-ROLL');
-  await page.clock.fastForward(2999);
+  await page.clock.fastForward(1999);
   await expect(caption).toHaveText(laraTitle);
   await page.clock.fastForward(1);
   await expect(caption).toHaveText('Pop-up Spoiler');
@@ -59,7 +59,7 @@ test('carousel advances every three seconds, pauses across its border, and resum
   await expect(caption).toHaveText('Tekkai 2.0');
   await page.mouse.move(0, 0);
   await expect(carousel).toHaveAttribute('data-mode', 'AUTO-ROLL');
-  await page.clock.fastForward(2999);
+  await page.clock.fastForward(1999);
   await expect(caption).toHaveText('Tekkai 2.0');
   await page.clock.fastForward(1);
   await expect(caption).toHaveText('CupExS Drag Racer');

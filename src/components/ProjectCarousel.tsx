@@ -14,7 +14,7 @@ export function ProjectCarousel() {
     label="Featured projects"
     heading="From the workshop"
     autoRoll
-    intervalMs={3000}
+    intervalMs={2000}
     durationMs={600}
     fit="contain"
     aspectRatio="4 / 3"
